@@ -1,8 +1,9 @@
 describe 'Api requests' do
+  it 'allows a user to Sign up' do
+    visit '/'
+    expect(page).to have_link 'Signup'
+  end
   context 'when user logged in' do
-    xit 'should return a positive response with an object' do
-      visit '/fitbit/heart'
-      expect(page).to have_content 'Something'
-    end
+    
   end
 end

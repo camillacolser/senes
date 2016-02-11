@@ -1,0 +1,17 @@
+<% user_tmz = current_user.identity_for("fitbit_oauth2").timezone %>
+<% today = Date.today.in_time_zone(user_tmz).to_date.strftime("%Y-%m-%d") %>
+<div class="form-and-output-wrapper">
+  <div class="request-form">
+    <select class="request-url-dropdown" name="request-url">
+      <option value="<%= url_for(controller: 'fitbit_api', action: 'data_request', resource: 'activities', date: today, only_path: false) %>" selected="true">Activities</option>
+      <option value="<%= url_for(controller: 'fitbit_api', action: 'data_request', resource: 'sleep', date: today, only_path: false) %>" >Sleep</option>
+      <option value="<%= url_for(controller: 'fitbit_api', action: 'data_request', resource: 'activities/steps', date: today, only_path: false) %>" >Steps</option>
+    </select>
+    <button id="api-request-btn" type="button" name="button">Request</button>
+  </div>
+
+  <div class="output-wrapper">
+    <textarea id="api_output" name="name" rows="80" cols="40"></textarea>
+  </div>
+
+</div>

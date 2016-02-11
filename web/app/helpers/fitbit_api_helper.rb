@@ -1,0 +1,2 @@
+module FitbitApiHelper
+end

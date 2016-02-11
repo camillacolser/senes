@@ -1,6 +1,13 @@
-rvm: '2.2.3'
+rvm: 2.2.3
 gemfile: web/Gemfile
+before_install: cd web
 script:
-  - sh c 'cd web && bundle exec bin/rake db:create'
-  - bundle exec bin/rake db:migrate
-  - bundle exec rspec spec
+- bundle exec bin/rake db:create
+- bundle exec bin/rake db:migrate
+- bundle exec rspec spec
+deploy:
+  provider: heroku
+  api_key:
+    secure: AkY4frjeeZ0mHeSdUzGCBMsrkYkyjGj18LlvIn9wyxRTW/MhcuNmZEG10rJISviJ+ztmnGnvY9A7bfjAC77mc8DyRZUf2ZabbkcDszSYqPYQ1hZ7xllCwk+0OVea+7OI60LCiuqOCD/O9jSZQ7FIztjFE2+nZ/d6nAInNSpQxpmQq2VKCu4X1tHiG7Zh6qbW7RgzuN5brPuKDjqsNWkLF7kym80urB1rJB02bB/69Xop0QV45CF6P2pJPmZiCReqJp6RK5EZgWw22mDcKXg6AK8WLBWN/QBI2V3w8zIFEKbB/U2KQ/uWRTiRGX591ezucxZBzi5sN3CDn1iIcYRyl0cZbwSAEi/yHJBY99wLdhd5upA3+C1M/B5oIzxyF4zXL/bQo7s0jawjsKl9A5HcHozxU1CmIlzSElW1QEcU1QEwzIS9UTsdsuQnFeyblbxvbCPGuis6+e9KdQmfV8n1aVacGL+K+Ncnw9xeJPOtz/G3Qc6gVoDecGzHUUBloHVdsuvRmPz/j9O3LnhDdNJG3ZG1B237Y/uhP3hCY5gP6Y+w84QLLrp6eCl56DRy6hhrd4oP9Hlz4Hvr7WXOc1ydHhgbF9N3Jvh1sEk2uazUvx1Zv+TTvvjY6arCEx6S90ZC7pNmjwPQlhe1kcaqjiGf0RZLNOKyD94bl3P60G84+4w=
+  run:
+  - rake db:migrate

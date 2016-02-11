@@ -1,6 +1,6 @@
 rvm: '2.2.3'
-script: cd web && bundle exec rspec spec
+gemfile: web/Gemfile
 script:
-  - bundle exec bin/rake db:create
+  - sh c 'cd web && bundle exec bin/rake db:create'
   - bundle exec bin/rake db:migrate
   - bundle exec rspec spec

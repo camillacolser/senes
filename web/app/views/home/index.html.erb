@@ -1,0 +1,15 @@
+<script type="text/javascript">
+  var user_signed_in = <%= user_signed_in? || false %>;
+</script>
+
+<div class="header">
+  <% if user_signed_in? %>
+    Hello <%= current_user.email %> <%= link_to "Logout", destroy_user_session_path, method: :delete %> <hr>
+  <% else %>
+    <%= link_to "Signup",new_user_registration_path %>
+  <% end %>
+</div>
+
+<div class="main-wrapper">
+  <%= render partial: 'shared/api_output' if user_signed_in? %>
+</div>

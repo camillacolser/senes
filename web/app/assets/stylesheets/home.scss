@@ -1,0 +1,19 @@
+// Place all the styles related to the Home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.header {
+  text-align: right;
+  padding: 25px;
+}
+
+div.request-form {
+  text-align: center;
+}
+
+.form-and-output-wrapper, .output-wrapper {
+  height: 100%;
+}
+
+.CodeMirror {
+  height: 100%;
+}

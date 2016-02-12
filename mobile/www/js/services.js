@@ -1,4 +1,4 @@
-angular.module('app.services', [])
+angular.module('starter.services', [])
 
 .factory('ApiFactory', ['$http', function($http) {
   return {

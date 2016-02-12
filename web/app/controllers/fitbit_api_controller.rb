@@ -14,8 +14,17 @@ class FitbitApiController < ApplicationController
 
   def heart
     client = current_user.fitbit_client
-    output = client.heart_rate_on_date('2016-02-11')
+    output = client.heart_rate_on_date('today')
     parsed = output["activities-heart"][0]["value"]["restingHeartRate"]
     render json: {'restingHeartRate': parsed}
   end
+
+  def steps
+    client = current_user.fitbit_client
+    output = client.steps_on_date('today')
+    parsed = output["activities-steps"][0]["value"]
+    render json: {'steps': parsed}
+  end
+
+
 end

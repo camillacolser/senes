@@ -27,12 +27,20 @@
 
     <ion-pane>
       <ion-header-bar class="bar-stable">
-        <h1 class="title">Ionic Blank Starter</h1>
+        <h1 class="title">Senior Health</h1>
       </ion-header-bar>
       <ion-content ng-controller="ApiController as ApiCtrl">
         <button type="button" name="button" ng-click="ApiCtrl.callApi()">TRY</button>
         <p>{{ApiCtrl.result.heartRate}}</p>
       </ion-content>
+      <div class="tabs">
+        <a class="tab-item">
+          Today
+        </a>
+        <a class="tab-item">
+          Week
+        </a>
+      </div>
     </ion-pane>
   </body>
 </html>

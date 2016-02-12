@@ -8,6 +8,10 @@ exports.config = {
   jasmineNodeOpts: {
     isVerbose:true,
   },
+  mocks: {
+    default: ['heartrate'], // default value: []
+    dir: 'mocks' // default value: 'mocks'
+  },
   onPrepare: function() {
    var jasmineReporters = require('jasmine-reporters');
    jasmine.getEnv().addReporter(new jasmineReporters.TerminalReporter({
@@ -15,5 +19,9 @@ exports.config = {
      color: true,
      showStack: true
    }));
+   require('protractor-http-mock').config = {
+     rootDirectory: (__dirname), // default value: process.cwd()
+     protractorConfig: 'conf.js' // default value: 'protractor.conf'
+   };
  }
 };

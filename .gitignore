@@ -13,5 +13,4 @@ web/log/*
 /web/tmp
 
 /web/.env
-
-
+mobile/node_modules

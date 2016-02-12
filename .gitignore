@@ -14,3 +14,5 @@ web/log/*
 
 /web/.env
 mobile/node_modules
+
+.DS_Store

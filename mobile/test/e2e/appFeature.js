@@ -5,26 +5,13 @@ describe('Senior Ionic', function() {
   var week = element(by.linkText('Week'));
   var heartRate = element(by.css('.item'));
 
+  myAppDev = angular.module('myAppDev', ['seniorHealth', 'ngMockE2E']);
+  myAppDev.run(function($httpBackend) {
+   heartRate = {restingHeartRate: 70};
+ });
   beforeEach(function() {
-    var response = {
-      request: {
-        path: 'https://senior-health.herokuapp.com/fitbit/heart',
-        method: 'GET'
-      },
-      response: {
-        data: {
-          restingHeartRate: 70
-        }
-      }
-    };
-    var test = mock([response]);
-    console.log(response);
-    console.log(test);
     browser.get('http://localhost:8100');
-  });
-
-  afterEach(function() {
-    mock.teardown();
+    $httpBackend.whenGET('https://senior-health.herokuapp.com/fitbit/heart').respond(heartRate);
   });
 
   it('displays the \'today \' tab by default', function() {

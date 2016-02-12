@@ -13,5 +13,6 @@ web/log/*
 /web/tmp
 
 /web/.env
-
-
+/mobile/node_modules
+/mobile/bower_components
+.DS_Store

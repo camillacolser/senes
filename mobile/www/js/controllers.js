@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('seniorHealth.controllers', [])
 
 .controller('TodayCtrl', function($scope) {})
 
@@ -19,7 +19,6 @@ angular.module('starter.controllers', [])
 })
 
 .controller('ApiController', function(ApiFactory) {
-
   var self = this;
 
   self.callApi = function() {

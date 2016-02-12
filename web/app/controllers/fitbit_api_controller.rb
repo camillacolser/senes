@@ -18,4 +18,11 @@ class FitbitApiController < ApplicationController
     parsed = output["activities-heart"][0]["value"]["restingHeartRate"]
     render json: {'restingHeartRate': parsed}
   end
+
+  def sleep
+    client = current_user.fitbit_client
+    output = client.sleep_logs_on_date('2016-02-11')
+    parsed = output["summary"]["totalMinutesAsleep"]
+    render json: {'totalMinutesAsleep': parsed}
+  end
 end

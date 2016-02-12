@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   get 'fitbit/:resource/:date.json' => 'fitbit_api#data_request'
   get 'fitbit/heart' => 'fitbit_api#heart'
+  get 'fitbit/sleep' => 'fitbit_api#sleep'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

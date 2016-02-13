@@ -1,10 +1,14 @@
+var remoteUrl = 'https://senior-health.herokuapp.com';
+var localUrl = 'http://localhost:3000';
+var address = localUrl;
+
 angular.module('seniorHealth.services', ['LocalStorageModule', 'ionic'])
 
 .factory('ApiFactory', ['$http', function($http) {
   return {
     query: function() {
       return $http({
-        url: 'https://senior-health.herokuapp.com/fitbit/heart',
+        url: address+'/fitbit/heart',
         method: 'GET'
       });
     }
@@ -12,7 +16,7 @@ angular.module('seniorHealth.services', ['LocalStorageModule', 'ionic'])
 }])
 
 .factory('FitbitLoginService', function($window, localStorageService) {
-  var url = "https://senior-health.herokuapp.com/users/auth/fitbit_oauth2";
+  var url = address+"/users/auth/fitbit_oauth2";
   var loginWindow, token, hasToken, userId, hasUserId;
 
   return {

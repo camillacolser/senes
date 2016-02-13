@@ -1,7 +1,13 @@
 <ion-view view-title="Today">
-  <ion-content class="padding" ng-controller="ApiController as ApiCtrl">
-    <h2>Granny is doing great!</h2>
+  <ion-content class="padding" ng-controller="ApiController as ApiCtrl" ng-init="ApiCtrl.callApi()">
     <button type="button" name="button" ng-click="ApiCtrl.callApi()">TRY</button>
-    <p>{{ApiCtrl.result.heartRate}}</p>
+
+    <div class="list">
+      <div class="item item-icon-left">
+        <i class="icon ion-heart"></i>
+        Heart Rate
+        {{ApiCtrl.result.data}}
+      </div>
+    </div>
   </ion-content>
 </ion-view>

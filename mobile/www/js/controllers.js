@@ -1,4 +1,4 @@
-angular.module('seniorHealth.controllers', [])
+angular.module('seniorHealth.controllers', ['LocalStorageModule'])
 
 .controller('TodayCtrl', function($scope) {})
 
@@ -29,4 +29,8 @@ angular.module('seniorHealth.controllers', [])
 .controller('AuthenticationController', function($scope) {
   $scope.Authenticated = false;
   $scope.needsAuthentication = true;
+})
+
+.controller('LoginController', function($scope,FitbitLoginService) {
+  $scope.fitbitlogin = FitbitLoginService.login;
 });

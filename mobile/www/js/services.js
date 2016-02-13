@@ -1,11 +1,12 @@
-angular.module('starter.services', [])
+angular.module('seniorHealth.services', [])
 
 .factory('ApiFactory', ['$http', function($http) {
   return {
     query: function() {
-      return {
-        heartRate : 72
-      };
+      return $http({
+        url: 'https://senior-health.herokuapp.com/fitbit/heart',
+        method: 'GET'
+      });
     }
   };
 }]);

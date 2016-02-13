@@ -1,7 +1,7 @@
 require 'fitgem_oauth2/activity.rb'
 require 'fitgem_oauth2/sleep.rb'
 require 'fitgem_oauth2/steps.rb'
-
+require 'fitgem_oauth2/battery.rb'
 require 'fitgem_oauth2/heart.rb'
 
 require 'base64'
@@ -49,7 +49,6 @@ module FitgemOauth2
       end
       JSON.parse(response.body).merge!(response.headers)
     end
-
 
     def refresh_access_token(refresh_token)
       response = connection.post('/oauth2/token') do |request|

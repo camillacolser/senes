@@ -24,4 +24,9 @@ angular.module('seniorHealth.controllers', [])
   self.callApi = function() {
     self.result = ApiFactory.query();
   };
+})
+
+.controller('AuthenticationController', function($scope) {
+  $scope.Authenticated = false;
+  $scope.needsAuthentication = true;
 });

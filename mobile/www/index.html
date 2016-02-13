@@ -14,6 +14,7 @@
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/angular-local-storage/dist/angular-local-storage.min.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
@@ -38,7 +39,17 @@
 
     <div ng-show="needsAuthentication">
       <div ng-controller="LoginController">
-        <button type="button" class="login-button" ng-click='fitbitlogin()'>Log in with Fitbit</button>
+        <ion-content scroll="false" class="padding dashboard" id="login">
+          <ion-nav-bar class="bar-stable">
+            <ion-nav-back-button>
+            </ion-nav-back-button>
+          </ion-nav-bar>
+          <div style="text-align:center; margin-top:20px">
+            <button type="button" class="login-button" ng-click="fitbitlogin()">
+              Log in with Fitbit
+            </button>
+          </div>
+        </ion-content>
       </div>
     </div>
     <!--

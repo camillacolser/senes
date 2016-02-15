@@ -1,12 +1,9 @@
 require 'fitgem_oauth2/activity.rb'
 require 'fitgem_oauth2/battery.rb'
-require 'fitgem_oauth2/fairly_active.rb'
 require 'fitgem_oauth2/heart.rb'
-require 'fitgem_oauth2/lightly_active.rb'
-require 'fitgem_oauth2/sedentary.rb'
+require 'fitgem_oauth2/activity_level.rb'
 require 'fitgem_oauth2/sleep.rb'
 require 'fitgem_oauth2/steps.rb'
-require 'fitgem_oauth2/very_active.rb'
 
 require 'base64'
 require 'faraday'

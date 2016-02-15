@@ -13,6 +13,8 @@ web/log/*
 /web/tmp
 
 /web/.env
+/web/coverage
 /mobile/node_modules
 /mobile/bower_components
 .DS_Store
+/web/.byebug_history

@@ -31,12 +31,13 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
   $scope.needsAuthentication = true;
 })
 
-.controller('LoginController', function($scope,FitbitLoginService) {
+.controller('LoginController', function($scope,FitbitLoginService, $state) {
+  var scope = $scope;
   $scope.fitbitlogin = function(){
     FitbitLoginService.login().then(function(){
-      $scope.go('tab.today');
+      $state.go('tab.today');
     });
-    $scope.url = window.localStorage.url;
+    $scope.url = window.localStorage.webUrl;
     $scope.userId = window.localStorage.userId;
     $scope.token = window.localStorage.token;
   };

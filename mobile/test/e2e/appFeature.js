@@ -5,6 +5,7 @@ describe('Senior Ionic', function() {
   var week = element(by.linkText('Week'));
   var heartRate = element(by.css('.item'));
   var loginButton = element(by.css('.login-button'));
+  var stepCount = element(by.css());
 
  //  myAppDev = angular.module('myAppDev', ['seniorHealth', 'ngMockE2E']);
  //  myAppDev.run(function($httpBackend) {
@@ -30,6 +31,10 @@ describe('Senior Ionic', function() {
 
   xit('displays heart rate on the \'today\' tab', function() {
     expect(heartRate.getText()).toContain('70');
+  });
+
+  xit('displays step count on the \'today\' tab', function() {
+    expect(stepCount.getText()).toContain('1000');
   });
 
 });

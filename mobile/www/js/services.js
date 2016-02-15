@@ -15,22 +15,27 @@ angular.module('seniorHealth.services', ['LocalStorageModule', 'ionic'])
   };
 }])
 
-.factory('FitbitLoginService', function(localStorageService, $rootScope, $cordovaInAppBrowser, $ionicPopup) {
+.factory('FitbitLoginService', function(localStorageService, $rootScope, $cordovaInAppBrowser, $ionicPopup, $q) {
   var url = address+"/users/auth/fitbit_oauth2";
   var loginWindow, token, hasToken, userId, hasUserId;
 
   return {
     login: function() {
       var win = window.open( url, "_blank", "EnableViewPortScale=yes" );
-      win.addEventListener("loadstart", function(event) {
+      return $q(function(resolve, reject) {
+        win.addEventListener("loadstart", function(event) {
         hasToken = event.url.indexOf('oauth_token=');
         hasUserId = event.url.indexOf('userId=');
         if (hasToken > -1 && hasUserId > -1) {
-          window.localStorage['event-url'] = event.url;
-          window.localStorage['token'] = event.url.match('oauth_token=(.*)&userId')[1];
-          window.localStorage['userId'] = event.url.match('&userId=(.*)')[1];
+          window.localStorage.webUrl = event.url;
+          window.localStorage.token = event.url.match('oauth_token=(.*)&userId')[1];
+          window.localStorage.userId = event.url.match('&userId=(.*)')[1];
           win.close();
+          resolve();
+        } else {
+          reject();
         }
+      });
       });
     }
   };

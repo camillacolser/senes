@@ -32,8 +32,12 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
 })
 
 .controller('LoginController', function($scope,FitbitLoginService) {
-  $scope.fitbitlogin = FitbitLoginService.login;
-  $scope.url = window.localStorage['event-url'];
-  $scope.userId = window.localStorage['userId'];
-  $scope.token = window.localStorage['token'];
+  $scope.fitbitlogin = function(){
+    FitbitLoginService.login().then(function(){
+      $scope.go('tab.today');
+    });
+    $scope.url = window.localStorage.url;
+    $scope.userId = window.localStorage.userId;
+    $scope.token = window.localStorage.token;
+  };
 });

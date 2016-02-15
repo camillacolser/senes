@@ -59,5 +59,11 @@ class FitbitApiController < ApplicationController
     output = client.minutes_very_active('today')
     parsed = output['summary']['veryActiveMinutes']
     render json: { 'veryActiveMinutes': parsed }
+
+  def fairly_active
+    client = current_user.fitbit_client
+    output = client.minutes_fairly_active('today')
+    parsed = output['summary']['fairlyActiveMinutes']
+    render json: { 'fairlyActiveMinutes': parsed }
   end
 end

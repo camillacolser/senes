@@ -1,5 +1,6 @@
 require 'fitgem_oauth2/activity.rb'
 require 'fitgem_oauth2/battery.rb'
+require 'fitgem_oauth2/fairly_active.rb'
 require 'fitgem_oauth2/heart.rb'
 require 'fitgem_oauth2/lightly_active.rb'
 require 'fitgem_oauth2/sedentary.rb'

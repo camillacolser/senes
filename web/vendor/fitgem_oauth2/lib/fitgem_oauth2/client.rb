@@ -6,6 +6,7 @@ require 'fitgem_oauth2/lightly_active.rb'
 require 'fitgem_oauth2/sedentary.rb'
 require 'fitgem_oauth2/sleep.rb'
 require 'fitgem_oauth2/steps.rb'
+require 'fitgem_oauth2/very_active.rb'
 
 require 'base64'
 require 'faraday'

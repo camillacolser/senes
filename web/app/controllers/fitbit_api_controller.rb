@@ -78,15 +78,12 @@ class FitbitApiController < ApplicationController
     sleep_parsed = sleep_output['summary']['totalMinutesAsleep']
     steps_output = client.steps_on_date('today')
     steps_parsed = steps_output['activities-steps'][0]['value']
-    sedentary_output = client.activity_level('today')
-    sedentary_parsed = sedentary_output['summary']['sedentaryMinutes']
-    lightly_active_output = client.activity_level('today')
-    lightly_active_parsed = lightly_active_output['summary']['lightlyActiveMinutes']
-    fairly_active_output = client.activity_level('today')
-    fairly_active_parsed = fairly_active_output['summary']['fairlyActiveMinutes']
-    very_active_output = client.activity_level('today')
-    very_active_parsed = very_active_output['summary']['veryActiveMinutes']
-    render json: {
+    activity_output = client.activity_level('today')
+    sedentary_parsed = activity_output['summary']['sedentaryMinutes']
+    lightly_active_parsed = activity_output['summary']['lightlyActiveMinutes']
+    fairly_active_parsed = activity_output['summary']['fairlyActiveMinutes']
+    very_active_parsed = activity_output['summary']['veryActiveMinutes']
+    @json = {
       'battery': battery_parsed,
       'restingHeartRate': heart_parsed,
       'totalMinutesAsleep': sleep_parsed,
@@ -96,5 +93,54 @@ class FitbitApiController < ApplicationController
       'fairlyActiveMinutes': fairly_active_parsed,
       'veryActiveMinutes': very_active_parsed
     }
+    render json: @json
+  end
+
+  def heart_evaluator
+    self.overall
+    heart_rate = @json[:restingHeartRate]
+    if heart_rate <= 40 || heart_rate >= 100
+      return 0
+    elsif heart_rate >= 50 && heart_rate <= 80
+      return 2
+    else
+      return 1
+    end
+  end
+
+  def sleep_evaluator
+    self.overall
+    sleep_mins = @json[:totalMinutesAsleep]
+    if sleep_mins < 300
+      return 0
+    elsif sleep_mins < 360
+      return 1
+    else
+      return 2
+    end
+  end
+
+  def steps_evaluator
+    self.overall
+    steps = @json[:steps]
+    if steps < 2000
+      return 0
+    elsif steps < 3000
+      return 1
+    else
+      return 2
+    end
+  end
+
+  def bad_ok_good_status
+    self.overall
+    result = heart_evaluator + sleep_evaluator + steps_evaluator
+    if result <= 2
+      return 0
+    elsif result <= 4
+      return 1
+    else
+      return 2
+    end
   end
 end

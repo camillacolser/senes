@@ -22,7 +22,13 @@ angular.module('seniorHealth.services', ['LocalStorageModule', 'ionic'])
   return {
     login: function() {
         loginWindow = $window.open(url, '_blank', 'location=no,toolbar=no,hidden=yes');
+        console.log("here");
+        loginWindow.addEventListener("loadstop", function(e) {
+            $ionicLoading.hide();
+            loginWindow.show();
+        });
         loginWindow.addEventListener('loadstart', function(event) {
+          console.log(event.url);
           hasToken = event.url.indexOf('?oauth_token=');
           hasUserId = event.url.indexOf('&userId=');
         if (hasToken > -1 && hasUsedId > -1) {

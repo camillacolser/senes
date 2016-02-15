@@ -1,5 +1,9 @@
-.alarmTime {
+h2 {
   text-align: center;
-  letter-spacing: 3px;
-  font-size: 32vw;
+}
+
+.smiley-icon {
+  text-align: center;
+  font-size: 200px;
+  color: green;
 }

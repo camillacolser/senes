@@ -15,6 +15,7 @@
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
     <script src="lib/angular-local-storage/dist/angular-local-storage.min.js"></script>
+    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
@@ -24,7 +25,7 @@
     <script src="js/controllers.js"></script>
     <script src="js/services.js"></script>
   </head>
-  <body ng-app="seniorHealth">
+  <body ng-app="seniorHealth" class="platform-ios platform-cordova platform-webview">
     <div ng-controller="AuthenticationController">
     <!--
       The nav bar that will be updated as we navigate between views.
@@ -48,6 +49,7 @@
             <button type="button" class="login-button" ng-click="fitbitlogin()">
               Log in with Fitbit
             </button>
+            <p> {{ blah }} </p>
           </div>
         </ion-content>
       </div>

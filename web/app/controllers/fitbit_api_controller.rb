@@ -35,9 +35,16 @@ class FitbitApiController < ApplicationController
 
   def battery
     client = current_user.fitbit_client
-    output = client.battery_status
+    output = client.device_info
     parsed = output[0]['battery']
     render json: { 'battery': parsed }
+  end
+
+  def last_sync_time
+    client = current_user.fitbit_client
+    output = client.device_info
+    parsed = output[0]['lastSyncTime']
+    render json: { 'lastSyncTime': parsed }
   end
 
   def sedentary
@@ -70,8 +77,9 @@ class FitbitApiController < ApplicationController
 
   def overall
     client = current_user.fitbit_client
-    battery_output = client.battery_status
-    battery_parsed = battery_output[0]['battery']
+    device_info_output = client.device_info
+    battery_parsed = device_info_output[0]['battery']
+    last_sync_time_parsed = device_info_output[0]['lastSyncTime']
     heart_output = client.heart_rate_on_date('today')
     heart_parsed = heart_output['activities-heart'][0]['value']['restingHeartRate']
     sleep_output = client.sleep_logs_on_date('today')
@@ -85,6 +93,7 @@ class FitbitApiController < ApplicationController
     very_active_parsed = activity_output['summary']['veryActiveMinutes']
     @json = {
       'battery': battery_parsed,
+      'lastSyncTime': last_sync_time_parsed,
       'restingHeartRate': heart_parsed,
       'totalMinutesAsleep': sleep_parsed,
       'steps': steps_parsed,

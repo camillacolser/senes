@@ -21,7 +21,13 @@ br {
   text-align: center;
 }
 
+a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
 .summary-block {
   text-align: center;
   margin-bottom: 20px;
-};
+}

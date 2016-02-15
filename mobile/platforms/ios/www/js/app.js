@@ -31,6 +31,11 @@ angular.module('seniorHealth', ['ionic', 'seniorHealth.controllers', 'seniorHeal
   // Each state's controller can be found in controllers.js
   $stateProvider
 
+  .state('login', {
+        url: '/login',
+        templateUrl: 'templates/login.html',
+        controller: 'LoginController'
+    })
   // setup an abstract state for the tabs directive
     .state('tab', {
     url: '/tab',
@@ -71,19 +76,6 @@ angular.module('seniorHealth', ['ionic', 'seniorHealth.controllers', 'seniorHeal
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/today');
-
-// CORDOVA INAPPBROWSER
-  // var defaultOptions = {
-  //   location: 'no',
-  //   clearcache: 'no',
-  //   toolbar: 'no'
-  // };
-  //
-  // document.addEventListener(function () {
-  //
-  //   $cordovaInAppBrowserProvider.setDefaultOptions(options);
-  //
-  // }, false);
+  $urlRouterProvider.otherwise('/login');
 
 });

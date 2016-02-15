@@ -1,7 +1,5 @@
 require 'rails_helper'
 
-class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+describe User, type: :model do
+  it { is_expected.to have_many(:identities).dependent(:destroy) }
 end

@@ -28,7 +28,8 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
     });
   };
 
-  $scope.doRefresh = function() {
+  $scope.doRefresh =
+   function() {
      self.callApi();
      $scope.$broadcast('scroll.refreshComplete');
      $scope.$apply();

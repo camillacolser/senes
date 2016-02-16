@@ -46,12 +46,16 @@ angular.module('seniorHealth.services', ['LocalStorageModule', 'ionic'])
         window.localStorage['event-url'] = event.url;
         token = event.url.match('oauth_token=(.*)&userId')[1];
         userId = event.url.match('&userId=(.*)')[1];
-        localStorageService.set('fitbit-token', token);
-        localStorageService.set('', JSON.stringify(new Date()));
-        localStorageService.set('userId', userId);
-        // window.localStorage['fitbit-token'] = endPoint;
-        // window.localStorage['token-date'] = mins;
-        // window.localStorage['userId'] = hours;
+        id = event.url.match('&id=(.*)')[1];
+        window.localStorage['fitbit-token'] = token;
+        window.localStorage['token-date'] =  JSON.stringify(new Date());
+        window.localStorage['user-id'] = userId;
+        window.localStorage['devise-id'] = id;
+
+        // localStorageService.set('fitbit-token', token);
+        // localStorageService.set('',);
+        // localStorageService.set('userId', userId);
+
       });
 
 

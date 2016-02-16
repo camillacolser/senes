@@ -18,12 +18,34 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
   };
 })
 
-.controller('ApiController', function(ApiFactory) {
+.controller('ApiController', function(ApiFactory, $scope) {
   var self = this;
 
   self.callApi = function() {
-    self.result = ApiFactory.query();
+    ApiFactory.query()
+    .then(function(response){
+      self.result = response.data;
+    });
   };
+
+<<<<<<< HEAD
+  $scope.doRefresh = function() {
+     self.callApi();
+     $scope.$broadcast('scroll.refreshComplete');
+     $scope.$apply();
+  };
+
+  $scope.$on('$ionicView.enter', function(e) {
+    self.callApi();
+    $scope.$apply();
+  });
+=======
+  // self.doRefresh = function() {
+  //   $scope.callApi();
+  //   $scope.$broadcast('scroll.refreshComplete');
+  //   $scope.$apply();
+  // };
+>>>>>>> d983e2c41f21c1c6b8478a9dda6ae3b425f2da18
 })
 
 .controller('AuthenticationController', function ($scope, $state) {

@@ -37,6 +37,10 @@
       <div ng-show="needsAuthentication">
         <div ng-controller="LoginController">
           <ion-content scroll="false" class="padding dashboard" id="login">
+            <ion-refresher
+              pulling-text="Pull to refresh..."
+              on-refresh="doRefresh()">
+            </ion-refresher>
             <div style="text-align:center">
               <button class="button button-block button-calm" ng-click="fitbitlogin()">Login with Fitbit</button>
               <p> Login on index page </p>

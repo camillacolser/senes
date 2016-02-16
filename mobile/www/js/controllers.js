@@ -26,19 +26,21 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
   };
 })
 
-.controller('AuthenticationController', function($scope) {
-  $scope.Authenticated = false;
-  $scope.needsAuthentication = true;
+.controller('AuthenticationController', function ($scope, $state) {
+  if (window.localStorage.userId) {
+    $scope.Authenticated = true;
+  } else {
+    $scope.needsAuthentication = true;
+  }
+  $scope.logout = function () {
+    window.localStorage.clearAll();
+    location.href=location.pathname;
+  };
+
 })
 
-.controller('LoginController', function($scope,FitbitLoginService, $state) {
-  var scope = $scope;
-  $scope.fitbitlogin = function(){
-    FitbitLoginService.login().then(function(){
-      $state.go('tab.today');
-    });
-    $scope.url = window.localStorage.webUrl;
-    $scope.userId = window.localStorage.userId;
-    $scope.token = window.localStorage.token;
-  };
+.controller('LoginController', function($scope,FitbitLoginService) {
+  $scope.fitbitlogin = FitbitLoginService.login;
+  $scope.url = window.localStorage.webUrl;
+  $scope.userId = window.localStorage.userId;
 });

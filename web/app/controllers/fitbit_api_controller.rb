@@ -23,56 +23,56 @@ class FitbitApiController < ApplicationController
   end
 
   def sleep
-    client = current_user.fitbit_client
+    client = @user.fitbit_client
     output = client.sleep_logs_on_date('today')
     parsed = output['summary']['totalMinutesAsleep']
     render json: { 'totalMinutesAsleep': parsed }
   end
 
   def steps
-    client = current_user.fitbit_client
+    client = @user.fitbit_client
     output = client.steps_on_date('today')
     parsed = output['activities-steps'][0]['value']
     render json: { 'steps': parsed }
   end
 
   def battery
-    client = current_user.fitbit_client
+    client = @user.fitbit_client
     output = client.device_info
     parsed = output[0]['battery']
     render json: { 'battery': parsed }
   end
 
   def last_sync_time
-    client = current_user.fitbit_client
+    client = @user.fitbit_client
     output = client.device_info
     parsed = output[0]['lastSyncTime']
     render json: { 'lastSyncTime': parsed }
   end
 
   def sedentary
-    client = current_user.fitbit_client
+    client = @user.fitbit_client
     output = client.activity_level('today')
     parsed = output['summary']['sedentaryMinutes']
     render json: { 'sedentaryMinutes': parsed }
   end
 
   def lightly_active
-    client = current_user.fitbit_client
+    client = @user.fitbit_client
     output = client.activity_level('today')
     parsed = output['summary']['lightlyActiveMinutes']
     render json: { 'lightlyActiveMinutes': parsed }
   end
 
   def fairly_active
-    client = current_user.fitbit_client
+    client = @user.fitbit_client
     output = client.activity_level('today')
     parsed = output['summary']['fairlyActiveMinutes']
     render json: { 'fairlyActiveMinutes': parsed }
   end
 
   def very_active
-    client = current_user.fitbit_client
+    client = @user.fitbit_client
     output = client.activity_level('today')
     parsed = output['summary']['veryActiveMinutes']
     render json: { 'veryActiveMinutes': parsed }
@@ -80,8 +80,8 @@ class FitbitApiController < ApplicationController
 
   def overall
     devise_id = params[:id]
-    user = User.find_by(id: devise_id)
-    client = user.fitbit_client
+    @user = User.find_by(id: devise_id)
+    client = @user.fitbit_client
     device_info_output = client.device_info
     battery_parsed = device_info_output[0]['battery']
     last_sync_time_parsed = device_info_output[0]['lastSyncTime']

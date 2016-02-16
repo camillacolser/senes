@@ -59,6 +59,13 @@ module FitgemOauth2
       JSON.parse(response.body)
     end
 
+    def post_call(url)
+      response = connection.get(url)  do |request|
+        request.headers['Authorization'] = "Bearer #{token}"
+        request.headers['Content-Type'] = "application/x-www-form-urlencoded"
+      end
+    end
+
     def refresh_access_token(refresh_token)
       response = connection.post('/oauth2/token') do |request|
         encoded = Base64.strict_encode64("#{@client_id}:#{@client_secret}")

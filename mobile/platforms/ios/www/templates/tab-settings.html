@@ -28,6 +28,14 @@
           </div>
         </label>
       </li>
+      <li class="item item-toggle">
+        <ionic-timepicker input-obj="timePickerObject12Hour">
+          <button class="button button-block button-positive overflowShow">
+            <standard-time-meridian etime='timePickerObject12Hour.inputEpochTime'></standard-time-meridian>
+            <strong etime="timePickerObject24Hour.inputEpochTime" class="ng-binding">{{timePickerObject24Hour.inputEpochTime}}</strong>
+          </button>
+        </ionic-timepicker>
+      </li>
     </ul>
   </div>
     <div class="padding">

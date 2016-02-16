@@ -27,7 +27,8 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
 })
 
 .controller('AuthenticationController', function ($scope, $state) {
-  if (window.localStorage.userId) {
+  // Check our local storage for the proper credentials to ensure we are logged in, this means users can't get past app unless they select a username
+  if (window.localStorage.token) {
     $scope.Authenticated = true;
   } else {
     $scope.needsAuthentication = true;
@@ -39,8 +40,11 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
 
 })
 
+
 .controller('LoginController', function($scope,FitbitLoginService) {
   $scope.fitbitlogin = FitbitLoginService.login;
-  $scope.url = window.localStorage.webUrl;
-  $scope.userId = window.localStorage.userId;
+    $scope.promise = window.localStorage.promise;
+    $scope.url = window.localStorage.webUrl;
+    $scope.userId = window.localStorage.userId;
+    $scope.token = window.localStorage.token;
 });

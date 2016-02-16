@@ -17,18 +17,22 @@ angular.module('seniorHealth.services', ['ionic'])
 
 .factory('FitbitLoginService', function($q) {
   var url = address+"/users/auth/fitbit_oauth2";
-  var loginWindow, hasUserId;
+  var loginWindow, token, hasToken, userId, hasUserId;
 
   return {
     login: function() {
       var win = window.open( url, "_blank", "EnableViewPortScale=yes" );
-      win.addEventListener("loadstart", function(event) {
-      hasUserId = event.url.indexOf('id=');
-      if (hasUserId > -1) {
-        window.localStorage.webUrl = event.url;
-        window.localStorage.userId = event.url.match('id=(.*)')[1];
-        win.close();
-        location.href=location.pathname;
+        win.addEventListener("loadstart", function(event) {
+        hasToken = event.url.indexOf('oauth_token=');
+        hasUserId = event.url.indexOf('userId=');
+        if (hasToken > -1 && hasUserId > -1) {
+          window.localStorage.webUrl = event.url;
+          window.localStorage.token = event.url.match('oauth_token=(.*)&userId')[1];
+          window.localStorage.userId = event.url.match('&userId=(.*)')[1];
+          window.localStorage.promise = 'promise resolved';
+          win.close();
+          location.href=location.pathname;
+
         }
       });
     }

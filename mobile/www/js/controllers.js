@@ -24,15 +24,14 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
   self.callApi = function() {
     ApiFactory.query()
     .then(function(response){
-      console.log(response.data);
       self.result = response.data;
     });
   };
 
-  self.doRefresh = function() {
-    $scope.callApi();
-    $scope.$broadcast('scroll.refreshComplete');
-    $scope.$apply();
+  $scope.doRefresh = function() {
+     self.callApi();
+     $scope.$broadcast('scroll.refreshComplete');
+     $scope.$apply();
   };
 })
 

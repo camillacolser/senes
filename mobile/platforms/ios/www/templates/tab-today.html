@@ -1,6 +1,6 @@
 <ion-view view-title="Today">
   <ion-content class="padding" ng-controller="ApiController as ApiCtrl" ng-init="ApiCtrl.callApi()">
-    <ion-refresher pulling-text="Pull to refresh" on-refresh="ApiCtrl.doRefresh()">
+    <ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh()">
     </ion-refresher>
     <!-- <button type="button" name="button" ng-click="ApiCtrl.callApi()">TRY</button> -->
     <div class="smiley-icon"><i class="icon ion-happy-outline"></i></div>

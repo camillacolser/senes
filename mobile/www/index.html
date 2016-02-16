@@ -32,27 +32,21 @@
           <ion-nav-back-button>
           </ion-nav-back-button>
         </ion-nav-bar>
-      <ion-nav-view></ion-nav-view>
-    </div>
-
-    <div ng-show="needsAuthentication">
-      <div ng-controller="LoginController">
-        <ion-content scroll="false" class="padding dashboard" id="login">
-          <ion-nav-bar class="bar-stable">
-            <ion-nav-back-button>
-            </ion-nav-back-button>
-          </ion-nav-bar>
-          <div style="text-align:center; margin-top:20px">
-            <button type="button" class="login-button" ng-click="fitbitlogin()">
-              Log in with Fitbit
-            </button>
-            <p> Url: {{ url }} </p>
-            <p> Token: {{ token }} </p>
-            <p> User ID: {{ userId }} </p>
-          </div>
-        </ion-content>
+        <ion-nav-view></ion-nav-view>
+      </div>
+      <div ng-show="needsAuthentication">
+        <div ng-controller="LoginController">
+          <ion-content scroll="false" class="padding dashboard" id="login">
+            <div style="text-align:center">
+              <button class="button button-block button-calm" ng-click="fitbitlogin()">Login with Fitbit</button>
+              <p> Login on index page </p>
+              <p> Url: {{ url }} </p>
+              <p> User ID: {{ userId }} </p>
+              <p> Senior ID: {{ seniorId }} </p>
+            </div>
+          </ion-content>
+        </div>
       </div>
     </div>
-
   </body>
 </html>

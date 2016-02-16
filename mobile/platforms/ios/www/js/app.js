@@ -73,17 +73,4 @@ angular.module('seniorHealth', ['ionic', 'seniorHealth.controllers', 'seniorHeal
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/today');
 
-// CORDOVA INAPPBROWSER
-  // var defaultOptions = {
-  //   location: 'no',
-  //   clearcache: 'no',
-  //   toolbar: 'no'
-  // };
-  //
-  // document.addEventListener(function () {
-  //
-  //   $cordovaInAppBrowserProvider.setDefaultOptions(options);
-  //
-  // }, false);
-
 });

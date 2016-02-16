@@ -32,5 +32,7 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
 })
 
 .controller('LoginController', function($scope,FitbitLoginService) {
+  message = "not yet clicked on login";
+  $scope.response = message;
   $scope.fitbitlogin = FitbitLoginService.login;
 });

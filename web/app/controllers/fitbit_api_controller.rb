@@ -1,3 +1,4 @@
+require 'byebug'
 class FitbitApiController < ApplicationController
 
   before_filter :authenticate_user!
@@ -13,7 +14,9 @@ class FitbitApiController < ApplicationController
   end
 
   def heart
-    client = current_user.fitbit_client
+    devise_id = params[:id]
+    user = User.find_by(id: devise_id)
+    client = user.fitbit_client
     output = client.heart_rate_on_date('today')
     parsed = output['activities-heart'][0]['value']['restingHeartRate']
     render json: { 'restingHeartRate': parsed }

@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('seniorHealth', ['ionic', 'seniorHealth.controllers', 'seniorHealth.services', 'LocalStorageModule'])
+angular.module('seniorHealth', ['ionic', 'seniorHealth.controllers', 'seniorHealth.services', 'LocalStorageModule', 'ngCordova'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -72,5 +72,18 @@ angular.module('seniorHealth', ['ionic', 'seniorHealth.controllers', 'seniorHeal
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/today');
+
+// CORDOVA INAPPBROWSER
+  // var defaultOptions = {
+  //   location: 'no',
+  //   clearcache: 'no',
+  //   toolbar: 'no'
+  // };
+  //
+  // document.addEventListener(function () {
+  //
+  //   $cordovaInAppBrowserProvider.setDefaultOptions(options);
+  //
+  // }, false);
 
 });

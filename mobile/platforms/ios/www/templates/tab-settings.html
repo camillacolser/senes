@@ -2,7 +2,7 @@
   <ion-content class="padding" ng-controller="ApiController as ApiCtrl" ng-init="ApiCtrl.callApi()">
     <div class="list">
       <div class="item item-avatar">
-        <img src="img/adam.jpg">
+        <img src="{{ApiCtrl.result.avatar}}">
         Caring for:<br>
         <strong>{{ApiCtrl.result.name}}</strong>
       </div>

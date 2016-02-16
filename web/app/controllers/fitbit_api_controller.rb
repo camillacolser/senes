@@ -1,4 +1,3 @@
-require 'byebug'
 class FitbitApiController < ApplicationController
 
   before_filter :authenticate_user!

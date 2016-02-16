@@ -53,8 +53,9 @@ class FitbitApiController < ApplicationController
     client = @user.fitbit_client
     output = client.name
     puts output
-    parsed = output['user']['fullName']
-    render json: { 'userName': parsed }
+    parsed_name = output['user']['fullName']
+    parsed_avatar = output['user']['avatar']
+    render json: { 'userName': parsed_name, 'avatar': parsed_avatar }
   end
 
   # def sedentary
@@ -101,6 +102,7 @@ class FitbitApiController < ApplicationController
     steps_parsed = steps_output['activities-steps'][0]['value']
     name_output = client.name
     name_parsed = name_output['user']['fullName']
+    avatar_parsed = name_output['user']['avatar']
     # activity_output = client.activity_level('today')
     # sedentary_parsed = activity_output['summary']['sedentaryMinutes']
     # lightly_active_parsed = activity_output['summary']['lightlyActiveMinutes']
@@ -118,7 +120,8 @@ class FitbitApiController < ApplicationController
       # 'fairlyActiveMinutes': fairly_active_parsed,
       # 'veryActiveMinutes': very_active_parsed,
       'status': status,
-      'name': name_parsed
+      'name': name_parsed,
+      'avatar': avatar_parsed
     }
     render json: @json
   end

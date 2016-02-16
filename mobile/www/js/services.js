@@ -23,13 +23,9 @@ angular.module('seniorHealth.services', ['ionic'])
     login: function() {
       var win = window.open( url, "_blank", "EnableViewPortScale=yes" );
         win.addEventListener("loadstart", function(event) {
-        hasToken = event.url.indexOf('oauth_token=');
-        hasUserId = event.url.indexOf('userId=');
         hasSeniorId = event.url.indexOf('seniorId=');
-        if (hasToken > -1 && hasUserId > -1) {
+        if (hasSeniorId > -1) {
           window.localStorage.webUrl = event.url;
-          window.localStorage.token = event.url.match('oauth_token=(.*)&userId')[1];
-          window.localStorage.userId = event.url.match('&userId=(.*)')[1];
           window.localStorage.seniorId = event.url.match('&seniorId=(.*)')[1];
           window.localStorage.promise = 'promise resolved';
           win.close();

@@ -88,6 +88,7 @@ class FitbitApiController < ApplicationController
     heart_parsed = heart_output['activities-heart'][0]['value']['restingHeartRate']
     sleep_output = client.sleep_logs_on_date('today')
     sleep_parsed = sleep_output['summary']['totalMinutesAsleep']
+    sleep_formatted = format_sleep(sleep_parsed)
     steps_output = client.steps_on_date('today')
     steps_parsed = steps_output['activities-steps'][0]['value']
     # activity_output = client.activity_level('today')
@@ -100,7 +101,7 @@ class FitbitApiController < ApplicationController
       'battery': battery_parsed,
       'lastSyncTime': last_sync_time_parsed,
       'restingHeartRate': heart_parsed,
-      'totalMinutesAsleep': sleep_parsed,
+      'totalMinutesAsleep': sleep_formatted,
       'steps': steps_parsed,
       # 'sedentaryMinutes': sedentary_parsed,
       # 'lightlyActiveMinutes': lightly_active_parsed,
@@ -109,6 +110,12 @@ class FitbitApiController < ApplicationController
       'status': status
     }
     render json: @json
+  end
+
+  def format_sleep(mins)
+    hours = mins / 60
+    mins = mins % 60
+    return "#{hours}h, #{mins}m"
   end
 
   def heart_evaluator(heart_rate)

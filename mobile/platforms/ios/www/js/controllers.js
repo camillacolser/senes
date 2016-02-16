@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('seniorHealth.controllers', ['LocalStorageModule'])
 
 .controller('TodayCtrl', function($scope) {})
 
@@ -19,10 +19,31 @@ angular.module('starter.controllers', [])
 })
 
 .controller('ApiController', function(ApiFactory) {
-
   var self = this;
 
   self.callApi = function() {
     self.result = ApiFactory.query();
   };
+})
+
+.controller('AuthenticationController', function ($scope, $state) {
+  // Check our local storage for the proper credentials to ensure we are logged in, this means users can't get past app unless they select a username
+  if (window.localStorage.seniorId) {
+    $scope.Authenticated = true;
+  } else {
+    $scope.needsAuthentication = true;
+  }
+  $scope.logout = function () {
+    window.localStorage.clearAll();
+    location.href=location.pathname;
+  };
+
+})
+
+
+.controller('LoginController', function($scope,FitbitLoginService) {
+  $scope.fitbitlogin = FitbitLoginService.login;
+    $scope.promise = window.localStorage.promise;
+    $scope.url = window.localStorage.webUrl;
+    $scope.seniorId = window.localStorage.seniorId;
 });

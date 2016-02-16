@@ -1,7 +1,5 @@
 require 'rails_helper'
 
-class IdentityTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
-end
+describe Identity, type: :model do
+  it { is_expected.to belong_to :user }
+ end

@@ -36,7 +36,6 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
     window.localStorage.clearAll();
     location.href=location.pathname;
   };
-
 })
 
 .controller('LoginController', function($scope,FitbitLoginService) {

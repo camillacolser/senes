@@ -31,11 +31,6 @@ angular.module('seniorHealth', ['ionic', 'seniorHealth.controllers', 'seniorHeal
   // Each state's controller can be found in controllers.js
   $stateProvider
 
-  .state('login', {
-        url: '/login',
-        templateUrl: 'templates/login.html',
-        controller: 'LoginController'
-    })
   // setup an abstract state for the tabs directive
     .state('tab', {
     url: '/tab',

@@ -37,18 +37,11 @@
       <div ng-show="needsAuthentication">
         <div ng-controller="LoginController">
           <ion-content scroll="false" class="padding dashboard" id="login">
-            <ion-nav-bar class="bar-stable">
-              <ion-nav-back-button>
-              </ion-nav-back-button>
-            </ion-nav-bar>
-            <div style="text-align:center; margin-top:80px">
+            <div style="text-align:center">
               <button class="button button-block button-calm" ng-click="fitbitlogin()">Login with Fitbit</button>
               <p> Login on index page </p>
               <p> Url: {{ url }} </p>
-              <p> Token: {{ token }} </p>
               <p> User ID: {{ userId }} </p>
-              <p> Promise: {{ promise }} </p>
-              <p> Promise from controller: {{ promiseFromController }} </p>
             </div>
           </ion-content>
         </div>

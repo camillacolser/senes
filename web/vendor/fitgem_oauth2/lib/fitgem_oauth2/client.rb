@@ -1,5 +1,5 @@
 require 'fitgem_oauth2/activity.rb'
-require 'fitgem_oauth2/battery.rb'
+require 'fitgem_oauth2/device_info.rb'
 require 'fitgem_oauth2/heart.rb'
 require 'fitgem_oauth2/activity_level.rb'
 require 'fitgem_oauth2/sleep.rb'

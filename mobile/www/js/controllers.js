@@ -22,7 +22,11 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
   var self = this;
 
   self.callApi = function() {
-    self.result = ApiFactory.query();
+    ApiFactory.query()
+    .then(function(response){
+      console.log(response.data);
+      self.result = response.data;
+    });
   };
 })
 

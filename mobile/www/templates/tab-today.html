@@ -1,5 +1,7 @@
 <ion-view view-title="Today">
   <ion-content class="padding" ng-controller="ApiController as ApiCtrl" ng-init="ApiCtrl.callApi()">
+    <ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh()">
+    </ion-refresher>
     <!-- <button type="button" name="button" ng-click="ApiCtrl.callApi()">TRY</button> -->
     <div class="smiley-icon"><i class="icon ion-happy-outline"></i></div>
     <h3>Jeff is doing ok today.</h3>
@@ -13,8 +15,7 @@
               Heart Rate
             </div>
             <div class="col col-20" style="text-align:right">
-              70 bpm
-              {{ApiCtrl.result.data}}
+              {{ApiCtrl.result.restingHeartRate}}
             </div>
           </div>
         </div>
@@ -27,8 +28,7 @@
             Step Count
           </div>
           <div class="col col-20" style="text-align:right">
-            1000
-            {{ApiCtrl.result.data}}
+            {{ApiCtrl.result.steps}}
           </div>
         </div>
       </div>
@@ -41,15 +41,14 @@
             Sleep
           </div>
           <div class="col col-20" style="text-align:right">
-            7 hours
-            {{ApiCtrl.result.data}}
+            {{ApiCtrl.result.totalMinutesAsleep}}
           </div>
         </div>
       </div>
     </div>
     <div class="summary-block">
-      Device last synced: 13:20<br>
-      Battery level: High
+      Device last synced: {{ApiCtrl.result.lastSyncTime}}<br>
+      Battery level: {{ApiCtrl.result.battery}}
     </div>
   </ion-content>
 </ion-view>

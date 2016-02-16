@@ -1,4 +1,3 @@
-require 'byebug'
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   respond_to :json, :html
 

@@ -47,4 +47,5 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
     $scope.url = window.localStorage.webUrl;
     $scope.userId = window.localStorage.userId;
     $scope.token = window.localStorage.token;
+    $scope.seniorId = window.localStorage.seniorId; 
 });

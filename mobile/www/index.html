@@ -26,14 +26,14 @@
     <script src="js/services.js"></script>
   </head>
   <body ng-app="seniorHealth">
-    <!-- <div ng-controller="AuthenticationController"> -->
-    <!-- <div ng-show="Authenticated"> -->
-      <ion-nav-bar class="bar-stable">
-        <ion-nav-back-button>
-        </ion-nav-back-button>
-      </ion-nav-bar>
+    <div ng-controller="AuthenticationController">
+      <div ng-show="Authenticated">
+        <ion-nav-bar class="bar-stable">
+          <ion-nav-back-button>
+          </ion-nav-back-button>
+        </ion-nav-bar>
       <ion-nav-view></ion-nav-view>
-    <!-- </div> -->
+    </div>
 
     <div ng-show="needsAuthentication">
       <div ng-controller="LoginController">
@@ -53,6 +53,6 @@
         </ion-content>
       </div>
     </div>
-  
+
   </body>
 </html>

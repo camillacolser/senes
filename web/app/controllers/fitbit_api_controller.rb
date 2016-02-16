@@ -161,4 +161,28 @@ class FitbitApiController < ApplicationController
       return 'great'
     end
   end
+
+  def set_alarm
+    devise_id = params[:id]
+    time = params[:time]
+    client = User.find_by(id: devise_id).fitbit_client
+    tracker_id = client.device_info[0]['id']
+    response = client.post_alarm(tracker_id, time)
+    render json: { 'response': response }
+  end
+
+  def alarms
+    devise_id = params[:id]
+    client = User.find_by(id: devise_id).fitbit_client
+    tracker_id = client.device_info[0]['id']
+    response = client.get_alarms(tracker_id)['trackerAlarms']
+    render json: { 'trackerAlarms': response }
+  end
+
+  def tracker_id
+    devise_id = params[:id]
+    client = User.find_by(id: devise_id).fitbit_client
+    response = client.device_info[0]['id']
+    render json: { 'trackerId': response }
+  end
 end

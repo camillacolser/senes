@@ -4,6 +4,7 @@ require 'fitgem_oauth2/heart.rb'
 require 'fitgem_oauth2/activity_level.rb'
 require 'fitgem_oauth2/sleep.rb'
 require 'fitgem_oauth2/steps.rb'
+require 'fitgem_oauth2/alarm.rb'
 
 require 'base64'
 require 'faraday'
@@ -45,6 +46,14 @@ module FitgemOauth2
 
     def get_call(url)
       response = connection.get(url)  do |request|
+        request.headers['Authorization'] = "Bearer #{token}"
+        request.headers['Content-Type'] = "application/x-www-form-urlencoded"
+      end
+      JSON.parse(response.body).merge!(response.headers)
+    end
+
+    def post_call(url)
+      response = connection.post(url)  do |request|
         request.headers['Authorization'] = "Bearer #{token}"
         request.headers['Content-Type'] = "application/x-www-form-urlencoded"
       end

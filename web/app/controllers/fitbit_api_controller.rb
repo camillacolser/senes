@@ -1,7 +1,7 @@
 require 'byebug'
 class FitbitApiController < ApplicationController
 
-  before_filter :authenticate_user!
+  # before_filter :authenticate_user!
 
   def data_request
     client = current_user.fitbit_client
@@ -79,7 +79,9 @@ class FitbitApiController < ApplicationController
   end
 
   def overall
-    client = current_user.fitbit_client
+    devise_id = params[:id]
+    user = User.find_by(id: devise_id)
+    client = user.fitbit_client
     device_info_output = client.device_info
     battery_parsed = device_info_output[0]['battery']
     last_sync_time_parsed = device_info_output[0]['lastSyncTime']

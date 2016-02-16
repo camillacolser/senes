@@ -28,6 +28,7 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
       self.result = response.data;
     });
   };
+
 })
 
 .controller('AuthenticationController', function ($scope, $state) {

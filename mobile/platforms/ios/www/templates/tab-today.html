@@ -13,12 +13,7 @@
               Heart Rate
             </div>
             <div class="col col-20" style="text-align:right">
-<<<<<<< HEAD
-              {{ApiCtrl.result}}
-=======
-              70 bpm
-              {{ApiCtrl.result.data}}
->>>>>>> c21609dc17fc49f17174adf9af9f05c1056f28e3
+              {{ApiCtrl.result.restingHeartRate}}
             </div>
           </div>
         </div>
@@ -31,8 +26,7 @@
             Step Count
           </div>
           <div class="col col-20" style="text-align:right">
-            1000
-            {{ApiCtrl.result.data}}
+            {{ApiCtrl.result.steps}}
           </div>
         </div>
       </div>
@@ -45,15 +39,14 @@
             Sleep
           </div>
           <div class="col col-20" style="text-align:right">
-            7 hours
-            {{ApiCtrl.result.data}}
+            {{ApiCtrl.result.totalMinutesAsleep}}
           </div>
         </div>
       </div>
     </div>
     <div class="summary-block">
-      Device last synced: 13:20<br>
-      Battery level: High
+      Device last synced: {{ApiCtrl.result.lastSyncTime}}<br>
+      Battery level: {{ApiCtrl.result.battery}}
     </div>
   </ion-content>
 </ion-view>

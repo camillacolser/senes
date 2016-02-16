@@ -24,10 +24,11 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
   self.callApi = function() {
     ApiFactory.query()
     .then(function(response){
-      
+      console.log(response.data);
       self.result = response.data;
     });
   };
+
 })
 
 .controller('AuthenticationController', function ($scope, $state) {
@@ -46,13 +47,8 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
 
 
 .controller('LoginController', function($scope,FitbitLoginService) {
-  message = "not yet clicked on login";
-  $scope.response = message;
   $scope.fitbitlogin = FitbitLoginService.login;
-<<<<<<< HEAD
-=======
     $scope.promise = window.localStorage.promise;
     $scope.url = window.localStorage.webUrl;
     $scope.seniorId = window.localStorage.seniorId;
->>>>>>> c21609dc17fc49f17174adf9af9f05c1056f28e3
 });

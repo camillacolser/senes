@@ -5,8 +5,8 @@ var address = localUrl;
 angular.module('seniorHealth.services', ['ionic'])
 
 .factory('ApiFactory', ['$http', function($http) {
-  window.localStorage['devise-id'] = '1';
-  id = window.localStorage['devise-id'];
+  // window.localStorage['devise-id'] = '1';
+  id = window.localStorage['seniorId'];
   return {
     query: function() {
       return $http({

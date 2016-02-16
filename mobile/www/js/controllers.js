@@ -18,11 +18,21 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
   };
 })
 
-.controller('ApiController', function(ApiFactory) {
+.controller('ApiController', function(ApiFactory, $scope) {
   var self = this;
 
   self.callApi = function() {
-    self.result = ApiFactory.query();
+    ApiFactory.query()
+    .then(function(response){
+      self.result = response.data;
+    });
+  };
+
+  $scope.doRefresh =
+   function() {
+     self.callApi();
+     $scope.$broadcast('scroll.refreshComplete');
+     $scope.$apply();
   };
 })
 

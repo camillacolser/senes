@@ -47,7 +47,7 @@
       </div>
     </div>
     <div class="summary-block">
-      Device last synced: {{ApiCtrl.result.lastSyncTime}}<br>
+      Device last synced: {{ApiCtrl.result.lastSyncTime | date :'MMM dd, HH:mm'}}<br>
       Battery level: {{ApiCtrl.result.battery}}
     </div>
   </ion-content>

@@ -1,10 +1,10 @@
 <ion-view view-title="Settings">
-  <ion-content>
+  <ion-content class="padding" ng-controller="ApiController as ApiCtrl" ng-init="ApiCtrl.callApi()">
     <div class="list">
       <div class="item item-avatar">
         <img src="img/adam.jpg">
         Caring for:<br>
-        <strong>Jeff</strong>
+        <strong>{{ApiCtrl.result.name}}</strong>
       </div>
     <div class="item item-divider">
       Notifications

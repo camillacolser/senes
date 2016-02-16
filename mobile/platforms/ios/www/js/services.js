@@ -32,7 +32,6 @@ angular.module('seniorHealth.services', ['ionic'])
           window.localStorage.promise = 'promise resolved';
           win.close();
           location.href=location.pathname;
-
         }
       });
     }

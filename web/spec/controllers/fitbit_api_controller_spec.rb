@@ -84,19 +84,19 @@ describe FitbitApiController, type: :controller do
   describe '#bad_ok_good_status' do
     context 'overall status is bad' do
       it "returns 'not great'" do
-        expect(bad_ok_good_status(35, 300, 1500)).to eq 'not great'
+        expect(bad_ok_good_status(35, 300, 1500)).to eq 'not doing great'
       end
     end
 
     context 'overall status is ok' do
       it "returns 'ok'" do
-        expect(bad_ok_good_status(100, 2500, 6000)).to eq 'ok'
+        expect(bad_ok_good_status(100, 2500, 6000)).to eq 'doing ok'
       end
     end
 
     context 'overall status is good' do
       it "returns 'great'" do
-        expect(bad_ok_good_status(70, 500, 5000)).to eq 'great'
+        expect(bad_ok_good_status(70, 500, 5000)).to eq 'doing great'
       end
     end
   end

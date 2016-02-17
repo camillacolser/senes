@@ -1,6 +1,11 @@
 [
     {
+<<<<<<< HEAD
         "merged": "/Users/alan/Projects/senior-health/mobile/platforms/android/build/intermediates/res/merged/debug/drawable-land-ldpi-v4/screen.png",
         "source": "/Users/alan/Projects/senior-health/mobile/platforms/android/res/drawable-land-ldpi/screen.png"
+=======
+        "merged": "/Users/Jamie/Documents/final/senior-health/mobile/platforms/android/build/intermediates/res/merged/debug/drawable-land-ldpi-v4/screen.png",
+        "source": "/Users/Jamie/Documents/final/senior-health/mobile/platforms/android/res/drawable-land-ldpi/screen.png"
+>>>>>>> f21c8fb143a51445e8ca1d8b3f069107a110a57a
     }
 ]

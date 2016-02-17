@@ -6,9 +6,11 @@
           <div class="col col-5">
             <i class="icon ion-heart"></i>
           </div>
-          <div class="col col-95">
+          <div class="col col-75">
             <h2>Heart Rate</h2>
-            <p>Jeff's heart rate was <strong>{{ApiCtrl.result.heartRateStatus}}</strong>.</p>
+          </div>
+          <div class="col col-20">
+            <p>{{ApiCtrl.result.name}}'s heart rate was <strong>{{ApiCtrl.result.heartRateStatus}}</strong>.</p>
           </div>
         </div>
       </div>
@@ -17,9 +19,11 @@
           <div class="col col-5">
             <i class="icon ion-android-walk"></i>
           </div>
-          <div class="col col-95">
-            <h2>Heart Rate</h2>
-            <p>Jeff's physical activity has been <strong>{{ApiCtrl.result.stepsStatus}}</strong>.</p>
+          <div class="col col-75">
+            <h2>Physical activity</h2>
+          </div>
+          <div class="col col-20">
+            <p>{{ApiCtrl.result.name}}'s physical activity has been <strong>{{ApiCtrl.result.stepsStatus}}</strong>.</p>
           </div>
         </div>
       </div>
@@ -28,19 +32,21 @@
           <div class="col col-5">
             <i class="icon ion-ios-moon"></i>
           </div>
-          <div class="col col-95">
+          <div class="col col-75">
             <h2>Sleep</h2>
-            <p>Jeff's sleep has been <strong>{{ApiCtrl.result.sleepStatus}}</strong></p>
+          </div>
+          <div class="col col-20">
+            <p>{{ApiCtrl.result.name}}'s sleep has been <strong>{{ApiCtrl.result.sleepStatus}}</strong></p>
           </div>
         </div>
       </div>
     </div>
     <div class="summary-block">
-      <p>This is a summary of Jeff's past week. If you find that some values are out of normal, please remember to check with your doctor</p>
+      <p>This is a summary of {{ApiCtrl.result.name}}'s past week. If you find that some values are out of normal, please remember to check with your doctor</p>
     </div>
 
     <div class="summary-block">
-      <p>This is a summary of Jeff's past week. If you find that some values are out of normal, please remember to check with your doctor</p>
+      <p>This is a summary of {{ApiCtrl.result.name}}'s past week. If you find that some values are out of normal, please remember to check with your doctor</p>
     </div>
 
   </ion-content>

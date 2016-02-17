@@ -59,10 +59,11 @@ class FitbitApiController < ApplicationController
 
   def update_alarm
     devise_id = params[:id]
-    time = params[:time]
     client = User.find_by(id: devise_id).fitbit_client
     tracker_id = client.device_info[0]['id']
-    response = client.post_alarm(tracker_id, time)
+    alarms = client.get_alarms(tracker_id)['trackerAlarms']
+    alarm_id = find_alarm_id(alarms, params[:old_time])
+    response = client.update_alarm_call(tracker_id, alarm_id, params[:new_time])
     render json: { 'response': response }
   end
 
@@ -72,15 +73,8 @@ class FitbitApiController < ApplicationController
     tracker_id = client.device_info[0]['id']
     alarms = client.get_alarms(tracker_id)['trackerAlarms']
     alarm_id = find_alarm_id(alarms, params[:time])
-    client.delete_alarm(tracker_id, alarm_id)
+    client.delete_alarm_call(tracker_id, alarm_id)
     render json: { 'result': 'Alarm deleted!' }
-  end
-
-  def tracker_id
-    devise_id = params[:id]
-    client = User.find_by(id: devise_id).fitbit_client
-    response = client.device_info[0]['id']
-    render json: { 'trackerId': response }
   end
 
   def subscription

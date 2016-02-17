@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/Users/alan/Projects/senior-health/mobile/platforms/android/build/intermediates/res/merged/debug/drawable-xhdpi-v4/icon.png",
+        "source": "/Users/alan/Projects/senior-health/mobile/platforms/android/res/drawable-xhdpi/icon.png"
+    },
+    {
+        "merged": "/Users/alan/Projects/senior-health/mobile/platforms/android/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_action_remove.png",
+        "source": "/Users/alan/Projects/senior-health/mobile/platforms/android/res/drawable-xhdpi/ic_action_remove.png"
+    },
+    {
+        "merged": "/Users/alan/Projects/senior-health/mobile/platforms/android/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_action_next_item.png",
+        "source": "/Users/alan/Projects/senior-health/mobile/platforms/android/res/drawable-xhdpi/ic_action_next_item.png"
+    },
+    {
+        "merged": "/Users/alan/Projects/senior-health/mobile/platforms/android/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_action_previous_item.png",
+        "source": "/Users/alan/Projects/senior-health/mobile/platforms/android/res/drawable-xhdpi/ic_action_previous_item.png"
+    }
+]

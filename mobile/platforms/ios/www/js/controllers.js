@@ -12,11 +12,11 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
   //});
 })
 
-.controller('SettingsCtrl', function($scope, ApiFactory) {
+.controller('SettingsCtrl', function($scope, ApiFactoryPost) {
   var self = this;
 
   self.setAlarms = function(pillAlarm) {
-
+    window.localStorage.pillAlarm = pillAlarm;
   };
 })
 

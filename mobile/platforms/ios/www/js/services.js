@@ -5,6 +5,7 @@ var address = localUrl;
 angular.module('seniorHealth.services', ['ionic'])
 
 .factory('ApiFactory', ['$http', function($http) {
+  var id;
   id = window.localStorage.seniorId;
   return {
     query: function() {
@@ -15,6 +16,23 @@ angular.module('seniorHealth.services', ['ionic'])
     }
   };
 }])
+
+
+
+.factory('ApiFactoryPost', ['$http', function($http) {
+  var pillTime;
+  pillTime = window.localStorage.pillTime;
+  return {
+    query: function() {
+      return $http({
+        url: address+'/fitbit/overall?id=' + id + '&time=' + pillTime ,
+        method: 'GET'
+      });
+    }
+  };
+}])
+
+
 
 .factory('FitbitLoginService', function($q) {
   var url = address+"/users/auth/fitbit_oauth2";

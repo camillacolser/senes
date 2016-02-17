@@ -1,11 +1,11 @@
-<ion-view view-title="Today">
+<ion-view view-title="Today" >
   <ion-content class="padding" ng-controller="ApiController as ApiCtrl" ng-init="ApiCtrl.callApi()">
     <ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh()">
     </ion-refresher>
     <!-- <button type="button" name="button" ng-click="ApiCtrl.callApi()">TRY</button> -->
     <div class="smiley-icon"><i class="icon ion-happy-outline"></i></div>
-    <h3>{{ApiCtrl.result.name}} is doing {{ApiCtrl.result.status}} today.</h3>
-    <div class="list">
+    <h4>{{ApiCtrl.result.name}} is doing {{ApiCtrl.result.status}}</h4>
+    <div class="list card">
         <div class="item item-icon-left heart-rate">
           <div class="row">
             <div class="col col-5">
@@ -25,7 +25,7 @@
             <i class="icon ion-android-walk"></i>
           </div>
           <div class="col col-75">
-            Step Count
+            Physical activity
           </div>
           <div class="col col-20" style="text-align:right">
             {{ApiCtrl.result.steps}}
@@ -38,17 +38,30 @@
             <i class="icon ion-ios-moon"></i>
           </div>
           <div class="col col-75">
-            Sleep
+            Sleep last night
           </div>
           <div class="col col-20" style="text-align:right">
             {{ApiCtrl.result.totalMinutesAsleep}}
           </div>
         </div>
       </div>
+      <div class="item item-icon-left" id="sleep">
+        <div class="row">
+          <div class="col col-5">
+            <i class="icon ion-ios-alarm"></i>
+          </div>
+          <div class="col col-75">
+            Alarm
+          </div>
+          <div class="col col-20" style="text-align:right">
+            17:00
+          </div>
+        </div>
+      </div>
     </div>
     <div class="summary-block">
-      Device last synced: {{ApiCtrl.result.lastSyncTime | date :'MMM dd, HH:mm'}}<br>
-      Battery level: {{ApiCtrl.result.battery}}
+      last synced: {{ApiCtrl.result.lastSyncTime | date :'MMM dd, HH:mm'}} -
+      battery level: {{ApiCtrl.result.battery}}
     </div>
   </ion-content>
 </ion-view>

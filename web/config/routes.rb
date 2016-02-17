@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   get 'fitbit/lightly_active' => 'fitbit_api#lightly_active'
   get 'fitbit/very_active' => 'fitbit_api#very_active'
   get 'fitbit/fairly_active' => 'fitbit_api#fairly_active'
-  get 'fitbit/overall' => 'fitbit_api#overall'
+  get 'fitbit/today' => 'fitbit_api#today'
   get 'fitbit/tracker_id' => 'fitbit_api#tracker_id'
   get 'fitbit/set_alarm' => 'fitbit_api#set_alarm'
   get 'fitbit/alarms' => 'fitbit_api#alarms'

@@ -1,7 +1,7 @@
 class FitbitApiController < ApplicationController
   include FitbitApiHelper
 
-  def overall
+  def today
     devise_id = params[:id]
     @user = User.find_by(id: devise_id)
     client = @user.fitbit_client

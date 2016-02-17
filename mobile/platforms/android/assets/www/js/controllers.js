@@ -12,17 +12,19 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
   //});
 })
 
-.controller('SettingsCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
+.controller('SettingsCtrl', function($scope, ApiFactory) {
+  var self = this;
+
+  self.setAlarms = function(pillAlarm) {
+
   };
 })
 
 .controller('ApiController', function(ApiFactory, $scope) {
   var self = this;
 
-  self.callApi = function() {
-    ApiFactory.query()
+  self.callApi = function(period) {
+    ApiFactory.query(period)
     .then(function(response){
       self.result = response.data;
     });
@@ -30,7 +32,7 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
 
   $scope.doRefresh =
    function() {
-     self.callApi();
+     self.callApi(period);
      $scope.$broadcast('scroll.refreshComplete');
      $scope.$apply();
   };

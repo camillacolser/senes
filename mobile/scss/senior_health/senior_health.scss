@@ -1,13 +1,13 @@
+html {
+  background-color: $base-background-color;
+}
+
 // Typography
 h3 {
   text-align: center;
 }
 
 h4 {
-  text-align: center;
-}
-
-p {
   text-align: center;
 }
 
@@ -18,14 +18,23 @@ a {
   font-weight: bold;
 }
 
+// Icons
+.item-icon-left i.icon {
+  left: 16px;
+}
+
+.item {
+  padding: 18px 18px 18px 65px;
+}
+
 // Buttons
 button {
   font-weight: bold;
 }
 
-// login
-
-#logo {
+// Login
+.login-screen {
+  text-align: center;
   background-color: $base-background-color;
 }
 
@@ -40,9 +49,11 @@ button {
 }
 
 .device-provider {
+  text-align: center;
   p {
     margin-top: 50px;
     font-size: 14px;
+    color: $base-color-lighter;
   }
   img {
     width:65px;
@@ -73,8 +84,8 @@ button {
   color: $base-color;
 }
 
-.item p {
-  text-align: left;
+.item-note {
+  color: $base-color-lighter;
 }
 
 .smiley-icon {
@@ -88,4 +99,6 @@ button {
   text-align: center;
   margin-bottom: 20px;
   font-size: 12px;
+  text-align: center;
+  color: $base-color-lighter;
 }

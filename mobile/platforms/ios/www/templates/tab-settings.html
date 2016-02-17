@@ -1,6 +1,6 @@
 <ion-view view-title="Settings">
   <ion-content class="padding" ng-controller="ApiController as ApiCtrl" ng-init="ApiCtrl.callApi()">
-    <div class="list">
+    <div class="list card">
       <div class="item item-avatar">
         <img src="{{ApiCtrl.result.avatar}}">
         Caring for:<br>
@@ -34,7 +34,15 @@
       <li>
         <label class="item item-input">
         Pill Reminder
-          <input type="time">
+          <input type="time" ng-model="ApiCtrl.pillAlarm" name="pillAlarm">
+          <div class="track">
+            <div class="handle"></div>
+          </div>
+        </label>
+      </li>
+      <li>
+        <label class="item item-input">
+          <button class="button button-clear button-positive text-center" ng-click="ApiCtrl.setAlarms(ApiCtrl.pillAlarm);">Save alarms</button>
           <div class="track">
             <div class="handle"></div>
           </div>

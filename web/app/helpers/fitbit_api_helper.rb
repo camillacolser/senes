@@ -6,6 +6,7 @@ module FitbitApiHelper
   end
 
   def heart_evaluator(heart_rate)
+    heart_rate = heart_rate.to_i
     if heart_rate == nil
       return 1
     elsif heart_rate_bad?(heart_rate)

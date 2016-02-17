@@ -1,5 +1,6 @@
 module FitbitApiHelper
   def format_sleep(mins)
+    mins = mins.to_i
     hours = mins / 60
     mins = mins % 60
     return "#{hours}h, #{mins}m"
@@ -19,6 +20,7 @@ module FitbitApiHelper
   end
 
   def sleep_evaluator(sleep_mins)
+    sleep_mins = sleep_mins.to_i
     if sleep_bad?(sleep_mins)
       return 0
     elsif sleep_ok?(sleep_mins)

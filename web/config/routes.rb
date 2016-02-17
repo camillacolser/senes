@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   get 'fitbit/:resource/:date.json' => 'fitbit_api#data_request'
 
   get 'fitbit/today' => 'fitbit_api#today'
+  get 'fitbit/name' => 'fitbit_api#name'
   get 'fitbit/week' => 'fitbit_api#week'
+  get 'fitbit/settings' => 'fitbit_api#settings'
 
   get 'fitbit/alarms' => 'fitbit_api#alarms'
   get 'fitbit/set_alarm' => 'fitbit_api#set_alarm'

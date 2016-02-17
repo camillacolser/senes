@@ -44,11 +44,11 @@ module FitbitApiHelper
   def bad_ok_good_status(heart_parsed, sleep_parsed, steps_parsed)
     result = heart_evaluator(heart_parsed) + sleep_evaluator(sleep_parsed) + steps_evaluator(steps_parsed)
     if result <= 2
-      return 'not great'
+      return 'not doing great'
     elsif result <= 4
-      return 'ok'
+      return 'doing ok'
     else
-      return 'great'
+      return 'doing great'
     end
   end
 

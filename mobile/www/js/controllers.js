@@ -12,15 +12,13 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
   //});
 })
 
-.controller('SettingsCtrl', function($scope, ApiFactory) {
+.controller('SettingsCtrl', function($scope) {
   var self = this;
 
-  self.setAlarms = function(pillAlarm) {
 
-  };
 })
 
-.controller('ApiController', function(ApiFactory, $scope) {
+.controller('ApiController', function(ApiFactory, $scope, ApiFactoryPost) {
   var self = this;
 
   self.callApi = function(period) {
@@ -28,6 +26,13 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
     .then(function(response){
       self.result = response.data;
     });
+  };
+
+  self.pillAlarm = undefined;
+
+  self.setAlarms = function() {
+    console.log('number1');
+    ApiFactoryPost.query(self.pillAlarm);
   };
 
   $scope.doRefresh =
@@ -40,10 +45,10 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
 
 .controller('AuthenticationController', function ($scope, $state) {
   // Check our local storage for the proper credentials to ensure we are logged in, this means users can't get past app unless they select a username
-  // if (window.localStorage.seniorId) {
+  if (window.localStorage.seniorId) {
     // ===== UNCOMMENT TWO LINES BELOW & comment 1 LINE ABOVE FOR STYLING =====
-    if (true) {
-    window.localStorage.seniorId = 1;
+    // if (true) {
+    // window.localStorage.seniorId = 1;
     // ==========
     $scope.Authenticated = true;
   } else {

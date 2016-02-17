@@ -29,8 +29,12 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
   };
 
   self.setAlarms = function(pillAlarm) {
-    console.log('number1');
-    window.localStorage.pillAlarm = pillAlarm;
+    console.log(pillAlarm);
+    pillTimeDate = new Date(pillAlarm);
+    console.log(pillTimeDate);
+    dateText = pillTimeDate.getHours()+":"+pillTimeDate.getMinutes();
+    console.log(dateText);
+    window.localStorage.pillAlarm = dateText;
     ApiFactoryPost.query();
   };
 
@@ -44,10 +48,10 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
 
 .controller('AuthenticationController', function ($scope, $state) {
   // Check our local storage for the proper credentials to ensure we are logged in, this means users can't get past app unless they select a username
-  // if (window.localStorage.seniorId) {
+  if (window.localStorage.seniorId) {
     // ===== UNCOMMENT TWO LINES BELOW & comment 1 LINE ABOVE FOR STYLING =====
-    if (true) {
-    window.localStorage.seniorId = 1;
+    // if (true) {
+    // window.localStorage.seniorId = 1;
     // ==========
     $scope.Authenticated = true;
   } else {

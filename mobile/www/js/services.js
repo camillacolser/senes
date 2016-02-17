@@ -23,13 +23,11 @@ angular.module('seniorHealth.services', ['ionic'])
   var pillTime;
   var id;
   pillTime = window.localStorage.pillAlarm;
-  pillTimeDate = new Date(pillTime);
-  dateText = pillTimeDate.getHours()+":"+pillTimeDate.getMinutes();
   id = window.localStorage.seniorId;
   return {
     query: function() {
       return $http({
-        url: address+'/fitbit/set_alarm/?id=' + id + '&time=' + dateText ,
+        url: address+'/fitbit/set_alarm/?id=' + id + '&time=' + pillTime ,
         method: 'GET'
       });
     }

@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get 'fitbit/set_alarm' => 'fitbit_api#set_alarm'
   get 'fitbit/alarms' => 'fitbit_api#alarms'
   get 'fitbit/name' => 'fitbit_api#name'
+  get 'fitbit/week' => 'fitbit_api#week'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

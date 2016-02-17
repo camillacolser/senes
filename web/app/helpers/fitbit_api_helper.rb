@@ -52,6 +52,16 @@ module FitbitApiHelper
     end
   end
 
+  def week_status(result)
+    if result == 2
+      return 'above average'
+    elsif result == 1
+      return 'normal'
+    else
+      return 'below average'
+    end
+  end
+
   private
 
   def heart_rate_bad?(heart_rate)

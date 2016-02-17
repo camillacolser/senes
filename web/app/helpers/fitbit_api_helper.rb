@@ -7,12 +7,9 @@ module FitbitApiHelper
   end
 
   def heart_evaluator(heart_rate)
-    heart_rate = heart_rate.to_i
-    if heart_rate == nil
-      return 1
-    elsif heart_rate_bad?(heart_rate)
+    if heart_rate_bad?(heart_rate.to_i)
       return 0
-    elsif heart_rate_good?(heart_rate)
+    elsif heart_rate_good?(heart_rate.to_i)
       return 2
     else
       return 1
@@ -83,7 +80,7 @@ module FitbitApiHelper
   private
 
   def heart_rate_bad?(heart_rate)
-    heart_rate <= 40 || heart_rate >= 100
+    heart_rate <= 40 && heart_rate > 0 || heart_rate >= 100
   end
 
   def heart_rate_good?(heart_rate)

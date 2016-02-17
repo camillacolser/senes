@@ -1,5 +1,5 @@
 <ion-view view-title="Last 7 days">
-  <ion-content class="padding">
+  <ion-content class="padding" ng-controller="ApiController as ApiCtrl" ng-init="ApiCtrl.callApi('week')">
     <div class="list card">
       <div class="item item-icon-left item-text-wrap" id="heart-rate-week">
         <div class="row">
@@ -8,7 +8,7 @@
           </div>
           <div class="col col-95">
             <h2>Heart Rate</h2>
-            <p>Jeff's heart rate was <strong>normal</strong>.</p>
+            <p>Jeff's heart rate was <strong>{{ApiCtrl.result.heartRateStatus}}</strong>.</p>
           </div>
         </div>
       </div>
@@ -19,7 +19,7 @@
           </div>
           <div class="col col-95">
             <h2>Heart Rate</h2>
-            <p>Jeff's physical activity has been <strong>above average</strong>.</p>
+            <p>Jeff's physical activity has been <strong>{{ApiCtrl.result.stepsStatus}}</strong>.</p>
           </div>
         </div>
       </div>
@@ -30,7 +30,7 @@
           </div>
           <div class="col col-95">
             <h2>Sleep</h2>
-            <p>Jeff's sleep has been <strong>below average</strong></p>
+            <p>Jeff's sleep has been <strong>{{ApiCtrl.result.sleepStatus}}</strong></p>
           </div>
         </div>
       </div>

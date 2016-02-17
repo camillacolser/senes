@@ -1,7 +1,7 @@
 class FitbitApiController < ApplicationController
   include FitbitApiHelper
 
-  def overall
+  def today
     devise_id = params[:id]
     @user = User.find_by(id: devise_id)
     client = @user.fitbit_client
@@ -17,6 +17,24 @@ class FitbitApiController < ApplicationController
       'status': bad_ok_good_status(heart_parsed, sleep_parsed, steps_parsed),
       'name': client.name['user']['fullName'],
       'avatar': client.name['user']['avatar']
+    }
+    render json: @json
+  end
+
+  def week
+    devise_id = params[:id]
+    @user = User.find_by(id: devise_id)
+    client = @user.fitbit_client
+    heart_parsed = client.heart_rate_on_date('7d')['activities-heart'][0]['value']['restingHeartRate']
+    sleep_parsed = client.sleep_logs_on_date('7d')['sleep-minutesAsleep'][0]['value']
+    steps_parsed = client.steps_on_date('7d')['activities-steps'][0]['value']
+    @json = {
+      'restingHeartRate': heart_parsed,
+      'totalMinutesAsleep': format_sleep(sleep_parsed),
+      'steps': steps_parsed,
+      'heartRateStatus': week_status(heart_evaluator(heart_parsed)),
+      'sleepStatus': week_status(sleep_evaluator(sleep_parsed)),
+      'stepsStatus': week_status(steps_evaluator(steps_parsed))
     }
     render json: @json
   end

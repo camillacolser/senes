@@ -4,6 +4,6 @@ describe 'Api requests' do
     expect(page).to have_link 'Signup'
   end
   context 'when user logged in' do
-    
+
   end
 end

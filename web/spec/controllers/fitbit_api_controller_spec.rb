@@ -2,6 +2,11 @@ require 'rails_helper'
 include FitbitApiHelper
 
 describe FitbitApiController, type: :controller do
+
+  let(:alarms) { [{"alarmId"=>666, "deleted"=>false, "enabled"=>true,
+                    "time"=>"14:12+00:00", "weekDays"=>["MONDAY", "FRIDAY", "SATURDAY", "SUNDAY"]}] }
+  let(:time) { "14:12" }
+
   describe '#format_sleep' do
     it 'changes minutes into hours and minutes' do
       expect(format_sleep(348)).to eq("5h, 48m")
@@ -93,6 +98,12 @@ describe FitbitApiController, type: :controller do
       it "returns 'great'" do
         expect(bad_ok_good_status(70, 500, 5000)).to eq 'great'
       end
+    end
+  end
+
+  describe '#find_alarm_id' do
+    it 'returns the alarmd id' do
+      expect(find_alarm_id(alarms, time)).to eq 666
     end
   end
 end

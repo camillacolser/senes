@@ -56,7 +56,7 @@ module FitbitApiHelper
     raise ActionController::RoutingError.new('Not Found')
   end
 
-  def respond_204
+  def no_content
     head :no_content
   end
 

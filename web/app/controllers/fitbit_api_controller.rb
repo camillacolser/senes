@@ -47,7 +47,7 @@ class FitbitApiController < ApplicationController
 
   def subscription
     if params[:verify] == '6f9263ce28d20cedc40ec6c10cb672a6985933692a95d032ebb9a96e14d00762'
-      respond_204
+      no_content
     else
       not_found
     end

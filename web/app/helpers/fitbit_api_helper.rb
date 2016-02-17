@@ -7,12 +7,9 @@ module FitbitApiHelper
   end
 
   def heart_evaluator(heart_rate)
-    heart_rate = heart_rate.to_i
-    if heart_rate == nil
-      return 1
-    elsif heart_rate_bad?(heart_rate)
+    if heart_rate_bad?(heart_rate.to_i)
       return 0
-    elsif heart_rate_good?(heart_rate)
+    elsif heart_rate_good?(heart_rate.to_i)
       return 2
     else
       return 1
@@ -44,11 +41,11 @@ module FitbitApiHelper
   def bad_ok_good_status(heart_parsed, sleep_parsed, steps_parsed)
     result = heart_evaluator(heart_parsed) + sleep_evaluator(sleep_parsed) + steps_evaluator(steps_parsed)
     if result <= 2
-      return 'not great'
+      return 'not doing great'
     elsif result <= 4
-      return 'ok'
+      return 'doing ok'
     else
-      return 'great'
+      return 'doing great'
     end
   end
 
@@ -62,6 +59,16 @@ module FitbitApiHelper
     end
   end
 
+  def find_alarm_id(alarms, time)
+    alarm_id = 0
+    alarms.each do |alarm|
+      if alarm["time"] == (time+"+00:00")
+        alarm_id = alarm["alarmId"]
+      end
+    end
+    return alarm_id
+  end
+
   def not_found
     raise ActionController::RoutingError.new('Not Found')
   end
@@ -73,7 +80,7 @@ module FitbitApiHelper
   private
 
   def heart_rate_bad?(heart_rate)
-    heart_rate <= 40 || heart_rate >= 100
+    heart_rate <= 40 && heart_rate > 0 || heart_rate >= 100
   end
 
   def heart_rate_good?(heart_rate)

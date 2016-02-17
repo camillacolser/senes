@@ -3,51 +3,60 @@
     <ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh()">
     </ion-refresher>
     <!-- <button type="button" name="button" ng-click="ApiCtrl.callApi()">TRY</button> -->
-    <div class="smiley-icon"><i class="icon ion-happy-outline"></i></div>
-    <h4>{{ApiCtrl.result.name}} is doing {{ApiCtrl.result.status}}</h4>
+    <div class="smiley-icon" ng-show="ApiCtrl.result.status == 'doing great'">
+      <i class="icon ion-happy-outline"></i>
+    </div>
+    <div class="smiley-icon" ng-show="ApiCtrl.result.status == 'doing ok'">
+      <i class="icon ion-sad-outline"></i>
+    </div>
+    <div class="smiley-icon" ng-show="ApiCtrl.result.status == 'not doing great'">
+      <i class="icon ion-sad-outline"></i>
+    </div>
+    <h4>{{ApiCtrl.result.name}} is {{ApiCtrl.result.status}}</h4>
     <div class="list card">
         <div class="item item-icon-left heart-rate">
           <div class="row">
-            <div class="col col-5">
+            <div class="col-5">
               <i class="icon ion-heart"></i>
             </div>
             <div class="col col-75">
               Heart Rate
             </div>
-            <div class="col col-20" style="text-align:right">
-              {{ApiCtrl.result.restingHeartRate}}
+            <div class="col col-20" style="text-align:left">
+              {{ApiCtrl.result.restingHeartRate}} bpm
             </div>
           </div>
         </div>
       <div class="item item-icon-left" id="step-count">
         <div class="row">
-          <div class="col col-5">
+          <div class="col-5">
             <i class="icon ion-android-walk"></i>
           </div>
           <div class="col col-75">
             Physical activity
           </div>
-          <div class="col col-20" style="text-align:right">
-            {{ApiCtrl.result.steps}}
+          <div class="col col-20" style="text-align:left">
+            <!-- {{ApiCtrl.result.steps}} -->
+            1000 steps
           </div>
         </div>
       </div>
       <div class="item item-icon-left" id="sleep">
         <div class="row">
-          <div class="col col-5">
+          <div class="col-5">
             <i class="icon ion-ios-moon"></i>
           </div>
           <div class="col col-75">
             Sleep last night
           </div>
-          <div class="col col-20" style="text-align:right">
+          <div class="col col-20" style="text-align:left">
             {{ApiCtrl.result.totalMinutesAsleep}}
           </div>
         </div>
       </div>
       <div class="item item-icon-left" id="sleep">
         <div class="row">
-          <div class="col col-5">
+          <div class="col-5">
             <i class="icon ion-ios-alarm"></i>
           </div>
           <div class="col col-75">

@@ -57,6 +57,25 @@ class FitbitApiController < ApplicationController
     render json: { 'trackerAlarms': response }
   end
 
+  # def update_alarm
+  #   devise_id = params[:id]
+  #   time = params[:time]
+  #   client = User.find_by(id: devise_id).fitbit_client
+  #   tracker_id = client.device_info[0]['id']
+  #   response = client.post_alarm(tracker_id, time)
+  #   render json: { 'response': response }
+  # end
+
+  def delete_alarm
+    devise_id = params[:id]
+    client = User.find_by(id: devise_id).fitbit_client
+    tracker_id = client.device_info[0]['id']
+    alarms = client.get_alarms(tracker_id)['trackerAlarms']
+    alarm_id = find_alarm_id(alarms, params[:time])
+    client.delete_alarm(tracker_id, alarm_id)
+    render json: { 'result': 'Alarm deleted!' }
+  end
+
   def tracker_id
     devise_id = params[:id]
     client = User.find_by(id: devise_id).fitbit_client

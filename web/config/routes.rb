@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   get 'fitbit/today' => 'fitbit_api#today'
   get 'fitbit/tracker_id' => 'fitbit_api#tracker_id'
   get 'fitbit/set_alarm' => 'fitbit_api#set_alarm'
+  get 'fitbit/delete_alarm' => 'fitbit_api#delete_alarm'
+  get 'fitbit/update_alarm' => 'fitbit_api#update_alarm'
   get 'fitbit/alarms' => 'fitbit_api#alarms'
   get 'fitbit/name' => 'fitbit_api#name'
   get 'fitbit/week' => 'fitbit_api#week'

@@ -6,6 +6,12 @@ module FitgemOauth2
       post_call(request_url)
     end
 
+    def delete_alarm(tracker_id, alarm_id)
+      request_url = "1/user/#{user_id}/devices/tracker/#{tracker_id}/alarms/#{alarm_id}.json"
+      puts request_url
+      delete_call(request_url)
+    end
+
     def get_alarms(tracker_id)
       request_url = "1/user/#{user_id}/devices/tracker/#{tracker_id}/alarms.json"
       puts request_url

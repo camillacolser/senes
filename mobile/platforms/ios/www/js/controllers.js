@@ -12,9 +12,11 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
   //});
 })
 
-.controller('SettingsCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
+.controller('SettingsCtrl', function($scope, ApiFactory) {
+  var self = this;
+
+  self.setAlarms = function(pillAlarm) {
+
   };
 })
 
@@ -28,29 +30,21 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
     });
   };
 
-<<<<<<< HEAD
-  $scope.doRefresh = function() {
+  $scope.doRefresh =
+   function() {
      self.callApi();
      $scope.$broadcast('scroll.refreshComplete');
      $scope.$apply();
   };
-
-  $scope.$on('$ionicView.enter', function(e) {
-    self.callApi();
-    $scope.$apply();
-  });
-=======
-  // self.doRefresh = function() {
-  //   $scope.callApi();
-  //   $scope.$broadcast('scroll.refreshComplete');
-  //   $scope.$apply();
-  // };
->>>>>>> d983e2c41f21c1c6b8478a9dda6ae3b425f2da18
 })
 
 .controller('AuthenticationController', function ($scope, $state) {
   // Check our local storage for the proper credentials to ensure we are logged in, this means users can't get past app unless they select a username
   if (window.localStorage.seniorId) {
+    // ===== UNCOMMENT TWO LINES BELOW & comment 1 LINE ABOVE FOR STYLING =====
+    // if (true) {
+    // window.localStorage.seniorId = 1;
+    // ==========
     $scope.Authenticated = true;
   } else {
     $scope.needsAuthentication = true;
@@ -65,7 +59,7 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
 
 .controller('LoginController', function($scope,FitbitLoginService) {
   $scope.fitbitlogin = FitbitLoginService.login;
-    $scope.promise = window.localStorage.promise;
-    $scope.url = window.localStorage.webUrl;
-    $scope.seniorId = window.localStorage.seniorId;
+  $scope.promise = window.localStorage.promise;
+  $scope.url = window.localStorage.webUrl;
+  $scope.seniorId = window.localStorage.seniorId;
 });

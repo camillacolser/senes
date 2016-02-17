@@ -28,15 +28,17 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
     });
   };
 
+  self.alarmDisplay = window.localStorage.alarmDisplay;
+
   self.pillAlarm = undefined;
 
   self.setAlarms = function() {
-    console.log('number1');
     ApiFactoryPost.query(self.pillAlarm);
+    self.alarmDisplay = window.localStorage.alarmDisplay;
   };
 
   $scope.doRefresh =
-   function() {
+   function(period) {
      self.callApi(period);
      $scope.$broadcast('scroll.refreshComplete');
      $scope.$apply();

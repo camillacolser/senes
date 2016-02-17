@@ -28,6 +28,7 @@ angular.module('seniorHealth.services', ['ionic'])
       pillTime = pillAlarm;
       pillTimeDate = new Date(pillTime);
       dateText = pillTimeDate.getHours()+":"+pillTimeDate.getMinutes();
+      window.localStorage.alarmDisplay = dateText;
       return $http({
         url: address+'/fitbit/set_alarm/?id=' + id + '&time=' + dateText ,
         method: 'GET'

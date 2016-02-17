@@ -12,12 +12,10 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
   //});
 })
 
-.controller('SettingsCtrl', function($scope, ApiFactory) {
+.controller('SettingsCtrl', function($scope) {
   var self = this;
 
-  self.setAlarms = function(pillAlarm) {
 
-  };
 })
 
 .controller('ApiController', function(ApiFactory, $scope, ApiFactoryPost) {
@@ -30,10 +28,11 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
     });
   };
 
-  self.setAlarms = function(pillAlarm) {
+  self.pillAlarm = undefined;
+
+  self.setAlarms = function() {
     console.log('number1');
-    window.localStorage.pillAlarm = pillAlarm;
-    ApiFactoryPost.query();
+    ApiFactoryPost.query(self.pillAlarm);
   };
 
   $scope.doRefresh =

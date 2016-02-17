@@ -22,12 +22,14 @@ angular.module('seniorHealth.services', ['ionic'])
 .factory('ApiFactoryPost', ['$http', function($http) {
   var pillTime;
   var id;
-  pillTime = window.localStorage.pillAlarm;
   id = window.localStorage.seniorId;
   return {
-    query: function() {
+    query: function(pillAlarm) {
+      pillTime = pillAlarm;
+      pillTimeDate = new Date(pillTime);
+      dateText = pillTimeDate.getHours()+":"+pillTimeDate.getMinutes();
       return $http({
-        url: address+'/fitbit/set_alarm/?id=' + id + '&time=' + pillTime ,
+        url: address+'/fitbit/set_alarm/?id=' + id + '&time=' + dateText ,
         method: 'GET'
       });
     }

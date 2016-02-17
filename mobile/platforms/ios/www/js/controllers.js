@@ -12,9 +12,11 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
   //});
 })
 
-.controller('SettingsCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
+.controller('SettingsCtrl', function($scope, ApiFactory) {
+  var self = this;
+
+  self.setAlarms = function(pillAlarm) {
+
   };
 })
 

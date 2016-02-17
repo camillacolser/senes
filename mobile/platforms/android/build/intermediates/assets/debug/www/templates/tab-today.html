@@ -1,0 +1,54 @@
+<ion-view view-title="Today">
+  <ion-content class="padding" ng-controller="ApiController as ApiCtrl" ng-init="ApiCtrl.callApi()">
+    <ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh()">
+    </ion-refresher>
+    <!-- <button type="button" name="button" ng-click="ApiCtrl.callApi()">TRY</button> -->
+    <div class="smiley-icon"><i class="icon ion-happy-outline"></i></div>
+    <h3>Jeff is doing ok today.</h3>
+    <div class="list">
+        <div class="item item-icon-left heart-rate">
+          <div class="row">
+            <div class="col col-5">
+              <i class="icon ion-heart"></i>
+            </div>
+            <div class="col col-75">
+              Heart Rate
+            </div>
+            <div class="col col-20" style="text-align:right">
+              {{ApiCtrl.result.restingHeartRate}}
+            </div>
+          </div>
+        </div>
+      <div class="item item-icon-left" id="step-count">
+        <div class="row">
+          <div class="col col-5">
+            <i class="icon ion-android-walk"></i>
+          </div>
+          <div class="col col-75">
+            Step Count
+          </div>
+          <div class="col col-20" style="text-align:right">
+            {{ApiCtrl.result.steps}}
+          </div>
+        </div>
+      </div>
+      <div class="item item-icon-left" id="sleep">
+        <div class="row">
+          <div class="col col-5">
+            <i class="icon ion-ios-moon"></i>
+          </div>
+          <div class="col col-75">
+            Sleep
+          </div>
+          <div class="col col-20" style="text-align:right">
+            {{ApiCtrl.result.totalMinutesAsleep}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="summary-block">
+      Device last synced: {{ApiCtrl.result.lastSyncTime}}<br>
+      Battery level: {{ApiCtrl.result.battery}}
+    </div>
+  </ion-content>
+</ion-view>

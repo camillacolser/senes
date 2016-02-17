@@ -44,4 +44,13 @@ class FitbitApiController < ApplicationController
     response = client.device_info[0]['id']
     render json: { 'trackerId': response }
   end
+
+  def subscription
+    if params[:verify] == '6f9263ce28d20cedc40ec6c10cb672a6985933692a95d032ebb9a96e14d00762'
+      no_content
+    else
+      not_found
+    end
+  end
+
 end

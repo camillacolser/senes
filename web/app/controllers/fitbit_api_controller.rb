@@ -34,7 +34,8 @@ class FitbitApiController < ApplicationController
       'steps': steps_parsed,
       'heartRateStatus': week_status(heart_evaluator(heart_parsed)),
       'sleepStatus': week_status(sleep_evaluator(sleep_parsed)),
-      'stepsStatus': week_status(steps_evaluator(steps_parsed))
+      'stepsStatus': week_status(steps_evaluator(steps_parsed)),
+      'name': client.name['user']['fullName']
     }
     render json: @json
   end

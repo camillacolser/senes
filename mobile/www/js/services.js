@@ -7,10 +7,14 @@ angular.module('seniorHealth.services', ['ionic'])
 .factory('ApiFactory', ['$http', function($http) {
   id = window.localStorage.seniorId;
   return {
-    query: function() {
+    query: function(period) {
       return $http({
-        url: address+'/fitbit/overall?id=' + id ,
-        method: 'GET'
+        url: address+'/fitbit/overall',
+        method: 'GET',
+        params: {
+          'id': id,
+          'period': period
+        }
       });
     }
   };

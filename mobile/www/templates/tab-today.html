@@ -1,5 +1,5 @@
 <ion-view view-title="Today" >
-  <ion-content class="padding" ng-controller="ApiController as ApiCtrl" ng-init="ApiCtrl.callApi()">
+  <ion-content class="padding" ng-controller="ApiController as ApiCtrl" ng-init="ApiCtrl.callApi('1d')">
     <ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh()">
     </ion-refresher>
     <!-- <button type="button" name="button" ng-click="ApiCtrl.callApi()">TRY</button> -->

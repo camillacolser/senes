@@ -1,5 +1,5 @@
 <ion-view view-title="Last 7 days">
-  <ion-content class="padding">
+  <ion-content class="padding" ng-controller="ApiController as ApiCtrl" ng-init="ApiCtrl.callApi('7d')">
     <div class="list card">
       <div class="item item-icon-left item-text-wrap" id="heart-rate-week">
         <div class="row">

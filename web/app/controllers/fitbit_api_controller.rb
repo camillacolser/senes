@@ -3,11 +3,12 @@ class FitbitApiController < ApplicationController
 
   def overall
     devise_id = params[:id]
+    period = params[:period]
     @user = User.find_by(id: devise_id)
     client = @user.fitbit_client
-    heart_parsed = client.heart_rate_on_date('1d')['activities-heart'][0]['value']['restingHeartRate']
-    sleep_parsed = client.sleep_logs_on_date('1d')['sleep-minutesAsleep'][0]['value']
-    steps_parsed = client.steps_on_date('1d')['activities-steps'][0]['value']
+    heart_parsed = client.heart_rate_on_date(period)['activities-heart'][0]['value']['restingHeartRate']
+    sleep_parsed = client.sleep_logs_on_date(period)['sleep-minutesAsleep'][0]['value']
+    steps_parsed = client.steps_on_date(period)['activities-steps'][0]['value']
     @json = {
       'battery': client.device_info[0]['battery'],
       'lastSyncTime': client.device_info[0]['lastSyncTime'],

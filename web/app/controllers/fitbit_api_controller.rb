@@ -40,6 +40,17 @@ class FitbitApiController < ApplicationController
     render json: @json
   end
 
+  def settings
+    devise_id = params[:id]
+    @user = User.find_by(id: devise_id)
+    client = @user.fitbit_client
+    @json = {
+      'name': client.name['user']['fullName'],
+      'avatar': client.name['user']['avatar']
+    }
+    render json: @json
+  end
+
   def set_alarm
     devise_id = params[:id]
     time = params[:time]

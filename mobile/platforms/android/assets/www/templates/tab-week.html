@@ -10,7 +10,7 @@
             Heart Rate
           </div>
           <div class="col text-right">
-            <p>Jamie's heart rate was <strong>above average</strong></p>
+            <p>{{ApiCtrl.result.name}}'s heart rate was <strong>{{ApiCtrl.result.heartRateStatus}}</strong></p>
           </div>
         </div>
       </div>
@@ -23,7 +23,7 @@
             <h2>Physical activity</h2>
           </div>
           <div class="col text-right">
-            <p>Jamie's physical activity was <strong>below average</strong>.</p>
+            <p>{{ApiCtrl.result.name}}'s physical activity was <strong>{{ApiCtrl.result.stepsStatus}}</strong>.</p>
           </div>
         </div>
       </div>
@@ -36,7 +36,7 @@
             <h2>Sleep</h2>
           </div>
           <div class="col text-right">
-            <p>Jamie's sleep was <strong>below average</strong></p>
+            <p>{{ApiCtrl.result.name}}'s sleep was <strong>{{ApiCtrl.result.sleepStatus}}</strong></p>
           </div>
         </div>
       </div>

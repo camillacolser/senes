@@ -18,6 +18,37 @@ a {
   font-weight: bold;
 }
 
+// Buttons
+button {
+  font-weight: bold;
+}
+
+// login
+
+#logo {
+  background-color: $base-background-color;
+}
+
+.app-logo {
+  width:220px;
+}
+
+.strapline {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  font-size: 18px;
+}
+
+.device-provider {
+  p {
+    margin-top: 50px;
+    font-size: 14px;
+  }
+  img {
+    width:65px;
+  }
+}
+
 // Navigation
 .tab-item {
   font-size: 16px;

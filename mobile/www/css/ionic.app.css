@@ -8526,7 +8526,7 @@ progress {
   display: inline-block;
   margin: 0;
   padding: 0 12px;
-  min-width: 52px;
+  min-width: 54px;
   min-height: 47px;
   border-width: 1px;
   border-style: solid;
@@ -8534,7 +8534,7 @@ progress {
   vertical-align: top;
   text-align: center;
   text-overflow: ellipsis;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 42px;
   cursor: pointer; }
   .button:hover {
@@ -9745,6 +9745,27 @@ a {
   color: white;
   text-decoration: none;
   font-weight: bold; }
+
+button {
+  font-weight: bold; }
+
+#logo {
+  background-color: #F0F0F0; }
+
+.app-logo {
+  width: 220px; }
+
+.strapline {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  font-size: 18px; }
+
+.device-provider p {
+  margin-top: 50px;
+  font-size: 14px; }
+
+.device-provider img {
+  width: 65px; }
 
 .tab-item {
   font-size: 16px;

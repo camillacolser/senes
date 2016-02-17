@@ -37,17 +37,14 @@
       <div ng-show="needsAuthentication">
         <div ng-controller="LoginController">
           <ion-content scroll="false" class="padding dashboard" id="login">
-            <ion-refresher
-              pulling-text="Pull to refresh..."
-              on-refresh="doRefresh()">
-            </ion-refresher>
             <div style="text-align:center">
-              <img>
-              <button class="button button-block button-calm" ng-click="fitbitlogin()">Login with Fitbit</button>
-              <p> Login on index page </p>
-              <p> Url: {{ url }} </p>
-              <p> User ID: {{ userId }} </p>
-              <p> Senior ID: {{ seniorId }} </p>
+              <img class="app-logo" src="img/logo.png">
+              <p class="strapline">Care for your elderly relatives.</br>Connect and see how they are doing.</p>
+              <button class="button button-block button-calm" ng-click="fitbitlogin()">Connect their device</button>
+              <div class="device-provider">
+                <p>supported devices:</p>
+                <img src="img/fitbit.png" >
+              </div>
             </div>
           </ion-content>
         </div>

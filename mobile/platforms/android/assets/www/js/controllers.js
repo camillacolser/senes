@@ -20,7 +20,7 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
   };
 })
 
-.controller('ApiController', function(ApiFactory, $scope) {
+.controller('ApiController', function(ApiFactory, $scope, ApiFactoryPost) {
   var self = this;
 
   self.callApi = function(period) {
@@ -28,6 +28,12 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
     .then(function(response){
       self.result = response.data;
     });
+  };
+
+  self.setAlarms = function(pillAlarm) {
+    console.log('number1');
+    window.localStorage.pillAlarm = pillAlarm;
+    ApiFactoryPost.query();
   };
 
   $scope.doRefresh =

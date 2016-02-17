@@ -52,6 +52,14 @@ module FitbitApiHelper
     end
   end
 
+  def not_found
+    raise ActionController::RoutingError.new('Not Found')
+  end
+
+  def respond_204
+    head :no_content
+  end
+
   private
 
   def heart_rate_bad?(heart_rate)

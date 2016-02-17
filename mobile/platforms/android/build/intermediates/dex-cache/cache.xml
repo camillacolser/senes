@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/Jamie/Documents/final/senior-health/mobile/platforms/android/build/intermediates/exploded-aar/android/CordovaLib/unspecified/debug/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="0f92550f4338daa095ea0996a96836654bed6203">
+        <dex dex="/Users/Jamie/Documents/final/senior-health/mobile/platforms/android/build/intermediates/pre-dexed/debug/CordovaLib-unspecified-debug_b13ec2b0e4dff8ce594a679688e37ad8b9fc6e4d.jar" />
+    </item>
+
+</items>

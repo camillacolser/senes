@@ -2,6 +2,11 @@ require 'rails_helper'
 include FitbitApiHelper
 
 describe FitbitApiController, type: :controller do
+
+  let(:alarms) { [{"alarmId"=>666, "deleted"=>false, "enabled"=>true,
+                    "time"=>"14:12+00:00", "weekDays"=>["MONDAY", "FRIDAY", "SATURDAY", "SUNDAY"]}] }
+  let(:time) { "14:12" }
+
   describe '#format_sleep' do
     it 'changes minutes into hours and minutes' do
       expect(format_sleep(348)).to eq("5h, 48m")
@@ -32,6 +37,12 @@ describe FitbitApiController, type: :controller do
     context 'heart rate is in the normal range' do
       it 'returns a code of 2' do
         expect(heart_evaluator(65)).to eq 2
+      end
+    end
+
+    context 'there is no heart rate data' do
+      it 'returns a code of 1' do
+        expect(heart_evaluator(nil)).to eq 1
       end
     end
   end
@@ -77,22 +88,48 @@ describe FitbitApiController, type: :controller do
   end
 
   describe '#bad_ok_good_status' do
-    context 'overall status is bad' do
-      it "returns 'not great'" do
-        expect(bad_ok_good_status(35, 300, 1500)).to eq 'not great'
+    context 'today status is bad' do
+      it "returns 'not doing great'" do
+        expect(bad_ok_good_status(35, 300, 1500)).to eq 'not doing great'
       end
     end
 
-    context 'overall status is ok' do
-      it "returns 'ok'" do
-        expect(bad_ok_good_status(100, 2500, 6000)).to eq 'ok'
+    context 'today status is ok' do
+      it "returns 'doing ok'" do
+        expect(bad_ok_good_status(100, 2500, 6000)).to eq 'doing ok'
       end
     end
 
-    context 'overall status is good' do
-      it "returns 'great'" do
-        expect(bad_ok_good_status(70, 500, 5000)).to eq 'great'
+    context 'today status is good' do
+      it "returns 'doing great'" do
+        expect(bad_ok_good_status(70, 500, 5000)).to eq 'doing great'
       end
+    end
+  end
+
+  describe '#week_status' do
+    context 'week status is bad' do
+      it "returns 'below average'" do
+        expect(week_status(0)).to eq 'below average'
+      end
+    end
+
+    context 'week status is ok' do
+      it "returns 'normal'" do
+        expect(week_status(1)).to eq 'normal'
+      end
+    end
+
+    context 'week status is good' do
+      it "returns 'above average'" do
+        expect(week_status(2)).to eq 'above average'
+      end
+    end
+  end
+
+  describe '#find_alarm_id' do
+    it 'returns the alarmd id' do
+      expect(find_alarm_id(alarms, time)).to eq 666
     end
   end
 end

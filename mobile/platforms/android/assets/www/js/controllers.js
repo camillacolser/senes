@@ -13,24 +13,31 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
 })
 
 .controller('SettingsCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
-  };
-})
-
-.controller('ApiController', function(ApiFactory, $scope) {
   var self = this;
 
-  self.callApi = function() {
-    ApiFactory.query()
+
+})
+
+.controller('ApiController', function(ApiFactory, $scope, ApiFactoryPost) {
+  var self = this;
+
+  self.callApi = function(period) {
+    ApiFactory.query(period)
     .then(function(response){
       self.result = response.data;
     });
   };
 
+  self.pillAlarm = undefined;
+
+  self.setAlarms = function() {
+    console.log('number1');
+    ApiFactoryPost.query(self.pillAlarm);
+  };
+
   $scope.doRefresh =
    function() {
-     self.callApi();
+     self.callApi(period);
      $scope.$broadcast('scroll.refreshComplete');
      $scope.$apply();
   };

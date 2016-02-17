@@ -9,22 +9,18 @@ Rails.application.routes.draw do
   root 'home#index'
 
   get 'fitbit/:resource/:date.json' => 'fitbit_api#data_request'
-  get 'fitbit/heart' => 'fitbit_api#heart'
-  get 'fitbit/sleep' => 'fitbit_api#sleep'
-  get 'fitbit/steps' => 'fitbit_api#steps'
-  get 'fitbit/battery' => 'fitbit_api#battery'
-  get 'fitbit/last_sync_time' => 'fitbit_api#last_sync_time'
-  get 'fitbit/sedentary' => 'fitbit_api#sedentary'
-  get 'fitbit/lightly_active' => 'fitbit_api#lightly_active'
-  get 'fitbit/very_active' => 'fitbit_api#very_active'
-  get 'fitbit/fairly_active' => 'fitbit_api#fairly_active'
-  get 'fitbit/overall' => 'fitbit_api#overall'
-  get 'fitbit/tracker_id' => 'fitbit_api#tracker_id'
-  get 'fitbit/set_alarm' => 'fitbit_api#set_alarm'
-  get 'fitbit/alarms' => 'fitbit_api#alarms'
-  get 'fitbit/name' => 'fitbit_api#name'
 
-  post '/fitbit/subscription' => 'fitbit_api#subscription'
+  get 'fitbit/today' => 'fitbit_api#today'
+  get 'fitbit/name' => 'fitbit_api#name'
+  get 'fitbit/week' => 'fitbit_api#week'
+  get 'fitbit/settings' => 'fitbit_api#settings'
+
+  get 'fitbit/alarms' => 'fitbit_api#alarms'
+  get 'fitbit/set_alarm' => 'fitbit_api#set_alarm'
+  get 'fitbit/delete_alarm' => 'fitbit_api#delete_alarm'
+  get 'fitbit/update_alarm' => 'fitbit_api#update_alarm'
+
+  get '/fitbit/subscription' => 'fitbit_api#subscription'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

@@ -60,6 +60,13 @@ module FitbitApiHelper
     else
       return 'below average'
     end
+
+  def not_found
+    raise ActionController::RoutingError.new('Not Found')
+  end
+
+  def no_content
+    head :no_content
   end
 
   private

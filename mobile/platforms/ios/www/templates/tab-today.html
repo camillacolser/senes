@@ -3,7 +3,15 @@
     <ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh()">
     </ion-refresher>
     <!-- <button type="button" name="button" ng-click="ApiCtrl.callApi()">TRY</button> -->
-    <div class="smiley-icon"><i class="icon ion-happy-outline"></i></div>
+    <div class="smiley-icon" ng-show="ApiCtrl.result.status == 'doing great'">
+      <i class="icon ion-happy-outline"></i>
+    </div>
+    <div class="smiley-icon" ng-show="ApiCtrl.result.status == 'doing ok'">
+      <i class="icon ion-sad-outline"></i>
+    </div>
+    <div class="smiley-icon" ng-show="ApiCtrl.result.status == 'not doing great'">
+      <i class="icon ion-sad-outline"></i>
+    </div>
     <h4>{{ApiCtrl.result.name}} is doing {{ApiCtrl.result.status}}</h4>
     <div class="list card">
         <div class="item item-icon-left heart-rate">

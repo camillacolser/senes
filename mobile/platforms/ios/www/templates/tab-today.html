@@ -12,60 +12,36 @@
     <div class="smiley-icon" ng-show="ApiCtrl.result.status == 'not doing great'">
       <i class="icon ion-sad-outline"></i>
     </div>
-    <h4>{{ApiCtrl.result.name}} is {{ApiCtrl.result.status}}</h4>
+    <h4>{{ApiCtrl.result.name}}</br> is {{ApiCtrl.result.status}}</h4>
     <div class="list card">
-        <div class="item item-icon-left heart-rate">
-          <div class="row">
-            <div class="col-5">
-              <i class="icon ion-heart"></i>
-            </div>
-            <div class="col col-75">
-              Heart Rate
-            </div>
-            <div class="col col-20" style="text-align:left">
-              {{ApiCtrl.result.restingHeartRate}} bpm
-            </div>
-          </div>
-        </div>
+      <div class="item item-icon-left heart-rate">
+        <i class="icon ion-heart"></i>
+        Heart Rate
+        <span class="item-note">
+          {{ApiCtrl.result.restingHeartRate}} bpm
+        </span>
+      </div>
       <div class="item item-icon-left" id="step-count">
-        <div class="row">
-          <div class="col-5">
-            <i class="icon ion-android-walk"></i>
-          </div>
-          <div class="col col-75">
-            Physical activity
-          </div>
-          <div class="col col-20" style="text-align:left">
-            <!-- {{ApiCtrl.result.steps}} -->
-            1000 steps
-          </div>
-        </div>
+        <i class="icon ion-android-walk"></i>
+        Physical activity
+        <span class="item-note">
+          <!-- {{ApiCtrl.result.steps}} -->
+          1000 steps
+        </span>
       </div>
       <div class="item item-icon-left" id="sleep">
-        <div class="row">
-          <div class="col-5">
-            <i class="icon ion-ios-moon"></i>
-          </div>
-          <div class="col col-75">
-            Sleep last night
-          </div>
-          <div class="col col-20" style="text-align:left">
-            {{ApiCtrl.result.totalMinutesAsleep}}
-          </div>
-        </div>
+        <i class="icon ion-ios-moon"></i>
+        Sleep last night
+        <span class="item-note">
+          {{ApiCtrl.result.totalMinutesAsleep}}
+        </span>
       </div>
       <div class="item item-icon-left" id="sleep">
-        <div class="row">
-          <div class="col-5">
-            <i class="icon ion-ios-alarm"></i>
-          </div>
-          <div class="col col-75">
-            Alarm
-          </div>
-          <div class="col col-20" style="text-align:left">
-            17:00
-          </div>
-        </div>
+        <i class="icon ion-ios-alarm"></i>
+        Reminders
+        <span class="item-note">
+          17:00
+        </span>
       </div>
     </div>
     <div class="summary-block">

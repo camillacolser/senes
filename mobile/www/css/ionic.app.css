@@ -9732,13 +9732,13 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
+html {
+  background-color: #F0F0F0; }
+
 h3 {
   text-align: center; }
 
 h4 {
-  text-align: center; }
-
-p {
   text-align: center; }
 
 a {
@@ -9746,13 +9746,17 @@ a {
   text-decoration: none;
   font-weight: bold; }
 
-.item i {
-  margin-right: 20px; }
+.item-icon-left i.icon {
+  left: 16px; }
+
+.item {
+  padding: 18px 18px 18px 65px; }
 
 button {
   font-weight: bold; }
 
-#logo {
+.login-screen {
+  text-align: center;
   background-color: #F0F0F0; }
 
 .app-logo {
@@ -9763,12 +9767,14 @@ button {
   margin-bottom: 50px;
   font-size: 18px; }
 
-.device-provider p {
-  margin-top: 50px;
-  font-size: 14px; }
-
-.device-provider img {
-  width: 65px; }
+.device-provider {
+  text-align: center; }
+  .device-provider p {
+    margin-top: 50px;
+    font-size: 14px;
+    color: #666666; }
+  .device-provider img {
+    width: 65px; }
 
 .tab-item {
   font-size: 16px;
@@ -9786,8 +9792,8 @@ button {
 .item {
   color: #373F47; }
 
-.item p {
-  text-align: left; }
+.item-note {
+  color: #666666; }
 
 .smiley-icon {
   text-align: center;
@@ -9798,4 +9804,6 @@ button {
 .summary-block {
   text-align: center;
   margin-bottom: 20px;
-  font-size: 12px; }
+  font-size: 12px;
+  text-align: center;
+  color: #666666; }

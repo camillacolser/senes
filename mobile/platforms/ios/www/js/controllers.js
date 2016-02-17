@@ -21,8 +21,8 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
 .controller('ApiController', function(ApiFactory, $scope, ApiFactoryPost) {
   var self = this;
 
-  self.callApi = function() {
-    ApiFactory.query()
+  self.callApi = function(period) {
+    ApiFactory.query(period)
     .then(function(response){
       self.result = response.data;
     });
@@ -37,7 +37,7 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
 
   $scope.doRefresh =
    function() {
-     self.callApi();
+     self.callApi(period);
      $scope.$broadcast('scroll.refreshComplete');
      $scope.$apply();
   };

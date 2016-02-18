@@ -48,15 +48,18 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
      $scope.$apply();
   };
 
+  // Triggered on a button click, or some other target
+ $scope.showPopup = function() {
+   $scope.data = {}
+   var myPopup = popupFactory.getPopup($scope);
+   // An elaborate, custom popup
+   myPopup.then(function(res) {
+     console.log('Tapped!', res);
+   });
+  };
 
-  $scope.showPopup = function() {
-     $scope.data = {};
-     var myPopup = PopupFactory.getPopup($scope);
-     // An elaborate, custom popup
-     myPopup.then(function(res) {
-       console.log('Tapped!', res);
-     });
-    };
+
+
 })
 
 .controller('AuthenticationController', function ($scope, $state) {

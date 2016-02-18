@@ -67,6 +67,41 @@ angular.module('seniorHealth.services', ['ionic'])
 }])
 
 
+.factory('popupFactory', ['$ionicPopup', function($ionicPopup, $scope) {
+  function getPopup(scope) {
+    return $ionicPopup.show({
+      template: '<input type = "time" ng-model="data.model">',
+      title: 'Pill reminder',
+      subTitle: '',
+      scope: $scope,
+
+      buttons: [
+        { text: 'Cancel' }, {
+          text: '<b>Save</b>',
+          type: 'button-positive',
+          onTap: function(e) {
+
+            if (!$scope.data.model) {
+              //don't allow the user to close unless he enters model...
+              e.preventDefault();
+            } else {
+              ApiFactoryPost.query($scope.data.model);
+              self.alarmDisplay = window.localStorage.alarmDisplay;
+              return $scope.data.model;
+            }
+          }
+        }
+      ]
+    });
+  }
+
+  return {
+    getPopup: getPopup
+  };
+}])
+
+
+
 
 
 .factory('FitbitLoginService', function($q) {

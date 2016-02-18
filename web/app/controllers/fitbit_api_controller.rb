@@ -2,7 +2,7 @@ class FitbitApiController < ApplicationController
   include FitbitApiHelper
 
   def today
-    devise_id = params[:id]
+    devise_id = params[:user_id]
     @user = User.find_by(id: devise_id)
     client = @user.fitbit_client
     heart_parsed = client.heart_rate_on_date('1d')['activities-heart'][0]['value']['restingHeartRate']
@@ -25,7 +25,7 @@ class FitbitApiController < ApplicationController
   end
 
   def week
-    devise_id = params[:id]
+    devise_id = params[:user_id]
     @user = User.find_by(id: devise_id)
     client = @user.fitbit_client
     heart_parsed = client.heart_rate_on_date('7d')['activities-heart'][0]['value']['restingHeartRate']
@@ -44,7 +44,7 @@ class FitbitApiController < ApplicationController
   end
 
   def settings
-    devise_id = params[:id]
+    devise_id = params[:user_id]
     @user = User.find_by(id: devise_id)
     client = @user.fitbit_client
     @json = {

@@ -23,6 +23,9 @@
         <param name="android-package" value="io.ionic.keyboard.IonicKeyboard" />
         <param name="onload" value="true" />
     </feature>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
     <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
     <icon density="mdpi" src="resources/android/icon/drawable-mdpi-icon.png" />
     <icon density="hdpi" src="resources/android/icon/drawable-hdpi-icon.png" />
@@ -41,6 +44,9 @@
     <splash density="port-xhdpi" src="resources/android/splash/drawable-port-xhdpi-screen.png" />
     <splash density="port-xxhdpi" src="resources/android/splash/drawable-port-xxhdpi-screen.png" />
     <splash density="port-xxxhdpi" src="resources/android/splash/drawable-port-xxxhdpi-screen.png" />
+>>>>>>> f21c8fb143a51445e8ca1d8b3f069107a110a57a
+=======
+>>>>>>> 058eeb70fc43fc26d6b3bbd96daaee69dbcd86f8
     <name>HelloCordova</name>
     <description>
         An Ionic Framework and Cordova project.
@@ -55,6 +61,12 @@
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="16" />
     <preference name="BackupWebStorage" value="none" />
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="3000" />
+>>>>>>> f21c8fb143a51445e8ca1d8b3f069107a110a57a
+=======
+>>>>>>> 058eeb70fc43fc26d6b3bbd96daaee69dbcd86f8
 </widget>

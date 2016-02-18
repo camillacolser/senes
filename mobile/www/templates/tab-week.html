@@ -2,46 +2,23 @@
   <ion-content class="padding" ng-controller="ApiController as ApiCtrl" ng-init="ApiCtrl.callApi('week')">
     <div class="list card">
       <div class="item item-icon-left item-text-wrap" id="heart-rate-week">
-        <div class="row">
-          <div class="col col-5">
-            <i class="icon ion-heart"></i>
-          </div>
-          <div class="col col-95">
-            <h2>Heart Rate</h2>
-            <p>Jeff's heart rate was <strong>{{ApiCtrl.result.heartRateStatus}}</strong>.</p>
-          </div>
-        </div>
+        <i class="icon ion-heart"></i>
+        Heart Rate
+        <p>{{ApiCtrl.result.name}}'s heart rate was <strong>{{ApiCtrl.result.heartRateStatus}}</strong></p>
       </div>
       <div class="item item-icon-left item-text-wrap" id="step-count-week">
-        <div class="row">
-          <div class="col col-5">
-            <i class="icon ion-android-walk"></i>
-          </div>
-          <div class="col col-95">
-            <h2>Heart Rate</h2>
-            <p>Jeff's physical activity has been <strong>{{ApiCtrl.result.stepsStatus}}</strong>.</p>
-          </div>
-        </div>
+        <i class="icon ion-android-walk"></i>
+        <h2>Physical activity</h2>
+        <p>{{ApiCtrl.result.name}}'s physical activity was <strong>{{ApiCtrl.result.stepsStatus}}</strong>.</p>
       </div>
       <div class="item item-icon-left item-text-wrap" id="sleep-week">
-        <div class="row">
-          <div class="col col-5">
-            <i class="icon ion-ios-moon"></i>
-          </div>
-          <div class="col col-95">
-            <h2>Sleep</h2>
-            <p>Jeff's sleep has been <strong>{{ApiCtrl.result.sleepStatus}}</strong></p>
-          </div>
-        </div>
+        <i class="icon ion-ios-moon"></i>
+        <h2>Sleep</h2>
+        <p>{{ApiCtrl.result.name}}'s sleep was <strong>{{ApiCtrl.result.sleepStatus}}</strong></p>
       </div>
     </div>
     <div class="summary-block">
-      <p>This is a summary of Jeff's past week. If you find that some values are out of normal, please remember to check with your doctor</p>
+      <p>This is a summary of {{ApiCtrl.result.name}}'s past week. If the data is unusal, consider checking with their doctor</p>
     </div>
-
-    <div class="summary-block">
-      <p>This is a summary of Jeff's past week. If you find that some values are out of normal, please remember to check with your doctor</p>
-    </div>
-
   </ion-content>
 </ion-view>

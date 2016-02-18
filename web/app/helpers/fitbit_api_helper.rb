@@ -7,12 +7,9 @@ module FitbitApiHelper
   end
 
   def heart_evaluator(heart_rate)
-    heart_rate = heart_rate.to_i
-    if heart_rate == nil
-      return 1
-    elsif heart_rate_bad?(heart_rate)
+    if heart_rate_bad?(heart_rate.to_i)
       return 0
-    elsif heart_rate_good?(heart_rate)
+    elsif heart_rate_good?(heart_rate.to_i)
       return 2
     else
       return 1
@@ -41,21 +38,31 @@ module FitbitApiHelper
     end
   end
 
-  def bad_ok_good_status(heart_parsed, sleep_parsed, steps_parsed)
+  def overall_today_status(heart_parsed, sleep_parsed, steps_parsed)
     result = heart_evaluator(heart_parsed) + sleep_evaluator(sleep_parsed) + steps_evaluator(steps_parsed)
     if result <= 2
-      return 'not great'
+      return 'not doing great'
     elsif result <= 4
+      return 'doing ok'
+    else
+      return 'doing great'
+    end
+  end
+
+  def single_today_status(result)
+    if good_result?(result)
+      return 'great'
+    elsif ok_result?(result)
       return 'ok'
     else
-      return 'great'
+      return 'bad'
     end
   end
 
   def week_status(result)
-    if result == 2
+    if good_result?(result)
       return 'above average'
-    elsif result == 1
+    elsif ok_result?(result)
       return 'normal'
     else
       return 'below average'
@@ -73,7 +80,7 @@ module FitbitApiHelper
   private
 
   def heart_rate_bad?(heart_rate)
-    heart_rate <= 40 || heart_rate >= 100
+    heart_rate <= 40 && heart_rate > 0 || heart_rate >= 100
   end
 
   def heart_rate_good?(heart_rate)
@@ -94,5 +101,13 @@ module FitbitApiHelper
 
   def steps_ok?(steps)
     steps < 3000
+  end
+
+  def good_result?(result)
+    result == 2
+  end
+
+  def ok_result?(result)
+    result == 1
   end
 end

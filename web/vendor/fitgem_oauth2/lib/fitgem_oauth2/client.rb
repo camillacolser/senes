@@ -61,6 +61,13 @@ module FitgemOauth2
       JSON.parse(response.body).merge!(response.headers)
     end
 
+    def delete_call(url)
+      response = connection.delete(url)  do |request|
+        request.headers['Authorization'] = "Bearer #{token}"
+        request.headers['Content-Type'] = "application/x-www-form-urlencoded"
+      end
+    end
+
     def get_call_array(url)
       response = connection.get(url)  do |request|
         request.headers['Authorization'] = "Bearer #{token}"

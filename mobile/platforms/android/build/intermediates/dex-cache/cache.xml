@@ -2,11 +2,19 @@
 <items version="2" >
 
     <item
+<<<<<<< HEAD
+        jar="/Users/alan/Projects/senior-health/mobile/platforms/android/build/intermediates/exploded-aar/android/CordovaLib/unspecified/debug/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="120fcf74ba993a5f0dde8f74e160018519d2cb9f">
+        <dex dex="/Users/alan/Projects/senior-health/mobile/platforms/android/build/intermediates/pre-dexed/debug/CordovaLib-unspecified-debug_cc52199668476de3e833f9e8bd48800ce1b59e65.jar" />
+=======
         jar="/Users/Jamie/Documents/final/senior-health/mobile/platforms/android/build/intermediates/exploded-aar/android/CordovaLib/unspecified/debug/jars/classes.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="0f92550f4338daa095ea0996a96836654bed6203">
+        sha1="d182ae089a416e4975acbd7d18df0bbc4c382d30">
         <dex dex="/Users/Jamie/Documents/final/senior-health/mobile/platforms/android/build/intermediates/pre-dexed/debug/CordovaLib-unspecified-debug_b13ec2b0e4dff8ce594a679688e37ad8b9fc6e4d.jar" />
+>>>>>>> f21c8fb143a51445e8ca1d8b3f069107a110a57a
     </item>
 
 </items>

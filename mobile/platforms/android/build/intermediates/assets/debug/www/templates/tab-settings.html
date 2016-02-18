@@ -1,10 +1,28 @@
 <ion-view view-title="Settings">
+<<<<<<< HEAD
+<<<<<<< HEAD
+  <ion-content class="padding" ng-controller="ApiController as ApiCtrl" ng-init="ApiCtrl.callApi()">
+    <div class="list card">
+      <div class="item item-avatar">
+        <img src="{{ApiCtrl.result.avatar}}">
+        Caring for:<br>
+        <strong>{{ApiCtrl.result.name}}</strong>
+=======
   <ion-content>
     <div class="list">
+=======
+  <ion-content class="padding" ng-controller="ApiController as ApiCtrl" ng-init="ApiCtrl.callApi()">
+    <div class="list card">
+>>>>>>> 058eeb70fc43fc26d6b3bbd96daaee69dbcd86f8
       <div class="item item-avatar">
-        <img src="img/adam.jpg">
+        <img src="{{ApiCtrl.result.avatar}}">
         Caring for:<br>
+<<<<<<< HEAD
         <strong>Jeff</strong>
+>>>>>>> f21c8fb143a51445e8ca1d8b3f069107a110a57a
+=======
+        <strong>{{ApiCtrl.result.name}}</strong>
+>>>>>>> 058eeb70fc43fc26d6b3bbd96daaee69dbcd86f8
       </div>
     <div class="item item-divider">
       Notifications
@@ -23,6 +41,26 @@
         Weekly summary
         <label class="toggle toggle-calm">
           <input type="checkbox">
+          <div class="track">
+            <div class="handle"></div>
+          </div>
+        </label>
+      </li>
+      <div class="item item-divider">
+        Alarms
+      </div>
+      <li>
+        <label class="item item-input">
+        Pill Reminder
+          <input type="time" ng-model="ApiCtrl.pillAlarm" name="pillAlarm">
+          <div class="track">
+            <div class="handle"></div>
+          </div>
+        </label>
+      </li>
+      <li>
+        <label class="item item-input">
+          <button class="button button-clear button-positive text-center" ng-click="ApiCtrl.setAlarms(ApiCtrl.pillAlarm);">Save alarms</button>
           <div class="track">
             <div class="handle"></div>
           </div>

@@ -1,26 +1,24 @@
 angular.module('seniorHealth.controllers', ['LocalStorageModule'])
 
-.controller('TodayCtrl', function($scope) {})
+.controller('TodayCtrl', function($scope) {
+  $scope.$on('$ionicView.enter', function(e) {
+    $scope.$apply();
+  });
+})
 
 .controller('WeekCtrl', function($scope) {
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
+  $scope.$on('$ionicView.enter', function(e) {
+    $scope.$apply();
+  });
 })
 
-.controller('SettingsCtrl', function($scope, ApiFactory) {
+.controller('SettingsCtrl', function($scope) {
   var self = this;
 
-  self.setAlarms = function(pillAlarm) {
 
-  };
 })
 
-.controller('ApiController', function(ApiFactory, $scope) {
+.controller('ApiController', function(ApiFactory, $scope, ApiFactoryPost, deleteAlarm, $ionicPopup, updateAlarm) {
   var self = this;
 
   self.callApi = function(period) {
@@ -30,15 +28,67 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
     });
   };
 
+  self.alarmDisplay = window.localStorage.alarmDisplay;
+
+
+  self.deleteAlarm = function() {
+    deleteAlarm.query(window.localStorage.pillAlarm);
+  };
+
+  self.updateAlarm = function() {
+    updateAlarm.query(window.localStorage.pillAlarm);
+  };
+
+  self.setAlarms = function() {
+    ApiFactoryPost.query(self.pillAlarm);
+    self.pillAlarm = window.localStorage.pillAlarm;
+  };
+
   $scope.doRefresh =
-   function() {
+   function(period) {
      self.callApi(period);
      $scope.$broadcast('scroll.refreshComplete');
      $scope.$apply();
   };
+
+
+  // When button is clicked, the popup will be shown...
+   $scope.showPopup = function() {
+      $scope.data = {};
+
+      // Custom popup
+      var myPopup = $ionicPopup.show({
+         template: '<input type = "time" ng-model = "data.model">',
+         title: 'Pill reminder',
+         subTitle: '',
+         scope: $scope,
+
+         buttons: [
+            { text: 'Cancel' }, {
+               text: '<b>Save</b>',
+               type: 'button-positive',
+                  onTap: function(e) {
+
+                     if (!$scope.data.model) {
+                        //don't allow the user to close unless he enters model...
+                           e.preventDefault();
+                     } else {
+                       ApiFactoryPost.query($scope.data.model);
+                       self.alarmDisplay = window.localStorage.alarmDisplay;
+                       return $scope.data.model;
+                     }
+                  }
+            }
+         ]
+      });
+
+      myPopup.then(function(res) {
+         console.log('Tapped!', res);
+      });
+   };
 })
 
-.controller('AuthenticationController', function ($scope, $state) {
+.controller('AuthenticationController', function ($scope) {
   // Check our local storage for the proper credentials to ensure we are logged in, this means users can't get past app unless they select a username
   if (window.localStorage.seniorId) {
     // ===== UNCOMMENT TWO LINES BELOW & comment 1 LINE ABOVE FOR STYLING =====
@@ -50,7 +100,8 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
     $scope.needsAuthentication = true;
   }
   $scope.logout = function () {
-    window.localStorage.clearAll();
+
+    window.localStorage.clear();
     location.href=location.pathname;
   };
 

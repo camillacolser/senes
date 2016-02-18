@@ -2,7 +2,7 @@ class FitbitApiController < ApplicationController
   include FitbitApiHelper
 
   def today
-    devise_id = params[:id]
+    devise_id = params[:user_id]
     @user = User.find_by(id: devise_id)
     client = @user.fitbit_client
     heart_parsed = client.heart_rate_on_date('1d')['activities-heart'][0]['value']['restingHeartRate']
@@ -12,9 +12,12 @@ class FitbitApiController < ApplicationController
       'battery': client.device_info[0]['battery'],
       'lastSyncTime': client.device_info[0]['lastSyncTime'],
       'restingHeartRate': heart_parsed,
+      'heartRateStatus': single_today_status(heart_evaluator(heart_parsed)),
       'totalMinutesAsleep': format_sleep(sleep_parsed),
+      'sleepStatus': single_today_status(sleep_evaluator(sleep_parsed)),
       'steps': steps_parsed,
-      'status': bad_ok_good_status(heart_parsed, sleep_parsed, steps_parsed),
+      'stepsStatus': single_today_status(steps_evaluator(steps_parsed)),
+      'status': overall_today_status(heart_parsed, sleep_parsed, steps_parsed),
       'name': client.name['user']['fullName'],
       'avatar': client.name['user']['avatar']
     }
@@ -22,7 +25,7 @@ class FitbitApiController < ApplicationController
   end
 
   def week
-    devise_id = params[:id]
+    devise_id = params[:user_id]
     @user = User.find_by(id: devise_id)
     client = @user.fitbit_client
     heart_parsed = client.heart_rate_on_date('7d')['activities-heart'][0]['value']['restingHeartRate']
@@ -34,33 +37,21 @@ class FitbitApiController < ApplicationController
       'steps': steps_parsed,
       'heartRateStatus': week_status(heart_evaluator(heart_parsed)),
       'sleepStatus': week_status(sleep_evaluator(sleep_parsed)),
-      'stepsStatus': week_status(steps_evaluator(steps_parsed))
+      'stepsStatus': week_status(steps_evaluator(steps_parsed)),
+      'name': client.name['user']['fullName']
     }
     render json: @json
   end
 
-  def set_alarm
-    devise_id = params[:id]
-    time = params[:time]
-    client = User.find_by(id: devise_id).fitbit_client
-    tracker_id = client.device_info[0]['id']
-    response = client.post_alarm(tracker_id, time)
-    render json: { 'response': response }
-  end
-
-  def alarms
-    devise_id = params[:id]
-    client = User.find_by(id: devise_id).fitbit_client
-    tracker_id = client.device_info[0]['id']
-    response = client.get_alarms(tracker_id)['trackerAlarms']
-    render json: { 'trackerAlarms': response }
-  end
-
-  def tracker_id
-    devise_id = params[:id]
-    client = User.find_by(id: devise_id).fitbit_client
-    response = client.device_info[0]['id']
-    render json: { 'trackerId': response }
+  def settings
+    devise_id = params[:user_id]
+    @user = User.find_by(id: devise_id)
+    client = @user.fitbit_client
+    @json = {
+      'name': client.name['user']['fullName'],
+      'avatar': client.name['user']['avatar']
+    }
+    render json: @json
   end
 
   def subscription

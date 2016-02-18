@@ -1,11 +1,29 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+<ion-view view-title="Today" >
+=======
 <ion-view view-title="Today">
+>>>>>>> f21c8fb143a51445e8ca1d8b3f069107a110a57a
+=======
+<ion-view view-title="Today" >
+>>>>>>> 058eeb70fc43fc26d6b3bbd96daaee69dbcd86f8
   <ion-content class="padding" ng-controller="ApiController as ApiCtrl" ng-init="ApiCtrl.callApi()">
     <ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh()">
     </ion-refresher>
     <!-- <button type="button" name="button" ng-click="ApiCtrl.callApi()">TRY</button> -->
     <div class="smiley-icon"><i class="icon ion-happy-outline"></i></div>
+<<<<<<< HEAD
+<<<<<<< HEAD
+    <h4>{{ApiCtrl.result.name}} is doing {{ApiCtrl.result.status}}</h4>
+    <div class="list card">
+=======
     <h3>Jeff is doing ok today.</h3>
     <div class="list">
+>>>>>>> f21c8fb143a51445e8ca1d8b3f069107a110a57a
+=======
+    <h4>{{ApiCtrl.result.name}} is doing {{ApiCtrl.result.status}}</h4>
+    <div class="list card">
+>>>>>>> 058eeb70fc43fc26d6b3bbd96daaee69dbcd86f8
         <div class="item item-icon-left heart-rate">
           <div class="row">
             <div class="col col-5">
@@ -25,7 +43,15 @@
             <i class="icon ion-android-walk"></i>
           </div>
           <div class="col col-75">
+<<<<<<< HEAD
+<<<<<<< HEAD
+            Physical activity
+=======
             Step Count
+>>>>>>> f21c8fb143a51445e8ca1d8b3f069107a110a57a
+=======
+            Physical activity
+>>>>>>> 058eeb70fc43fc26d6b3bbd96daaee69dbcd86f8
           </div>
           <div class="col col-20" style="text-align:right">
             {{ApiCtrl.result.steps}}
@@ -38,17 +64,55 @@
             <i class="icon ion-ios-moon"></i>
           </div>
           <div class="col col-75">
+<<<<<<< HEAD
+<<<<<<< HEAD
+            Sleep last night
+=======
             Sleep
+>>>>>>> f21c8fb143a51445e8ca1d8b3f069107a110a57a
+=======
+            Sleep last night
+>>>>>>> 058eeb70fc43fc26d6b3bbd96daaee69dbcd86f8
           </div>
           <div class="col col-20" style="text-align:right">
             {{ApiCtrl.result.totalMinutesAsleep}}
           </div>
         </div>
       </div>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 058eeb70fc43fc26d6b3bbd96daaee69dbcd86f8
+      <div class="item item-icon-left" id="sleep">
+        <div class="row">
+          <div class="col col-5">
+            <i class="icon ion-ios-alarm"></i>
+          </div>
+          <div class="col col-75">
+            Alarm
+          </div>
+          <div class="col col-20" style="text-align:right">
+            17:00
+          </div>
+        </div>
+      </div>
+<<<<<<< HEAD
+    </div>
+    <div class="summary-block">
+      last synced: {{ApiCtrl.result.lastSyncTime | date :'MMM dd, HH:mm'}} -
+      battery level: {{ApiCtrl.result.battery}}
+=======
     </div>
     <div class="summary-block">
       Device last synced: {{ApiCtrl.result.lastSyncTime}}<br>
       Battery level: {{ApiCtrl.result.battery}}
+>>>>>>> f21c8fb143a51445e8ca1d8b3f069107a110a57a
+=======
+    </div>
+    <div class="summary-block">
+      last synced: {{ApiCtrl.result.lastSyncTime | date :'MMM dd, HH:mm'}} -
+      battery level: {{ApiCtrl.result.battery}}
+>>>>>>> 058eeb70fc43fc26d6b3bbd96daaee69dbcd86f8
     </div>
   </ion-content>
 </ion-view>

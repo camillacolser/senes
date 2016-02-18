@@ -1,6 +1,10 @@
 [
     {
+<<<<<<< HEAD
+        "outputFile": "/Users/alan/Projects/senior-health/mobile/platforms/android/build/intermediates/res/merged/debug/values/values.xml",
+=======
         "outputFile": "/Users/Jamie/Documents/final/senior-health/mobile/platforms/android/build/intermediates/res/merged/debug/values/values.xml",
+>>>>>>> f21c8fb143a51445e8ca1d8b3f069107a110a57a
         "map": [
             {
                 "to": {
@@ -11,7 +15,11 @@
                     "endOffset": 114
                 },
                 "from": {
+<<<<<<< HEAD
+                    "file": "/Users/alan/Projects/senior-health/mobile/platforms/android/res/values/strings.xml",
+=======
                     "file": "/Users/Jamie/Documents/final/senior-health/mobile/platforms/android/res/values/strings.xml",
+>>>>>>> f21c8fb143a51445e8ca1d8b3f069107a110a57a
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
@@ -30,7 +38,11 @@
                     "endOffset": 164
                 },
                 "from": {
+<<<<<<< HEAD
+                    "file": "/Users/alan/Projects/senior-health/mobile/platforms/android/res/values/strings.xml",
+=======
                     "file": "/Users/Jamie/Documents/final/senior-health/mobile/platforms/android/res/values/strings.xml",
+>>>>>>> f21c8fb143a51445e8ca1d8b3f069107a110a57a
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -49,7 +61,11 @@
                     "endOffset": 223
                 },
                 "from": {
+<<<<<<< HEAD
+                    "file": "/Users/alan/Projects/senior-health/mobile/platforms/android/res/values/strings.xml",
+=======
                     "file": "/Users/Jamie/Documents/final/senior-health/mobile/platforms/android/res/values/strings.xml",
+>>>>>>> f21c8fb143a51445e8ca1d8b3f069107a110a57a
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,

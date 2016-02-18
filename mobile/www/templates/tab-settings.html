@@ -1,5 +1,5 @@
 <ion-view view-title="Settings">
-  <ion-content class="padding" ng-controller="ApiController as ApiCtrl" ng-init="ApiCtrl.callApi()">
+  <ion-content class="padding" ng-controller="ApiController as ApiCtrl" ng-init="ApiCtrl.callApi('settings')">
     <div class="list card">
       <div class="item item-avatar">
         <img src="{{ApiCtrl.result.avatar}}">
@@ -34,15 +34,23 @@
       <li>
         <label class="item item-input">
         Pill Reminder
-          <input type="time" ng-model="ApiCtrl.pillAlarm" name="pillAlarm">
+          <input class="col text-right" ng-click = "showPopup()" ng-model="ApiCtrl.pillAlarm" name="pillAlarm">
+
           <div class="track">
             <div class="handle"></div>
           </div>
+
         </label>
       </li>
+      <button class="icon ion-minus-circled" ng-click="ApiCtrl.deleteAlarm();">delete</button>
+            <button class="icon ion-minus-circled" ng-click="ApiCtrl.updateAlarm();">update</button>
       <li>
         <label class="item item-input">
-          <button class="button button-clear button-positive text-center" ng-click="ApiCtrl.setAlarms(ApiCtrl.pillAlarm);">Save alarms</button>
+<<<<<<< HEAD
+          <button class="button button-clear button-calm text-center" ng-click="ApiCtrl.setAlarms();">Save alarms</button>
+=======
+          <button class="button button-clear button-positive" ng-click="ApiCtrl.setAlarms();">Save alarms</button>
+>>>>>>> f834ea785b80ff11a183932c370c77056999a9f2
           <div class="track">
             <div class="handle"></div>
           </div>

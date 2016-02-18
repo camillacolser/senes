@@ -9,7 +9,7 @@ describe('AuthenticationController', function() {
 
   describe('initializes', function() {
     it('with authenticated set to false', function() {
-      expect(scope.Authenticated).toBeFalsy();
+      expect(scope.Authenticated).toBeUndefined();
     });
 
     it('with needsAuthentication set to true', function() {

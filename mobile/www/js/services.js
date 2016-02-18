@@ -66,9 +66,6 @@ angular.module('seniorHealth.services', ['ionic'])
   };
 }])
 
-
-
-
 .factory('FitbitLoginService', function($q) {
   var url = address+"/users/auth/fitbit_oauth2";
   var loginWindow, token, hasToken, userId, hasUserId, hasSeniorId;

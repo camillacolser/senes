@@ -88,7 +88,7 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
    };
 })
 
-.controller('AuthenticationController', function ($scope, $state) {
+.controller('AuthenticationController', function ($scope) {
   // Check our local storage for the proper credentials to ensure we are logged in, this means users can't get past app unless they select a username
   if (window.localStorage.seniorId) {
     // ===== UNCOMMENT TWO LINES BELOW & comment 1 LINE ABOVE FOR STYLING =====
@@ -100,6 +100,7 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
     $scope.needsAuthentication = true;
   }
   $scope.logout = function () {
+
     window.localStorage.clearAll();
     location.href=location.pathname;
   };

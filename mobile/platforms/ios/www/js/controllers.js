@@ -18,7 +18,7 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
 
 })
 
-.controller('ApiController', function(ApiFactory, $scope, ApiFactoryPost, $ionicPopup) {
+.controller('ApiController', function(ApiFactory, $scope, ApiFactoryPost, deleteAlarm, $ionicPopup, updateAlarm) {
   var self = this;
 
   self.callApi = function(period) {
@@ -30,18 +30,18 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
 
   self.alarmDisplay = window.localStorage.alarmDisplay;
 
-  self.pillAlarm = undefined;
 
   self.deleteAlarm = function() {
-    ApiFactoryPost.query(self.pillAlarm);
-    self.alarmDisplay = window.localStorage.alarmDisplay;
-    $scope.$apply();
+    deleteAlarm.query(window.localStorage.pillAlarm);
+  };
+
+  self.updateAlarm = function() {
+    updateAlarm.query(window.localStorage.pillAlarm);
   };
 
   self.setAlarms = function() {
     ApiFactoryPost.query(self.pillAlarm);
-    self.alarmDisplay = window.localStorage.alarmDisplay;
-    $scope.$apply();
+    self.pillAlarm = window.localStorage.pillAlarm;
   };
 
   $scope.doRefresh =
@@ -88,7 +88,7 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
    };
 })
 
-.controller('AuthenticationController', function ($scope, $state) {
+.controller('AuthenticationController', function ($scope) {
   // Check our local storage for the proper credentials to ensure we are logged in, this means users can't get past app unless they select a username
   if (window.localStorage.seniorId) {
     // ===== UNCOMMENT TWO LINES BELOW & comment 1 LINE ABOVE FOR STYLING =====
@@ -100,6 +100,7 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
     $scope.needsAuthentication = true;
   }
   $scope.logout = function () {
+
     window.localStorage.clearAll();
     location.href=location.pathname;
   };

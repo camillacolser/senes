@@ -12,9 +12,12 @@ class FitbitApiController < ApplicationController
       'battery': client.device_info[0]['battery'],
       'lastSyncTime': client.device_info[0]['lastSyncTime'],
       'restingHeartRate': heart_parsed,
+      'heartRateStatus': single_today_status(heart_evaluator(heart_parsed)),
       'totalMinutesAsleep': format_sleep(sleep_parsed),
+      'sleepStatus': single_today_status(sleep_evaluator(sleep_parsed)),
       'steps': steps_parsed,
-      'status': bad_ok_good_status(heart_parsed, sleep_parsed, steps_parsed),
+      'stepsStatus': single_today_status(steps_evaluator(steps_parsed)),
+      'status': overall_today_status(heart_parsed, sleep_parsed, steps_parsed),
       'name': client.name['user']['fullName'],
       'avatar': client.name['user']['avatar']
     }
@@ -49,43 +52,6 @@ class FitbitApiController < ApplicationController
       'avatar': client.name['user']['avatar']
     }
     render json: @json
-  end
-
-  def set_alarm
-    devise_id = params[:id]
-    time = params[:time]
-    client = User.find_by(id: devise_id).fitbit_client
-    tracker_id = client.device_info[0]['id']
-    response = client.post_alarm(tracker_id, time)
-    render json: { 'response': response }
-  end
-
-  def alarms
-    devise_id = params[:id]
-    client = User.find_by(id: devise_id).fitbit_client
-    tracker_id = client.device_info[0]['id']
-    response = client.get_alarms(tracker_id)['trackerAlarms']
-    render json: { 'trackerAlarms': response }
-  end
-
-  def update_alarm
-    devise_id = params[:id]
-    client = User.find_by(id: devise_id).fitbit_client
-    tracker_id = client.device_info[0]['id']
-    alarms = client.get_alarms(tracker_id)['trackerAlarms']
-    alarm_id = find_alarm_id(alarms, params[:old_time])
-    response = client.update_alarm_call(tracker_id, alarm_id, params[:new_time])
-    render json: { 'response': response }
-  end
-
-  def delete_alarm
-    devise_id = params[:id]
-    client = User.find_by(id: devise_id).fitbit_client
-    tracker_id = client.device_info[0]['id']
-    alarms = client.get_alarms(tracker_id)['trackerAlarms']
-    alarm_id = find_alarm_id(alarms, params[:time])
-    client.delete_alarm_call(tracker_id, alarm_id)
-    render json: { 'result': 'Alarm deleted!' }
   end
 
   def subscription

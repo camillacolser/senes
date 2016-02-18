@@ -8,19 +8,18 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
 
-  get 'fitbit/:resource/:date.json' => 'fitbit_api#data_request'
-
   get 'fitbit/today' => 'fitbit_api#today'
   get 'fitbit/name' => 'fitbit_api#name'
   get 'fitbit/week' => 'fitbit_api#week'
   get 'fitbit/settings' => 'fitbit_api#settings'
 
-  get 'fitbit/alarms' => 'fitbit_api#alarms'
-  get 'fitbit/set_alarm' => 'fitbit_api#set_alarm'
-  get 'fitbit/delete_alarm' => 'fitbit_api#delete_alarm'
-  get 'fitbit/update_alarm' => 'fitbit_api#update_alarm'
+  get 'users/:user_id/fitbit/alarms' => 'alarm#index'
+  post 'users/:user_id/fitbit/alarms' => 'alarm#create'
+  put 'users/:user_id/fitbit/alarms/:id' => 'alarm#update'
+  delete 'users/:user_id/fitbit/alarms/:id' => 'alarm#destroy'
 
   get '/fitbit/subscription' => 'fitbit_api#subscription'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

@@ -109,6 +109,46 @@ button {
   color: $calm;
 }
 
-#settings > .item {
-    padding: 18px 18px 18px 18px;
+.settings > .item {
+  padding: 18px 18px 18px 18px;
+}
+
+// Popup
+
+.popup, .popup .button-default {
+  color: $base-color;
+}
+
+.popup-container .popup  {
+  border-radius: 8px;
+  background-color: $base-background-color;
+}
+
+.popup .button-positive {
+  background-color: $calm;
+  color: white;
+}
+
+.popup .button {
+  border-radius: 20px;
+}
+
+.button.button-positive.active, .button.button-positive.activated {
+  background-color: $calm;
+  color: white;
+}
+
+// Update popup
+.update-popup .popup-buttons .button:last-child {
+    margin-right: 0px;
+    top: 180px;
+    width: 225px;
+    position: absolute;
+    left: 10px;
+    background-color: transparent;
+    color: $calm;
+}
+
+.update-popup > .popup-container .popup {
+    height: 240px;
 }

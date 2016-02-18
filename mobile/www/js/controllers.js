@@ -12,10 +12,25 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
   });
 })
 
-.controller('SettingsCtrl', function($scope) {
+.controller('SettingsCtrl', function($scope, $ionicPopup, popupFactory, popupFactoryUpdate , AlarmFactory) {
+  $scope.showPopup = function() {
+    $scope.data = {};
+    var myPopup = popupFactory.getPopup($scope, AlarmFactory);
+    myPopup.then(function(res) {
+      console.log('Tapped!', res);
+    });
+   };
+
+ $scope.showPopupUpdate = function(alarm_id) {
+   $scope.data = {};
+   var myPopup = popupFactory.getPopup($scope, AlarmFactory, alarm_id);
+   myPopup.then(function(res) {
+     console.log('Tapped!', res);
+   });
+  };
 })
 
-.controller('ApiController', function(ApiFactory, $scope, $ionicPopup, popupFactory, AlarmFactory) {
+.controller('ApiController', function(ApiFactory, $scope) {
   var self = this;
 
   self.callApi = function(period) {
@@ -30,14 +45,6 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
      $scope.$broadcast('scroll.refreshComplete');
      $scope.$apply();
   };
-
- $scope.showPopup = function() {
-   $scope.data = {};
-   var myPopup = popupFactory.getPopup($scope, AlarmFactory);
-   myPopup.then(function(res) {
-     console.log('Tapped!', res);
-   });
-  };
 })
 
 .controller('AlarmController', function(ApiFactory, AlarmFactory, $scope, $ionicPopup, popupFactory) {
@@ -49,19 +56,6 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
       self.allAlarms = response.data.trackerAlarms;
     });
   };
-
-  // self.deleteAlarm = function() {
-  //   deleteAlarm.query(window.localStorage.pillAlarm);
-  // };
-
-  // self.updateAlarm = function() {
-  //   updateAlarm.query(window.localStorage.pillAlarm);
-  // };
-  //
-  // self.setAlarms = function() {
-  //   ApiFactoryPost.query(self.pillAlarm);
-  //   self.pillAlarm = window.localStorage.pillAlarm;
-  // };
 })
 
 .controller('AuthenticationController', function ($scope, $state) {

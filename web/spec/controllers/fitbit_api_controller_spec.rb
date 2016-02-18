@@ -87,22 +87,42 @@ describe FitbitApiController, type: :controller do
     end
   end
 
-  describe '#bad_ok_good_status' do
-    context 'today status is bad' do
+  describe '#single_today_status' do
+    context 'the status for one type of daily data is bad' do
+      it "returns 'bad'" do
+        expect(single_today_status(0)).to eq 'bad'
+      end
+    end
+
+    context 'the status for one type of daily data is ok' do
+      it "returns 'ok'" do
+        expect(single_today_status(1)).to eq 'ok'
+      end
+    end
+
+    context 'the status for one type of daily data is good' do
+      it "returns 'great'" do
+        expect(single_today_status(2)).to eq 'great'
+      end
+    end
+  end
+
+  describe '#overall_today_status' do
+    context 'overall today status is bad' do
       it "returns 'not doing great'" do
-        expect(bad_ok_good_status(35, 300, 1500)).to eq 'not doing great'
+        expect(overall_today_status(35, 300, 1500)).to eq 'not doing great'
       end
     end
 
-    context 'today status is ok' do
+    context 'overall today status is ok' do
       it "returns 'doing ok'" do
-        expect(bad_ok_good_status(100, 2500, 6000)).to eq 'doing ok'
+        expect(overall_today_status(100, 2500, 6000)).to eq 'doing ok'
       end
     end
 
-    context 'today status is good' do
+    context 'overall today status is good' do
       it "returns 'doing great'" do
-        expect(bad_ok_good_status(70, 500, 5000)).to eq 'doing great'
+        expect(overall_today_status(70, 500, 5000)).to eq 'doing great'
       end
     end
   end
@@ -131,5 +151,28 @@ describe FitbitApiController, type: :controller do
     it 'returns the alarmd id' do
       expect(find_alarm_id(alarms, time)).to eq 666
     end
+  end
+
+  describe 'API tests' do
+    require 'fakeweb'
+    require 'httparty'
+    # before do
+    #   OmniAuth.config.test_mode = true
+    #   OmniAuth.config.mock_auth[:fitbit] = OmniAuth::AuthHash.new({
+    #     :provider => 'fitbit',
+    #     :uid => '123545'
+    #     # etc.
+    #   })
+    # end
+
+    before do
+      FakeWeb.register_uri(:get, "http://localhost:3000/fitbit/today?id=1", :body => "Hello World!")
+    end
+
+    it 'returns "Hello World!"' do
+      response = HTTParty.get("http://localhost:3000/fitbit/today?id=1")
+      expect(response.body).to eq "Hello World!"
+    end
+
   end
 end

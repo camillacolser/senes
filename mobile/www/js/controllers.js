@@ -40,7 +40,16 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
   };
 })
 
-.controller('AlarmController', function(ApiFactory, $scope, ApiFactoryPost, deleteAlarm, $ionicPopup, updateAlarm, popupFactory) {
+.controller('AlarmController', function(ApiFactory, AlarmFactory, $scope, ApiFactoryPost, deleteAlarm, $ionicPopup, updateAlarm, popupFactory) {
+  self.pillAlarm = undefined;
+  self.allAlarms = [];
+
+  self.getAlarms = function() {
+    AlarmFactory.getAll().then(function(response){
+      self.allAlarms = response.body;
+    });
+  };
+
   self.deleteAlarm = function() {
     deleteAlarm.query(window.localStorage.pillAlarm);
   };

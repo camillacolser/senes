@@ -5,18 +5,30 @@ var address = localUrl;
 angular.module('seniorHealth.services', ['ionic'])
 
 .factory('ApiFactory', ['$http', function($http) {
-  var id;
-  id = window.localStorage.seniorId;
+  // var id = window.localStorage.seniorId;
+  var id = 2;
   return {
     query: function(period) {
       return $http({
-        url: address+'/fitbit/' + period + '?id=' + id ,
+        url: address+'/users/'+id+'/fitbit/' + period,
         method: 'GET'
       });
     }
   };
 }])
 
+.factory('AlarmFactory', ['$http', function($http) {
+  // var id = window.localStorage.seniorId;
+  var id = 2;
+  return {
+    getAll: function() {
+      return $http({
+        url: address+'/users/'+id+'/fitbit/alarms',
+        method: 'GET'
+      });
+    }
+  };
+}])
 
 
 .factory('ApiFactoryPost', ['$http', function($http) {

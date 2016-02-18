@@ -28,11 +28,16 @@
             </div>
           </label>
         </li>
-        <div ng-controller="AlarmController as alarmCtrl" ng-init="alarmCtrl.getAlarms()">
-          <div class="item item-divider" >
-            Alarms
-          </div>
-          <li>
+      <ul>
+      <div ng-controller="AlarmController as alarmCtrl" ng-init="alarmCtrl.getAlarms()">
+        <div class="item item-divider" >
+          Alarms
+        </div>
+          <ul>
+            <li class="item" ng-repeat="alarm in alarmCtrl.allAlarms.trackerAlarms" id="{{alarm.alarmId}}">
+              {{alarm.time}}
+            </li>
+            <li>
             <label class="item item-input">
               Pill Reminder
               <input class="col text-right" ng-click = "showPopup()" ng-model="alarmCtrl.pillAlarm" name="pillAlarm">
@@ -53,7 +58,7 @@
           </li>
         </ul>
       </div>
-  </div>
+    </div>
   <div class="padding">
     <button class="button button-block button-calm">
       <a href="logout()">Log out</a>

@@ -8526,7 +8526,7 @@ progress {
   display: inline-block;
   margin: 0;
   padding: 0 12px;
-  min-width: 52px;
+  min-width: 54px;
   min-height: 47px;
   border-width: 1px;
   border-style: solid;
@@ -8534,7 +8534,7 @@ progress {
   vertical-align: top;
   text-align: center;
   text-overflow: ellipsis;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 42px;
   cursor: pointer; }
   .button:hover {
@@ -9732,19 +9732,49 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
+html {
+  background-color: #F0F0F0; }
+
 h3 {
   text-align: center; }
 
 h4 {
   text-align: center; }
 
-p {
-  text-align: center; }
-
 a {
   color: white;
   text-decoration: none;
   font-weight: bold; }
+
+.item-icon-left i.icon {
+  left: 16px; }
+
+.item {
+  padding: 18px 18px 18px 65px; }
+
+button {
+  font-weight: bold; }
+
+.login-screen {
+  text-align: center;
+  background-color: #F0F0F0; }
+
+.app-logo {
+  width: 220px; }
+
+.strapline {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  font-size: 18px; }
+
+.device-provider {
+  text-align: center; }
+  .device-provider p {
+    margin-top: 50px;
+    font-size: 14px;
+    color: #666666; }
+  .device-provider img {
+    width: 65px; }
 
 .tab-item {
   font-size: 16px;
@@ -9762,8 +9792,8 @@ a {
 .item {
   color: #373F47; }
 
-.item p {
-  text-align: left; }
+.item-note {
+  color: #666666; }
 
 .smiley-icon {
   text-align: center;
@@ -9774,4 +9804,6 @@ a {
 .summary-block {
   text-align: center;
   margin-bottom: 20px;
-  font-size: 12px; }
+  font-size: 12px;
+  text-align: center;
+  color: #666666; }

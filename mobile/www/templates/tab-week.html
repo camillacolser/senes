@@ -2,43 +2,19 @@
   <ion-content class="padding" ng-controller="ApiController as ApiCtrl" ng-init="ApiCtrl.callApi('week')">
     <div class="list card">
       <div class="item item-icon-left item-text-wrap" id="heart-rate-week">
-        <div class="row">
-          <div class="col-5">
-            <i class="icon ion-heart"></i>
-          </div>
-          <div class="col col-center col-offset-5 text-left">
-            Heart Rate
-          </div>
-          <div class="col text-right">
-            <p>{{ApiCtrl.result.name}}'s heart rate was <strong>{{ApiCtrl.result.heartRateStatus}}</strong></p>
-          </div>
-        </div>
+        <i class="icon ion-heart"></i>
+        Heart Rate
+        <p>{{ApiCtrl.result.name}}'s heart rate was <strong>{{ApiCtrl.result.heartRateStatus}}</strong></p>
       </div>
       <div class="item item-icon-left item-text-wrap" id="step-count-week">
-        <div class="row">
-          <div class="col-5">
-            <i class="icon ion-android-walk"></i>
-          </div>
-          <div class="col col-center col-offset-5 text-left">
-            <h2>Physical activity</h2>
-          </div>
-          <div class="col text-right">
-            <p>{{ApiCtrl.result.name}}'s physical activity was <strong>{{ApiCtrl.result.stepsStatus}}</strong>.</p>
-          </div>
-        </div>
+        <i class="icon ion-android-walk"></i>
+        <h2>Physical activity</h2>
+        <p>{{ApiCtrl.result.name}}'s physical activity was <strong>{{ApiCtrl.result.stepsStatus}}</strong>.</p>
       </div>
       <div class="item item-icon-left item-text-wrap" id="sleep-week">
-        <div class="row">
-          <div class="col-5">
-            <i class="icon ion-ios-moon"></i>
-          </div>
-          <div class="col col-center col-offset-5 text-left">
-            <h2>Sleep</h2>
-          </div>
-          <div class="col text-right">
-            <p>{{ApiCtrl.result.name}}'s sleep was <strong>{{ApiCtrl.result.sleepStatus}}</strong></p>
-          </div>
-        </div>
+        <i class="icon ion-ios-moon"></i>
+        <h2>Sleep</h2>
+        <p>{{ApiCtrl.result.name}}'s sleep was <strong>{{ApiCtrl.result.sleepStatus}}</strong></p>
       </div>
     </div>
     <div class="summary-block">

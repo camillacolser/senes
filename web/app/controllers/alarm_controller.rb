@@ -22,7 +22,7 @@ class AlarmController < ApplicationController
     devise_id = params[:user_id]
     client = User.find_by(id: devise_id).fitbit_client
     tracker_id = client.device_info[0]['id']
-    response = client.update_alarm_call(tracker_id, params[:id], params[:new_time])
+    response = client.update_alarm_call(tracker_id, params[:id], params[:time])
     render json: { 'response': response }
   end
 

@@ -9807,3 +9807,6 @@ button {
   font-size: 12px;
   text-align: center;
   color: #666666; }
+
+.item a {
+  color: #50D4B5; }

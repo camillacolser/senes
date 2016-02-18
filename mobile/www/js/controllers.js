@@ -15,7 +15,7 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
 .controller('SettingsCtrl', function($scope) {
 })
 
-.controller('ApiController', function(ApiFactory, $scope, ApiFactoryPost, deleteAlarm, $ionicPopup, updateAlarm, popupFactory) {
+.controller('ApiController', function(ApiFactory, $scope, $ionicPopup, popupFactory) {
   var self = this;
 
   self.callApi = function(period) {
@@ -40,7 +40,7 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
   };
 })
 
-.controller('AlarmController', function(ApiFactory, AlarmFactory, $scope, ApiFactoryPost, deleteAlarm, $ionicPopup, updateAlarm, popupFactory) {
+.controller('AlarmController', function(ApiFactory, AlarmFactory, $scope, $ionicPopup, popupFactory) {
   var self = this;
 
   self.pillAlarm = undefined;
@@ -53,18 +53,18 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
     });
   };
 
-  self.deleteAlarm = function() {
-    deleteAlarm.query(window.localStorage.pillAlarm);
-  };
+  // self.deleteAlarm = function() {
+  //   deleteAlarm.query(window.localStorage.pillAlarm);
+  // };
 
-  self.updateAlarm = function() {
-    updateAlarm.query(window.localStorage.pillAlarm);
-  };
-
-  self.setAlarms = function() {
-    ApiFactoryPost.query(self.pillAlarm);
-    self.pillAlarm = window.localStorage.pillAlarm;
-  };
+  // self.updateAlarm = function() {
+  //   updateAlarm.query(window.localStorage.pillAlarm);
+  // };
+  //
+  // self.setAlarms = function() {
+  //   ApiFactoryPost.query(self.pillAlarm);
+  //   self.pillAlarm = window.localStorage.pillAlarm;
+  // };
 })
 
 .controller('AuthenticationController', function ($scope, $state) {

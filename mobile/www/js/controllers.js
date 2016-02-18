@@ -18,7 +18,7 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
 
 })
 
-.controller('ApiController', function(ApiFactory, $scope, ApiFactoryPost, $ionicPopup) {
+.controller('ApiController', function(ApiFactory, $scope, ApiFactoryPost, deleteAlarm, $ionicPopup, updateAlarm) {
   var self = this;
 
   self.callApi = function(period) {
@@ -30,18 +30,18 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
 
   self.alarmDisplay = window.localStorage.alarmDisplay;
 
-  self.pillAlarm = undefined;
 
   self.deleteAlarm = function() {
-    ApiFactoryPost.query(self.pillAlarm);
-    self.alarmDisplay = window.localStorage.alarmDisplay;
-    $scope.$apply();
+    deleteAlarm.query(window.localStorage.pillAlarm);
+  };
+
+  self.updateAlarm = function() {
+    updateAlarm.query(window.localStorage.pillAlarm);
   };
 
   self.setAlarms = function() {
     ApiFactoryPost.query(self.pillAlarm);
-    self.alarmDisplay = window.localStorage.alarmDisplay;
-    $scope.$apply();
+    self.pillAlarm = window.localStorage.pillAlarm;
   };
 
   $scope.doRefresh =

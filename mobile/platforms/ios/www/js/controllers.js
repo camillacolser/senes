@@ -75,8 +75,7 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
                      } else {
                        ApiFactoryPost.query($scope.data.model);
                        self.alarmDisplay = window.localStorage.alarmDisplay;
-                       $scope.$apply();
-                        return $scope.data.model;
+                       return $scope.data.model;
                      }
                   }
             }

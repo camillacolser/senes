@@ -35,12 +35,15 @@
         <label class="item item-input">
         Pill Reminder
           <input class="col text-right" ng-click = "showPopup()" ng-model="ApiCtrl.pillAlarm" name="pillAlarm">
-          <i class="icon ion-minus-circled" ng-click="ApiCtrl.deleteAlarm();"></i>
+
           <div class="track">
             <div class="handle"></div>
           </div>
+
         </label>
       </li>
+      <button class="icon ion-minus-circled" ng-click="ApiCtrl.deleteAlarm();">delete</button>
+            <button class="icon ion-minus-circled" ng-click="ApiCtrl.updateAlarm();">update</button>
       <li>
         <label class="item item-input">
           <button class="button button-clear button-positive" ng-click="ApiCtrl.setAlarms();">Save alarms</button>

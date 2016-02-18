@@ -13,12 +13,13 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
 })
 
 .controller('SettingsCtrl', function($scope) {
-  var self = this;
-
-
 })
 
+<<<<<<< HEAD
+.controller('ApiController', function(ApiFactory, $scope, $ionicPopup, popupFactory, AlarmFactory) {
+=======
 .controller('ApiController', function(ApiFactory, $scope, ApiFactoryPost, deleteAlarm, $ionicPopup, updateAlarm) {
+>>>>>>> 6dc61a75f6ec625c295391ebe4150eaf08de0aa1
   var self = this;
 
   self.callApi = function(period) {
@@ -28,6 +29,9 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
     });
   };
 
+<<<<<<< HEAD
+  $scope.doRefresh = function(period) {
+=======
   self.alarmDisplay = window.localStorage.alarmDisplay;
 
 
@@ -46,11 +50,45 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
 
   $scope.doRefresh =
    function(period) {
+>>>>>>> 6dc61a75f6ec625c295391ebe4150eaf08de0aa1
      self.callApi(period);
      $scope.$broadcast('scroll.refreshComplete');
      $scope.$apply();
   };
 
+<<<<<<< HEAD
+ $scope.showPopup = function() {
+   $scope.data = {};
+   var myPopup = popupFactory.getPopup($scope, AlarmFactory);
+   myPopup.then(function(res) {
+     console.log('Tapped!', res);
+   });
+  };
+})
+
+.controller('AlarmController', function(ApiFactory, AlarmFactory, $scope, $ionicPopup, popupFactory) {
+  var self = this;
+  self.allAlarms = [];
+
+  self.getAlarms = function() {
+    AlarmFactory.getAll().then(function(response){
+      self.allAlarms = response.data.trackerAlarms;
+    });
+  };
+
+  // self.deleteAlarm = function() {
+  //   deleteAlarm.query(window.localStorage.pillAlarm);
+  // };
+
+  // self.updateAlarm = function() {
+  //   updateAlarm.query(window.localStorage.pillAlarm);
+  // };
+  //
+  // self.setAlarms = function() {
+  //   ApiFactoryPost.query(self.pillAlarm);
+  //   self.pillAlarm = window.localStorage.pillAlarm;
+  // };
+=======
 
   // When button is clicked, the popup will be shown...
    $scope.showPopup = function() {
@@ -86,6 +124,7 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
          console.log('Tapped!', res);
       });
    };
+>>>>>>> 6dc61a75f6ec625c295391ebe4150eaf08de0aa1
 })
 
 .controller('AuthenticationController', function ($scope) {
@@ -110,7 +149,4 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
 
 .controller('LoginController', function($scope,FitbitLoginService) {
   $scope.fitbitlogin = FitbitLoginService.login;
-  $scope.promise = window.localStorage.promise;
-  $scope.url = window.localStorage.webUrl;
-  $scope.seniorId = window.localStorage.seniorId;
 });

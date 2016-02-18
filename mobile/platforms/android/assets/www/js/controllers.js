@@ -1,24 +1,21 @@
 angular.module('seniorHealth.controllers', ['LocalStorageModule'])
 
-.controller('TodayCtrl', function($scope) {})
+.controller('TodayCtrl', function($scope) {
+  $scope.$on('$ionicView.enter', function(e) {
+    $scope.$apply();
+  });
+})
 
 .controller('WeekCtrl', function($scope) {
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
+  $scope.$on('$ionicView.enter', function(e) {
+    $scope.$apply();
+  });
 })
 
 .controller('SettingsCtrl', function($scope) {
-  var self = this;
-
-
 })
 
-.controller('ApiController', function(ApiFactory, $scope, ApiFactoryPost) {
+.controller('ApiController', function(ApiFactory, $scope, $ionicPopup, popupFactory, AlarmFactory) {
   var self = this;
 
   self.callApi = function(period) {
@@ -28,19 +25,43 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
     });
   };
 
-  self.pillAlarm = undefined;
-
-  self.setAlarms = function() {
-    console.log('number1');
-    ApiFactoryPost.query(self.pillAlarm);
-  };
-
-  $scope.doRefresh =
-   function() {
+  $scope.doRefresh = function(period) {
      self.callApi(period);
      $scope.$broadcast('scroll.refreshComplete');
      $scope.$apply();
   };
+
+ $scope.showPopup = function() {
+   $scope.data = {};
+   var myPopup = popupFactory.getPopup($scope, AlarmFactory);
+   myPopup.then(function(res) {
+     console.log('Tapped!', res);
+   });
+  };
+})
+
+.controller('AlarmController', function(ApiFactory, AlarmFactory, $scope, $ionicPopup, popupFactory) {
+  var self = this;
+  self.allAlarms = [];
+
+  self.getAlarms = function() {
+    AlarmFactory.getAll().then(function(response){
+      self.allAlarms = response.data.trackerAlarms;
+    });
+  };
+
+  // self.deleteAlarm = function() {
+  //   deleteAlarm.query(window.localStorage.pillAlarm);
+  // };
+
+  // self.updateAlarm = function() {
+  //   updateAlarm.query(window.localStorage.pillAlarm);
+  // };
+  //
+  // self.setAlarms = function() {
+  //   ApiFactoryPost.query(self.pillAlarm);
+  //   self.pillAlarm = window.localStorage.pillAlarm;
+  // };
 })
 
 .controller('AuthenticationController', function ($scope, $state) {
@@ -64,7 +85,4 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
 
 .controller('LoginController', function($scope,FitbitLoginService) {
   $scope.fitbitlogin = FitbitLoginService.login;
-  $scope.promise = window.localStorage.promise;
-  $scope.url = window.localStorage.webUrl;
-  $scope.seniorId = window.localStorage.seniorId;
 });

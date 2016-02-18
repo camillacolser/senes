@@ -53,7 +53,6 @@ angular.module('seniorHealth', ['ionic', 'seniorHealth.controllers', 'seniorHeal
     }
   });
 
-  // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/today');
 
 });

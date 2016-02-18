@@ -48,11 +48,9 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
      $scope.$apply();
   };
 
-  // Triggered on a button click, or some other target
  $scope.showPopup = function() {
-   $scope.data = {}
+   $scope.data = {};
    var myPopup = popupFactory.getPopup($scope);
-   // An elaborate, custom popup
    myPopup.then(function(res) {
      console.log('Tapped!', res);
    });

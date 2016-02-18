@@ -90,6 +90,20 @@ angular.module('seniorHealth.services', ['ionic'])
               return $scope.data.model;
             }
           }
+        }, {
+          text: '<b>Delete</b>',
+          type: 'button-positive',
+          onTap: function(e) {
+
+            if (!$scope.data.model) {
+              //don't allow the user to close unless he enters model...
+              e.preventDefault();
+            } else {
+              ApiFactoryPost.query($scope.data.model);
+              self.alarmDisplay = window.localStorage.alarmDisplay;
+              return $scope.data.model;
+            }
+          }
         }
       ]
     });

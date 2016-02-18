@@ -127,9 +127,4 @@ describe FitbitApiController, type: :controller do
     end
   end
 
-  describe '#find_alarm_id' do
-    it 'returns the alarmd id' do
-      expect(find_alarm_id(alarms, time)).to eq 666
-    end
-  end
 end

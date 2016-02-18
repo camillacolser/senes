@@ -51,43 +51,6 @@ class FitbitApiController < ApplicationController
     render json: @json
   end
 
-  def set_alarm
-    devise_id = params[:id]
-    time = params[:time]
-    client = User.find_by(id: devise_id).fitbit_client
-    tracker_id = client.device_info[0]['id']
-    response = client.post_alarm(tracker_id, time)
-    render json: { 'response': response }
-  end
-
-  def alarms
-    devise_id = params[:id]
-    client = User.find_by(id: devise_id).fitbit_client
-    tracker_id = client.device_info[0]['id']
-    response = client.get_alarms(tracker_id)['trackerAlarms']
-    render json: { 'trackerAlarms': response }
-  end
-
-  def update_alarm
-    devise_id = params[:id]
-    client = User.find_by(id: devise_id).fitbit_client
-    tracker_id = client.device_info[0]['id']
-    alarms = client.get_alarms(tracker_id)['trackerAlarms']
-    alarm_id = find_alarm_id(alarms, params[:old_time])
-    response = client.update_alarm_call(tracker_id, alarm_id, params[:new_time])
-    render json: { 'response': response }
-  end
-
-  def delete_alarm
-    devise_id = params[:id]
-    client = User.find_by(id: devise_id).fitbit_client
-    tracker_id = client.device_info[0]['id']
-    alarms = client.get_alarms(tracker_id)['trackerAlarms']
-    alarm_id = find_alarm_id(alarms, params[:time])
-    client.delete_alarm_call(tracker_id, alarm_id)
-    render json: { 'result': 'Alarm deleted!' }
-  end
-
   def subscription
     if params[:verify] == '6f9263ce28d20cedc40ec6c10cb672a6985933692a95d032ebb9a96e14d00762'
       no_content

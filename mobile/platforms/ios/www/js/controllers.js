@@ -101,7 +101,7 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
   }
   $scope.logout = function () {
 
-    window.localStorage.clearAll();
+    window.localStorage.clear();
     location.href=location.pathname;
   };
 

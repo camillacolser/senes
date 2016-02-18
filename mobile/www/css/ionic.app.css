@@ -9808,6 +9808,12 @@ button {
   text-align: center;
   color: #666666; }
 
+.item a {
+  color: #50D4B5; }
+
+#settings > .item {
+  padding: 18px 18px 18px 18px; }
+
 @font-face {
   font-family: 'icomoon';
   src: url("fonts/icomoon.eot?kourm3");

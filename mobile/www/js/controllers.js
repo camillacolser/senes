@@ -15,7 +15,7 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
 .controller('SettingsCtrl', function($scope) {
 })
 
-.controller('ApiController', function(ApiFactory, $scope, $ionicPopup, popupFactory) {
+.controller('ApiController', function(ApiFactory, $scope, $ionicPopup, popupFactory, AlarmFactory) {
   var self = this;
 
   self.callApi = function(period) {
@@ -33,7 +33,7 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
 
  $scope.showPopup = function() {
    $scope.data = {};
-   var myPopup = popupFactory.getPopup($scope);
+   var myPopup = popupFactory.getPopup($scope, AlarmFactory);
    myPopup.then(function(res) {
      console.log('Tapped!', res);
    });
@@ -42,10 +42,7 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
 
 .controller('AlarmController', function(ApiFactory, AlarmFactory, $scope, $ionicPopup, popupFactory) {
   var self = this;
-
-  self.pillAlarm = undefined;
   self.allAlarms = [];
-  self.test = 'Testvalue';
 
   self.getAlarms = function() {
     AlarmFactory.getAll().then(function(response){

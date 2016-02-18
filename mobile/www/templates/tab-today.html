@@ -1,13 +1,13 @@
 <ion-view view-title="Today" >
   <ion-content class="padding" ng-controller="ApiController as ApiCtrl" ng-init="ApiCtrl.callApi('today')">
-    <ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh()">
+    <ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh('today')">
     </ion-refresher>
     <!-- <button type="button" name="button" ng-click="ApiCtrl.callApi()">TRY</button> -->
     <div class="smiley-icon" ng-show="ApiCtrl.result.status == 'doing great'">
       <i class="icon ion-happy-outline"></i>
     </div>
     <div class="smiley-icon" ng-show="ApiCtrl.result.status == 'doing ok'">
-      <i class="icon ion-sad-outline"></i>
+      <img src="img/med-outline.png" width="100px">
     </div>
     <div class="smiley-icon" ng-show="ApiCtrl.result.status == 'not doing great'">
       <i class="icon ion-sad-outline"></i>
@@ -25,8 +25,7 @@
         <i class="icon ion-android-walk"></i>
         Physical activity
         <span class="item-note">
-          <!-- {{ApiCtrl.result.steps}} -->
-          1000 steps
+          {{ApiCtrl.result.steps}}
         </span>
       </div>
       <div class="item item-icon-left" id="sleep">
@@ -36,8 +35,8 @@
           {{ApiCtrl.result.totalMinutesAsleep}}
         </span>
       </div>
-      <div class="item item-icon-left" id="sleep">
-        <div class="row">
+      <!-- <div class="item item-icon-left" id="sleep"> -->
+        <!-- <div class="row">
           <div class="col-5">
             <i class="icon ion-ios-alarm"></i>
           </div>
@@ -47,13 +46,12 @@
           <div class="col col-20" style="text-align:right">
             {{ApiCtrl.pillAlarm}}
           </div>
-        </div>
-      </div>
+        </div> -->
+      <!-- </div> -->
     </div>
     <div class="summary-block">
       last synced: {{ApiCtrl.result.lastSyncTime | date :'MMM dd, HH:mm'}} -
       battery level: {{ApiCtrl.result.battery}}
     </div>
-    <span class="icon-med-outline">&#xe900;</span>
   </ion-content>
 </ion-view>

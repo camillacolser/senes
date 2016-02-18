@@ -15,7 +15,7 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
 .controller('SettingsCtrl', function($scope) {
 })
 
-.controller('ApiController', function(ApiFactory, $scope, ApiFactoryPost, deleteAlarm, $ionicPopup, updateAlarm, popupFactory) {
+.controller('ApiController', function(ApiFactory, $scope, $ionicPopup, popupFactory, AlarmFactory) {
   var self = this;
 
   self.callApi = function(period) {
@@ -33,35 +33,35 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
 
  $scope.showPopup = function() {
    $scope.data = {};
-   var myPopup = popupFactory.getPopup($scope);
+   var myPopup = popupFactory.getPopup($scope, AlarmFactory);
    myPopup.then(function(res) {
      console.log('Tapped!', res);
    });
   };
 })
 
-.controller('AlarmController', function(ApiFactory, AlarmFactory, $scope, ApiFactoryPost, deleteAlarm, $ionicPopup, updateAlarm, popupFactory) {
-  self.pillAlarm = undefined;
+.controller('AlarmController', function(ApiFactory, AlarmFactory, $scope, $ionicPopup, popupFactory) {
+  var self = this;
   self.allAlarms = [];
 
   self.getAlarms = function() {
     AlarmFactory.getAll().then(function(response){
-      self.allAlarms = response.body;
+      self.allAlarms = response.data.trackerAlarms;
     });
   };
 
-  self.deleteAlarm = function() {
-    deleteAlarm.query(window.localStorage.pillAlarm);
-  };
+  // self.deleteAlarm = function() {
+  //   deleteAlarm.query(window.localStorage.pillAlarm);
+  // };
 
-  self.updateAlarm = function() {
-    updateAlarm.query(window.localStorage.pillAlarm);
-  };
-
-  self.setAlarms = function() {
-    ApiFactoryPost.query(self.pillAlarm);
-    self.pillAlarm = window.localStorage.pillAlarm;
-  };
+  // self.updateAlarm = function() {
+  //   updateAlarm.query(window.localStorage.pillAlarm);
+  // };
+  //
+  // self.setAlarms = function() {
+  //   ApiFactoryPost.query(self.pillAlarm);
+  //   self.pillAlarm = window.localStorage.pillAlarm;
+  // };
 })
 
 .controller('AuthenticationController', function ($scope, $state) {

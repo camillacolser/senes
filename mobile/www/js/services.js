@@ -3,7 +3,7 @@ var localUrl = 'http://localhost:3000';
 var address = localUrl;
 var seniorIdTest = 2;
 var seniorIdProduction = window.localStorage.seniorId;
-var seniorId = seniorIdTest;
+var seniorId = seniorIdProduction;
 
 angular.module('seniorHealth.services', ['ionic'])
 
@@ -29,8 +29,10 @@ angular.module('seniorHealth.services', ['ionic'])
       });
     },
     createAlarm: function(time) {
+      parseTime = new Date(time);
+      formatTime = parseTime.getHours()+":"+parseTime.getMinutes();
       return $http({
-        url: address+'/users/'+id+'/fitbit/alarms/+?time='+time,
+        url: address+'/users/'+id+'/fitbit/alarms/?time='+formatTime,
         method: 'POST'
       });
     },
@@ -69,10 +71,10 @@ angular.module('seniorHealth.services', ['ionic'])
 }])
 
 
-.factory('popupFactory', ['$ionicPopup', function($ionicPopup, $scope) {
-  function getPopup(scope) {
+.factory('popupFactory', ['$ionicPopup', function($ionicPopup) {
+  function getPopup($scope,  AlarmFactory) {
     return $ionicPopup.show({
-      template: '<input type = "time" ng-model="data.model">',
+      template: '<input type = "time" ng-model="data.tempPillAlarm">',
       title: 'Pill reminder',
       subTitle: '',
       scope: $scope,
@@ -83,27 +85,13 @@ angular.module('seniorHealth.services', ['ionic'])
           type: 'button-positive',
           onTap: function(e) {
 
-            if (!$scope.data.model) {
+            if (!$scope.data.tempPillAlarm) {
               //don't allow the user to close unless he enters model...
               e.preventDefault();
             } else {
-              ApiFactoryPost.query($scope.data.model);
-              self.alarmDisplay = window.localStorage.alarmDisplay;
-              return $scope.data.model;
-            }
-          }
-        }, {
-          text: '<b>Delete</b>',
-          type: 'button-positive',
-          onTap: function(e) {
-
-            if (!$scope.data.model) {
-              //don't allow the user to close unless he enters model...
-              e.preventDefault();
-            } else {
-              ApiFactoryPost.query($scope.data.model);
-              self.alarmDisplay = window.localStorage.alarmDisplay;
-              return $scope.data.model;
+              console.log($scope.data.tempPillAlarm);
+              AlarmFactory.createAlarm($scope.data.tempPillAlarm);
+              return $scope.data.tempPillAlarm;
             }
           }
         }

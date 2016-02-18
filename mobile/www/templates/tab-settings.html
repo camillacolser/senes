@@ -33,11 +33,11 @@
         <div class="item item-divider" >
           Alarms
         </div>
-        <li class="item" ng-repeat="alarm in alarmCtrl.allAlarms" id="{{alarm.alarmId}}" > <!-- ADD METHOD TO TRIGGER POP UP -->
-          <a >{{ alarm.time }} </a>
+        <li class="item" ng-repeat="alarm in alarmCtrl.allAlarms" id="{{alarm.alarmId}}"> <!-- ADD METHOD TO TRIGGER POP UP -->
+          <a>{{ alarm.time }} </a>
         </li>
         <li class="item">
-          <a>+ Add alarm</a>  <!-- ADD METHOD TO TRIGGER POP UP -->
+          <a ng-click="showPopup()">+ Add alarm</a>  <!-- ADD METHOD TO TRIGGER POP UP -->
         </li>
           <!-- <li>
             <label class="item item-input">

@@ -146,26 +146,4 @@ describe FitbitApiController, type: :controller do
       end
     end
   end
-
-  describe 'API tests' do
-    # require 'fakeweb'
-    # require 'httparty'
-    # before do
-    #   OmniAuth.config.test_mode = true
-    #   OmniAuth.config.mock_auth[:fitbit] = OmniAuth::AuthHash.new({
-    #     :provider => 'fitbit',
-    #     :uid => '123545'
-    #     # etc.
-    #   })
-    # end
-
-    before do
-      FakeWeb.register_uri(:get, "http://localhost:3000/fitbit/today?id=1", :body => "Hello World!")
-    end
-
-    it 'returns "Hello World!"' do
-      response = HTTParty.get("http://localhost:3000/fitbit/today?id=1")
-      expect(response.body).to eq "Hello World!"
-    end
-  end
 end

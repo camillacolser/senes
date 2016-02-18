@@ -13,12 +13,9 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
 })
 
 .controller('SettingsCtrl', function($scope) {
-  var self = this;
-
-
 })
 
-.controller('ApiController', function(ApiFactory, $scope, ApiFactoryPost, deleteAlarm, $ionicPopup, updateAlarm) {
+.controller('ApiController', function(ApiFactory, $scope, ApiFactoryPost, deleteAlarm, $ionicPopup, updateAlarm, popupFactory) {
   var self = this;
 
   self.callApi = function(period) {
@@ -52,40 +49,14 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
   };
 
 
-  // When button is clicked, the popup will be shown...
-   $scope.showPopup = function() {
-      $scope.data = {};
-
-      // Custom popup
-      var myPopup = $ionicPopup.show({
-         template: '<input type = "time" ng-model = "data.model">',
-         title: 'Pill reminder',
-         subTitle: '',
-         scope: $scope,
-
-         buttons: [
-            { text: 'Cancel' }, {
-               text: '<b>Save</b>',
-               type: 'button-positive',
-                  onTap: function(e) {
-
-                     if (!$scope.data.model) {
-                        //don't allow the user to close unless he enters model...
-                           e.preventDefault();
-                     } else {
-                       ApiFactoryPost.query($scope.data.model);
-                       self.alarmDisplay = window.localStorage.alarmDisplay;
-                       return $scope.data.model;
-                     }
-                  }
-            }
-         ]
-      });
-
-      myPopup.then(function(res) {
-         console.log('Tapped!', res);
-      });
-   };
+  $scope.showPopup = function() {
+     $scope.data = {};
+     var myPopup = PopupFactory.getPopup($scope);
+     // An elaborate, custom popup
+     myPopup.then(function(res) {
+       console.log('Tapped!', res);
+     });
+    };
 })
 
 .controller('AuthenticationController', function ($scope, $state) {
@@ -109,7 +80,4 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
 
 .controller('LoginController', function($scope,FitbitLoginService) {
   $scope.fitbitlogin = FitbitLoginService.login;
-  $scope.promise = window.localStorage.promise;
-  $scope.url = window.localStorage.webUrl;
-  $scope.seniorId = window.localStorage.seniorId;
 });

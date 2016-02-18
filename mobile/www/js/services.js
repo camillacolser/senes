@@ -67,6 +67,11 @@ angular.module('seniorHealth.services', ['ionic'])
 }])
 
 
+.factory('popupFactory', ['$ionicPopup', function($ionicPopup) {
+
+}])
+
+
 
 
 .factory('FitbitLoginService', function($q) {

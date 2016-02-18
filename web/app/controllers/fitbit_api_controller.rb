@@ -12,9 +12,12 @@ class FitbitApiController < ApplicationController
       'battery': client.device_info[0]['battery'],
       'lastSyncTime': client.device_info[0]['lastSyncTime'],
       'restingHeartRate': heart_parsed,
+      'heartRateStatus': single_today_status(heart_evaluator(heart_parsed)),
       'totalMinutesAsleep': format_sleep(sleep_parsed),
+      'sleepStatus': single_today_status(sleep_evaluator(sleep_parsed)),
       'steps': steps_parsed,
-      'status': bad_ok_good_status(heart_parsed, sleep_parsed, steps_parsed),
+      'stepsStatus': single_today_status(steps_evaluator(steps_parsed)),
+      'status': overall_today_status(heart_parsed, sleep_parsed, steps_parsed),
       'name': client.name['user']['fullName'],
       'avatar': client.name['user']['avatar']
     }

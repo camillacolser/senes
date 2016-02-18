@@ -148,8 +148,8 @@ describe FitbitApiController, type: :controller do
   end
 
   describe 'API tests' do
-    require 'fakeweb'
-    require 'httparty'
+    # require 'fakeweb'
+    # require 'httparty'
     # before do
     #   OmniAuth.config.test_mode = true
     #   OmniAuth.config.mock_auth[:fitbit] = OmniAuth::AuthHash.new({

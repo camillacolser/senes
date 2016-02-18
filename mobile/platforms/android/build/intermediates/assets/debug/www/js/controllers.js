@@ -44,11 +44,22 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
 
 .controller('AuthenticationController', function ($scope, $state) {
   // Check our local storage for the proper credentials to ensure we are logged in, this means users can't get past app unless they select a username
+<<<<<<< HEAD
+  if (window.localStorage.seniorId) {
+<<<<<<< HEAD
+    // ===== UNCOMMENT TWO LINES BELOW & comment 1 LINE ABOVE FOR STYLING =====
+    // if (true) {
+    // window.localStorage.seniorId = 1;
+    // ==========
+=======
+>>>>>>> f21c8fb143a51445e8ca1d8b3f069107a110a57a
+=======
   // if (window.localStorage.seniorId) {
     // ===== UNCOMMENT TWO LINES BELOW & comment 1 LINE ABOVE FOR STYLING =====
     if (true) {
     window.localStorage.seniorId = 1;
     // ==========
+>>>>>>> 058eeb70fc43fc26d6b3bbd96daaee69dbcd86f8
     $scope.Authenticated = true;
   } else {
     $scope.needsAuthentication = true;
@@ -63,7 +74,19 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
 
 .controller('LoginController', function($scope,FitbitLoginService) {
   $scope.fitbitlogin = FitbitLoginService.login;
+<<<<<<< HEAD
+<<<<<<< HEAD
   $scope.promise = window.localStorage.promise;
   $scope.url = window.localStorage.webUrl;
   $scope.seniorId = window.localStorage.seniorId;
+=======
+    $scope.promise = window.localStorage.promise;
+    $scope.url = window.localStorage.webUrl;
+    $scope.seniorId = window.localStorage.seniorId;
+>>>>>>> f21c8fb143a51445e8ca1d8b3f069107a110a57a
+=======
+  $scope.promise = window.localStorage.promise;
+  $scope.url = window.localStorage.webUrl;
+  $scope.seniorId = window.localStorage.seniorId;
+>>>>>>> 058eeb70fc43fc26d6b3bbd96daaee69dbcd86f8
 });

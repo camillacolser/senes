@@ -70,7 +70,21 @@ angular.module('seniorHealth.services', ['ionic'])
   };
 }])
 
+.factory('deleteAlarm', ['$http', function($http) {
+  var id;
+  id = window.localStorage.seniorId;
+  return {
+    query: function(pillAlarm) {
+      console.log(pillAlarm);
+      return $http({
+        url: address+'/fitbit/delete_alarm/?id=' + id + '&time=' + pillAlarm ,
+        method: 'GET'
+      });
+    }
+  };
+}])
 
+<<<<<<< HEAD
 .factory('popupFactory', ['$ionicPopup', function($ionicPopup) {
   function getPopup($scope,  AlarmFactory) {
     return $ionicPopup.show({
@@ -101,6 +115,19 @@ angular.module('seniorHealth.services', ['ionic'])
 
   return {
     getPopup: getPopup
+=======
+.factory('updateAlarm', ['$http', function($http) {
+  var id;
+  id = window.localStorage.seniorId;
+  return {
+    query: function(pillAlarm) {
+      console.log(pillAlarm);
+      return $http({
+        url: address+'/fitbit/update_alarm/?id=' + id + '&time=' + pillAlarm ,
+        method: 'GET'
+      });
+    }
+>>>>>>> 6dc61a75f6ec625c295391ebe4150eaf08de0aa1
   };
 }])
 

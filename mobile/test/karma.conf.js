@@ -18,8 +18,10 @@ module.exports = function(config) {
       '../www/lib/angular/angular.js',
       '../www/lib/angular-mocks/angular-mocks.js',
       '../www/lib/angular-route/angular-route.js',
-      '**/*.spec.js',
-      '../www/js/*.js'
+      '../www/lib/ionic/js/ionic.bundle.js',
+      '../www/lib/angular-local-storage/dist/angular-local-storage.min.js',
+      '../www/js/*.js',
+      '../test/**/*.spec.js'
     ],
 
 
@@ -69,5 +71,5 @@ module.exports = function(config) {
     // Concurrency level
     // how many browser should be started simultaneous
     concurrency: Infinity
-  })
-}
+  });
+};

@@ -51,6 +51,19 @@ angular.module('seniorHealth.services', ['ionic'])
   };
 }])
 
+.factory('deleteAlarm', ['$http', function($http) {
+  var id;
+  id = window.localStorage.seniorId;
+  return {
+    query: function(pillAlarm) {
+      console.log(pillAlarm);
+      return $http({
+        url: address+'/fitbit/delete_alarm/?id=' + id + '&time=' + pillAlarm ,
+        method: 'GET'
+      });
+    }
+  };
+}])
 
 .factory('popupFactory', ['$ionicPopup', function($ionicPopup) {
   function getPopup($scope,  AlarmFactory) {

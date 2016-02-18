@@ -34,7 +34,7 @@
           Alarms
         </div>
         <li class="item" ng-repeat="alarm in alarmCtrl.allAlarms">
-          <a data-ng-attr-id="{{alarm.alarmId}}" ng-click="showPopupUpdate({{alarm.alarmId}})"> {{ alarm.time | format: shortTime }} </a>
+          <a data-ng-attr-id="{{alarm.alarmId}}" ng-click="showPopupUpdate({{alarm.alarmId}})"> {{ alarm.time }} </a>
         </li>
         <li class="item">
           <a ng-click="showPopup()">+ Add alarm</a>

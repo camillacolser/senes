@@ -10,7 +10,7 @@ describe('factory: Api', function() {
   beforeEach(inject(function(ApiFactory, $httpBackend){
     apiFactory = ApiFactory;
     httpBackend = $httpBackend;
-    httpBackend.when("GET", "https://senior-health.herokuapp.com/fitbit/heart")
+    httpBackend.when("GET", "http://localhost:3000/fitbit/undefined?id=undefined")
                 .respond(heartRate);
   }));
 

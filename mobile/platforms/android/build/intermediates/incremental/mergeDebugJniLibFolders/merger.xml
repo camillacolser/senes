@@ -1,2 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
+<merger version="3"><dataSet config="main"><source path="/Users/alan/Projects/senior-health/mobile/platforms/android/libs"/></dataSet><dataSet config="debug"><source path="/Users/alan/Projects/senior-health/mobile/platforms/android/src/debug/jniLibs"/></dataSet></merger>
+=======
 <merger version="3"><dataSet config="main"><source path="/Users/Jamie/Documents/final/senior-health/mobile/platforms/android/libs"/></dataSet><dataSet config="debug"><source path="/Users/Jamie/Documents/final/senior-health/mobile/platforms/android/src/debug/jniLibs"/></dataSet></merger>
+>>>>>>> f21c8fb143a51445e8ca1d8b3f069107a110a57a

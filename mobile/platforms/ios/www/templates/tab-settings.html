@@ -29,6 +29,7 @@
           </div>
         </label>
       </li>
+<<<<<<< HEAD
       <div ng-controller="AlarmController as alarmCtrl" ng-init="alarmCtrl.getAlarms()">
         <div class="item item-divider" >
           Alarms
@@ -58,6 +59,42 @@
             </div>
           </label>
         </li> -->
+=======
+      <div class="item item-divider">
+        Alarms
+      </div>
+      <li>
+        <label class="item item-input">
+        Pill Reminder
+          <input class="col text-right" ng-click = "showPopup()" ng-model="ApiCtrl.pillAlarm" name="pillAlarm">
+
+          <div class="track">
+            <div class="handle"></div>
+          </div>
+
+        </label>
+      </li>
+      <button class="icon ion-minus-circled" ng-click="ApiCtrl.deleteAlarm();">delete</button>
+            <button class="icon ion-minus-circled" ng-click="ApiCtrl.updateAlarm();">update</button>
+      <li>
+        <label class="item item-input">
+<<<<<<< HEAD
+          <button class="button button-clear button-calm text-center" ng-click="ApiCtrl.setAlarms();">Save alarms</button>
+=======
+          <button class="button button-clear button-positive" ng-click="ApiCtrl.setAlarms();">Save alarms</button>
+>>>>>>> f834ea785b80ff11a183932c370c77056999a9f2
+          <div class="track">
+            <div class="handle"></div>
+          </div>
+        </label>
+      </li>
+    </ul>
+  </div>
+    <div class="padding">
+      <button class="button button-block button-calm">
+        <a href="logout()">Log out</a>
+      </button>
+>>>>>>> 6dc61a75f6ec625c295391ebe4150eaf08de0aa1
     </div>
   </div>
   <div class="padding">

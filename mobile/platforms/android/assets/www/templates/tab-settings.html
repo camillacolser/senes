@@ -29,6 +29,7 @@
           </div>
         </label>
       </li>
+<<<<<<< HEAD
       <div ng-controller="AlarmController as alarmCtrl" ng-init="alarmCtrl.getAlarms()">
         <div class="item item-divider" >
           Alarms
@@ -58,6 +59,34 @@
             </div>
           </label>
         </li> -->
+=======
+      <div class="item item-divider">
+        Alarms
+      </div>
+      <li>
+        <label class="item item-input">
+        Pill Reminder
+          <input class="col text-right" type="time" ng-model="ApiCtrl.pillAlarm" name="pillAlarm">
+          <div class="track">
+            <div class="handle"></div>
+          </div>
+        </label>
+      </li>
+      <li>
+        <label class="item item-input">
+          <button class="button button-clear button-calm text-center" ng-click="ApiCtrl.setAlarms();">Save alarms</button>
+          <div class="track">
+            <div class="handle"></div>
+          </div>
+        </label>
+      </li>
+    </ul>
+  </div>
+    <div class="padding">
+      <button class="button button-block button-calm">
+        <a href="logout()">Log out</a>
+      </button>
+>>>>>>> 6dc61a75f6ec625c295391ebe4150eaf08de0aa1
     </div>
   </div>
   <div class="padding">

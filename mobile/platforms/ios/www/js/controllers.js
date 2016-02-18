@@ -1,15 +1,15 @@
 angular.module('seniorHealth.controllers', ['LocalStorageModule'])
 
-.controller('TodayCtrl', function($scope) {})
+.controller('TodayCtrl', function($scope) {
+  $scope.$on('$ionicView.enter', function(e) {
+    $scope.$apply();
+  });
+})
 
 .controller('WeekCtrl', function($scope) {
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
+  $scope.$on('$ionicView.enter', function(e) {
+    $scope.$apply();
+  });
 })
 
 .controller('SettingsCtrl', function($scope) {
@@ -18,7 +18,7 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
 
 })
 
-.controller('ApiController', function(ApiFactory, $scope, ApiFactoryPost) {
+.controller('ApiController', function(ApiFactory, $scope, ApiFactoryPost, $ionicPopup) {
   var self = this;
 
   self.callApi = function(period) {
@@ -28,19 +28,64 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
     });
   };
 
+  self.alarmDisplay = window.localStorage.alarmDisplay;
+
   self.pillAlarm = undefined;
 
-  self.setAlarms = function() {
-    console.log('number1');
+  self.deleteAlarm = function() {
     ApiFactoryPost.query(self.pillAlarm);
+    self.alarmDisplay = window.localStorage.alarmDisplay;
+    $scope.$apply();
+  };
+
+  self.setAlarms = function() {
+    ApiFactoryPost.query(self.pillAlarm);
+    self.alarmDisplay = window.localStorage.alarmDisplay;
+    $scope.$apply();
   };
 
   $scope.doRefresh =
-   function() {
+   function(period) {
      self.callApi(period);
      $scope.$broadcast('scroll.refreshComplete');
      $scope.$apply();
   };
+
+
+  // When button is clicked, the popup will be shown...
+   $scope.showPopup = function() {
+      $scope.data = {};
+
+      // Custom popup
+      var myPopup = $ionicPopup.show({
+         template: '<input type = "time" ng-model = "data.model">',
+         title: 'Pill reminder',
+         subTitle: '',
+         scope: $scope,
+
+         buttons: [
+            { text: 'Cancel' }, {
+               text: '<b>Save</b>',
+               type: 'button-positive',
+                  onTap: function(e) {
+
+                     if (!$scope.data.model) {
+                        //don't allow the user to close unless he enters model...
+                           e.preventDefault();
+                     } else {
+                       ApiFactoryPost.query($scope.data.model);
+                       self.alarmDisplay = window.localStorage.alarmDisplay;
+                       return $scope.data.model;
+                     }
+                  }
+            }
+         ]
+      });
+
+      myPopup.then(function(res) {
+         console.log('Tapped!', res);
+      });
+   };
 })
 
 .controller('AuthenticationController', function ($scope, $state) {

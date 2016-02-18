@@ -25,8 +25,30 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
     });
   };
 
-  self.alarmDisplay = window.localStorage.alarmDisplay;
+  $scope.doRefresh = function(period) {
+     self.callApi(period);
+     $scope.$broadcast('scroll.refreshComplete');
+     $scope.$apply();
+  };
 
+ $scope.showPopup = function() {
+   $scope.data = {};
+   var myPopup = popupFactory.getPopup($scope);
+   myPopup.then(function(res) {
+     console.log('Tapped!', res);
+   });
+  };
+})
+
+.controller('AlarmController', function(ApiFactory, AlarmFactory, $scope, ApiFactoryPost, deleteAlarm, $ionicPopup, updateAlarm, popupFactory) {
+  self.pillAlarm = undefined;
+  self.allAlarms = [];
+
+  self.getAlarms = function() {
+    AlarmFactory.getAll().then(function(response){
+      self.allAlarms = response.body;
+    });
+  };
 
   self.deleteAlarm = function() {
     deleteAlarm.query(window.localStorage.pillAlarm);
@@ -40,24 +62,6 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
     ApiFactoryPost.query(self.pillAlarm);
     self.pillAlarm = window.localStorage.pillAlarm;
   };
-
-  $scope.doRefresh =
-   function(period) {
-     self.callApi(period);
-     $scope.$broadcast('scroll.refreshComplete');
-     $scope.$apply();
-  };
-
- $scope.showPopup = function() {
-   $scope.data = {};
-   var myPopup = popupFactory.getPopup($scope);
-   myPopup.then(function(res) {
-     console.log('Tapped!', res);
-   });
-  };
-
-
-
 })
 
 .controller('AuthenticationController', function ($scope, $state) {

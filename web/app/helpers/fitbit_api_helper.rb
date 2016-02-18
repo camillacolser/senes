@@ -38,7 +38,7 @@ module FitbitApiHelper
     end
   end
 
-  def bad_ok_good_status(heart_parsed, sleep_parsed, steps_parsed)
+  def overall_today_status(heart_parsed, sleep_parsed, steps_parsed)
     result = heart_evaluator(heart_parsed) + sleep_evaluator(sleep_parsed) + steps_evaluator(steps_parsed)
     if result <= 2
       return 'not doing great'
@@ -49,24 +49,24 @@ module FitbitApiHelper
     end
   end
 
+  def single_today_status(result)
+    if good_result?(result)
+      return 'great'
+    elsif ok_result?(result)
+      return 'ok'
+    else
+      return 'bad'
+    end
+  end
+
   def week_status(result)
-    if result == 2
+    if good_result?(result)
       return 'above average'
-    elsif result == 1
+    elsif ok_result?(result)
       return 'normal'
     else
       return 'below average'
     end
-  end
-
-  def find_alarm_id(alarms, time)
-    alarm_id = 0
-    alarms.each do |alarm|
-      if alarm["time"] == (time+"+00:00")
-        alarm_id = alarm["alarmId"]
-      end
-    end
-    return alarm_id
   end
 
   def not_found
@@ -101,5 +101,13 @@ module FitbitApiHelper
 
   def steps_ok?(steps)
     steps < 3000
+  end
+
+  def good_result?(result)
+    result == 2
+  end
+
+  def ok_result?(result)
+    result == 1
   end
 end

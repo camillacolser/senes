@@ -43,7 +43,6 @@ gem 'figaro'
 gem 'coveralls', require: false
 
 gem 'rack-cors', require: 'rack/cors'
-gem 'httparty'
 
 group :development do
   gem 'web-console', '~> 2.0'
@@ -59,5 +58,4 @@ group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'shoulda-matchers'
-  gem 'fakeweb'
 end

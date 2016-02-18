@@ -167,6 +167,5 @@ describe FitbitApiController, type: :controller do
       response = HTTParty.get("http://localhost:3000/fitbit/today?id=1")
       expect(response.body).to eq "Hello World!"
     end
-
   end
 end

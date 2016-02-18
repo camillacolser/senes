@@ -13,12 +13,9 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
 })
 
 .controller('SettingsCtrl', function($scope) {
-  var self = this;
-
-
 })
 
-.controller('ApiController', function(ApiFactory, $scope, ApiFactoryPost, deleteAlarm, $ionicPopup, updateAlarm) {
+.controller('ApiController', function(ApiFactory, $scope, ApiFactoryPost, deleteAlarm, $ionicPopup, updateAlarm, popupFactory) {
   var self = this;
 
   self.callApi = function(period) {
@@ -51,38 +48,18 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
      $scope.$apply();
   };
 
-
-  self.showPopup = function() {
-     self.data = {};
-     var myPopup = $ionicPopup.show({
-        template: '<input type = "time" ng-model = "data.model">',
-        title: 'Pill reminder',
-        subTitle: '',
-        scope: $scope,
-
-        buttons: [
-           { text: 'Cancel' }, {
-              text: '<b>Save</b>',
-              type: 'button-positive',
-                 onTap: function(e) {
-
-                    if (!$scope.data.model) {
-                       //don't allow the user to close unless he enters model...
-                          e.preventDefault();
-                    } else {
-                      ApiFactoryPost.query($scope.data.model);
-                      self.alarmDisplay = window.localStorage.alarmDisplay;
-                      return $scope.data.model;
-                    }
-                 }
-           }
-        ]
-     });
-
-     myPopup.then(function(res) {
-        console.log('Tapped!', res);
-     });
+  // Triggered on a button click, or some other target
+ $scope.showPopup = function() {
+   $scope.data = {}
+   var myPopup = popupFactory.getPopup($scope);
+   // An elaborate, custom popup
+   myPopup.then(function(res) {
+     console.log('Tapped!', res);
+   });
   };
+
+
+
 })
 
 .controller('AuthenticationController', function ($scope, $state) {
@@ -106,7 +83,4 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
 
 .controller('LoginController', function($scope,FitbitLoginService) {
   $scope.fitbitlogin = FitbitLoginService.login;
-  $scope.promise = window.localStorage.promise;
-  $scope.url = window.localStorage.webUrl;
-  $scope.seniorId = window.localStorage.seniorId;
 });

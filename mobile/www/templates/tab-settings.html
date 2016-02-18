@@ -6,58 +6,58 @@
         Caring for:<br>
         <strong>{{ApiCtrl.result.name}}</strong>
       </div>
-    <div class="item item-divider">
-      Notifications
-    </div>
-    <ul class="list">
-      <li class="item item-toggle">
-        Heart rate alert
-        <label class="toggle toggle-calm">
-          <input type="checkbox">
-          <div class="track">
-            <div class="handle"></div>
-          </div>
-        </label>
-      </li>
-      <li class="item item-toggle">
-        Weekly summary
-        <label class="toggle toggle-calm">
-          <input type="checkbox">
-          <div class="track">
-            <div class="handle"></div>
-          </div>
-        </label>
-      </li>
       <div class="item item-divider">
-        Alarms
+        Notifications
       </div>
-      <li>
-        <label class="item item-input">
-        Pill Reminder
-          <input class="col text-right" ng-click = "showPopup()" ng-model="ApiCtrl.pillAlarm" name="pillAlarm">
-
-          <div class="track">
-            <div class="handle"></div>
+      <ul class="list">
+        <li class="item item-toggle">
+          Heart rate alert
+          <label class="toggle toggle-calm">
+            <input type="checkbox">
+            <div class="track">
+              <div class="handle"></div>
+            </div>
+          </label>
+        </li>
+        <li class="item item-toggle">
+          Weekly summary
+          <label class="toggle toggle-calm">
+            <input type="checkbox">
+            <div class="track">
+              <div class="handle"></div>
+            </div>
+          </label>
+        </li>
+        <div ng-controller="AlarmController as alarmCtrl" ng-init="alarmCtrl.getAlarms()">
+          <div class="item item-divider" >
+            Alarms
           </div>
-
-        </label>
-      </li>
-      <button class="icon ion-minus-circled" ng-click="ApiCtrl.deleteAlarm();">delete</button>
-            <button class="icon ion-minus-circled" ng-click="ApiCtrl.updateAlarm();">update</button>
-      <li>
-        <label class="item item-input">
-          <button class="button button-clear button-calm text-center" ng-click="ApiCtrl.setAlarms();">Save alarms</button>
-          <div class="track">
-            <div class="handle"></div>
-          </div>
-        </label>
-      </li>
-    </ul>
+          <li>
+            <label class="item item-input">
+              Pill Reminder
+              <input class="col text-right" ng-click = "showPopup()" ng-model="alarmCtrl.pillAlarm" name="pillAlarm">
+              <div class="track">
+                <div class="handle"></div>
+              </div>
+            </label>
+          </li>
+          <button class="icon ion-minus-circled" ng-click="ApiCtrl.deleteAlarm();">delete</button>
+          <button class="icon ion-minus-circled" ng-click="ApiCtrl.updateAlarm();">update</button>
+          <li>
+            <label class="item item-input">
+              <button class="button button-clear button-calm text-center" ng-click="ApiCtrl.setAlarms();">Save alarms</button>
+              <div class="track">
+                <div class="handle"></div>
+              </div>
+            </label>
+          </li>
+        </ul>
+      </div>
   </div>
-    <div class="padding">
-      <button class="button button-block button-calm">
-        <a href="logout()">Log out</a>
-      </button>
-    </div>
-  </ion-content>
+  <div class="padding">
+    <button class="button button-block button-calm">
+      <a href="logout()">Log out</a>
+    </button>
+  </div>
+</ion-content>
 </ion-view>

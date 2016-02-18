@@ -31,13 +31,12 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
      $scope.$apply();
   };
 
-  $scope.showPopup = function() {
-     $scope.data = {};
-     var myPopup = PopupFactory.getPopup($scope);
-     // An elaborate, custom popup
-     myPopup.then(function(res) {
-       console.log('Tapped!', res);
-     });
+ $scope.showPopup = function() {
+   $scope.data = {};
+   var myPopup = popupFactory.getPopup($scope);
+   myPopup.then(function(res) {
+     console.log('Tapped!', res);
+   });
   };
 })
 

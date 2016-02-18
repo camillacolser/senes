@@ -10,7 +10,7 @@ angular.module('seniorHealth.services', ['ionic'])
   return {
     query: function(period) {
       return $http({
-        url: address+'/fitbit/' + period + '?id=' + id ,
+        url: address+'users/'+id+'/fitbit/' + period,
         method: 'GET'
       });
     }
@@ -28,6 +28,8 @@ angular.module('seniorHealth.services', ['ionic'])
       pillTime = pillAlarm;
       pillTimeDate = new Date(pillTime);
       dateText = pillTimeDate.getHours()+":"+pillTimeDate.getMinutes();
+      window.localStorage.pillAlarm = dateText;
+      console.log(window.localStorage.pillAlarm);
       return $http({
         url: address+'/fitbit/set_alarm/?id=' + id + '&time=' + dateText ,
         method: 'GET'
@@ -35,6 +37,40 @@ angular.module('seniorHealth.services', ['ionic'])
     }
   };
 }])
+
+.factory('deleteAlarm', ['$http', function($http) {
+  var id;
+  id = window.localStorage.seniorId;
+  return {
+    query: function(pillAlarm) {
+      console.log(pillAlarm);
+      return $http({
+        url: address+'/fitbit/delete_alarm/?id=' + id + '&time=' + pillAlarm ,
+        method: 'GET'
+      });
+    }
+  };
+}])
+
+.factory('updateAlarm', ['$http', function($http) {
+  var id;
+  id = window.localStorage.seniorId;
+  return {
+    query: function(pillAlarm) {
+      console.log(pillAlarm);
+      return $http({
+        url: address+'/fitbit/update_alarm/?id=' + id + '&time=' + pillAlarm ,
+        method: 'GET'
+      });
+    }
+  };
+}])
+
+
+.factory('popupFactory', ['$ionicPopup', function($ionicPopup) {
+
+}])
+
 
 
 

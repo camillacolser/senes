@@ -34,28 +34,28 @@
           Alarms
         </div>
           <ul>
-            <li class="item" ng-repeat="alarm in alarmCtrl.allAlarms.trackerAlarms" id="{{alarm.alarmId}}">
-              {{alarm.time}}
+            <li class="item" ng-repeat="alarm in alarmCtrl.allAlarms" id="{{alarm.alarmId}}">
+              {{alarm}}
             </li>
-            <li>
-            <label class="item item-input">
-              Pill Reminder
-              <input class="col text-right" ng-click = "showPopup()" ng-model="alarmCtrl.pillAlarm" name="pillAlarm">
-              <div class="track">
-                <div class="handle"></div>
-              </div>
-            </label>
-          </li>
-          <button class="icon ion-minus-circled" ng-click="ApiCtrl.deleteAlarm();">delete</button>
-          <button class="icon ion-minus-circled" ng-click="ApiCtrl.updateAlarm();">update</button>
-          <li>
+            <!-- <li>
+              <label class="item item-input">
+                Pill Reminder
+                <input class="col text-right" ng-click = "showPopup()" ng-model="alarmCtrl.pillAlarm" name="pillAlarm">
+                <div class="track">
+                  <div class="handle"></div>
+                </div>
+              </label>
+            </li> -->
+          <!-- <button class="icon ion-minus-circled" ng-click="ApiCtrl.deleteAlarm();">delete</button>
+          <button class="icon ion-minus-circled" ng-click="ApiCtrl.updateAlarm();">update</button> -->
+          <!-- <li>
             <label class="item item-input">
               <button class="button button-clear button-calm text-center" ng-click="ApiCtrl.setAlarms();">Save alarms</button>
               <div class="track">
                 <div class="handle"></div>
               </div>
             </label>
-          </li>
+          </li> -->
         </ul>
       </div>
     </div>

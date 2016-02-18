@@ -42,11 +42,11 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
 
 .controller('AlarmController', function(ApiFactory, AlarmFactory, $scope, ApiFactoryPost, deleteAlarm, $ionicPopup, updateAlarm, popupFactory) {
   self.pillAlarm = undefined;
-  self.allAlarms = [];
+  self.allAlarms = ['bubu', 'baba'];
 
   self.getAlarms = function() {
     AlarmFactory.getAll().then(function(response){
-      self.allAlarms = response.body;
+      // self.allAlarms = response.body;
     });
   };
 

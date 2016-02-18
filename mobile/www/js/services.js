@@ -1,12 +1,14 @@
 var remoteUrl = 'https://senior-health.herokuapp.com';
 var localUrl = 'http://localhost:3000';
 var address = localUrl;
+var seniorIdTest = 2;
+var seniorIdProduction = window.localStorage.seniorId;
+var seniorId = seniorIdTest;
 
 angular.module('seniorHealth.services', ['ionic'])
 
 .factory('ApiFactory', ['$http', function($http) {
-  var id = window.localStorage.seniorId;
-  // var id = 2;
+  var id = seniorId;
   return {
     query: function(period) {
       return $http({
@@ -18,8 +20,8 @@ angular.module('seniorHealth.services', ['ionic'])
 }])
 
 .factory('AlarmFactory', ['$http', function($http) {
-  var id = window.localStorage.seniorId;
-  // var id = 2;
+  // var id = window.localStorage.seniorId;
+  var id = seniorId;
   return {
     getAll: function() {
       return $http({
@@ -33,7 +35,7 @@ angular.module('seniorHealth.services', ['ionic'])
 
 .factory('ApiFactoryPost', ['$http', function($http) {
   var pillTime;
-  var id = window.localStorage.seniorId;
+  var id = seniorId;
   return {
     query: function(pillAlarm) {
       pillTime = pillAlarm;

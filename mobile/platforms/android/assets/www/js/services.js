@@ -51,25 +51,19 @@ angular.module('seniorHealth.services', ['ionic'])
   };
 }])
 
-
-.factory('ApiFactoryPost', ['$http', function($http) {
-  var pillTime;
-  var id = seniorId;
+.factory('deleteAlarm', ['$http', function($http) {
+  var id;
+  id = window.localStorage.seniorId;
   return {
     query: function(pillAlarm) {
-      pillTime = pillAlarm;
-      pillTimeDate = new Date(pillTime);
-      dateText = pillTimeDate.getHours()+":"+pillTimeDate.getMinutes();
-      window.localStorage.pillAlarm = dateText;
-      console.log(window.localStorage.pillAlarm);
+      console.log(pillAlarm);
       return $http({
-        url: address+'/fitbit/set_alarm/?id=' + id + '&time=' + dateText ,
+        url: address+'/fitbit/delete_alarm/?id=' + id + '&time=' + pillAlarm ,
         method: 'GET'
       });
     }
   };
 }])
-
 
 .factory('popupFactory', ['$ionicPopup', function($ionicPopup) {
   function getPopup($scope,  AlarmFactory) {
@@ -82,7 +76,7 @@ angular.module('seniorHealth.services', ['ionic'])
       buttons: [
         { text: 'Cancel' }, {
           text: '<b>Save</b>',
-          type: 'button-positive',
+          type: 'button-calm',
           onTap: function(e) {
 
             if (!$scope.data.tempPillAlarm) {
@@ -95,6 +89,47 @@ angular.module('seniorHealth.services', ['ionic'])
             }
           }
         }
+      ]
+    });
+  }
+
+  return {
+    getPopup: getPopup
+  };
+}])
+
+.factory('popupFactoryUpdate', ['$ionicPopup', function($ionicPopup) {
+  function getPopup($scope,  AlarmFactory, alarm_id) {
+    return $ionicPopup.show({
+      template: '<input type = "time" ng-model="data.tempPillAlarm">',
+      title: 'Pill reminder',
+      subTitle: '',
+      cssClass: 'update-popup',
+      scope: $scope,
+
+      buttons: [
+        { text: 'Cancel' }, {
+          text: '<b>Save</b>',
+          type: 'button-calm',
+          onTap: function(e) {
+
+            if (!$scope.data.tempPillAlarm) {
+              e.preventDefault();
+            } else {
+              AlarmFactory.updateAlarm(alarm_id, $scope.data.tempPillAlarm);
+              return $scope.data.tempPillAlarm;
+            }
+          }
+        }, { text: 'X Remove alarm',
+        onTap: function(e) {
+
+          if (!$scope.data.tempPillAlarm) {
+            e.preventDefault();
+          } else {
+            AlarmFactory.deleteAlarm(alarm_id);
+            return $scope.data.tempPillAlarm;
+          }
+        } }
       ]
     });
   }

@@ -32,7 +32,6 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
 
 .controller('ApiController', function(ApiFactory, $scope) {
   var self = this;
-
   self.callApi = function(period) {
     ApiFactory.query(period)
     .then(function(response){
@@ -47,10 +46,9 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
   };
 })
 
-.controller('AlarmController', function(ApiFactory, AlarmFactory, $scope, $ionicPopup, popupFactory) {
+.controller('AlarmController', function(AlarmFactory, $scope) {
   var self = this;
   self.allAlarms = [];
-
   self.getAlarms = function() {
     AlarmFactory.getAll().then(function(response){
       self.allAlarms = response.data.trackerAlarms;

@@ -12,14 +12,25 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
   });
 })
 
-.controller('SettingsCtrl', function($scope) {
+.controller('SettingsCtrl', function($scope, $ionicPopup, popupFactory, popupFactoryUpdate , AlarmFactory) {
+  $scope.showPopup = function() {
+    $scope.data = {};
+    var myPopup = popupFactory.getPopup($scope, AlarmFactory);
+    myPopup.then(function(res) {
+      console.log('Tapped!', res);
+    });
+   };
+
+ $scope.showPopupUpdate = function(alarm_id) {
+   $scope.data = {};
+   var myPopup = popupFactory.getPopup($scope, AlarmFactory, alarm_id);
+   myPopup.then(function(res) {
+     console.log('Tapped!', res);
+   });
+  };
 })
 
-<<<<<<< HEAD
-.controller('ApiController', function(ApiFactory, $scope, $ionicPopup, popupFactory, AlarmFactory) {
-=======
-.controller('ApiController', function(ApiFactory, $scope, ApiFactoryPost, deleteAlarm, $ionicPopup, updateAlarm) {
->>>>>>> 6dc61a75f6ec625c295391ebe4150eaf08de0aa1
+.controller('ApiController', function(ApiFactory, $scope) {
   var self = this;
 
   self.callApi = function(period) {
@@ -29,40 +40,10 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
     });
   };
 
-<<<<<<< HEAD
   $scope.doRefresh = function(period) {
-=======
-  self.alarmDisplay = window.localStorage.alarmDisplay;
-
-
-  self.deleteAlarm = function() {
-    deleteAlarm.query(window.localStorage.pillAlarm);
-  };
-
-  self.updateAlarm = function() {
-    updateAlarm.query(window.localStorage.pillAlarm);
-  };
-
-  self.setAlarms = function() {
-    ApiFactoryPost.query(self.pillAlarm);
-    self.pillAlarm = window.localStorage.pillAlarm;
-  };
-
-  $scope.doRefresh =
-   function(period) {
->>>>>>> 6dc61a75f6ec625c295391ebe4150eaf08de0aa1
      self.callApi(period);
      $scope.$broadcast('scroll.refreshComplete');
      $scope.$apply();
-  };
-
-<<<<<<< HEAD
- $scope.showPopup = function() {
-   $scope.data = {};
-   var myPopup = popupFactory.getPopup($scope, AlarmFactory);
-   myPopup.then(function(res) {
-     console.log('Tapped!', res);
-   });
   };
 })
 
@@ -75,60 +56,9 @@ angular.module('seniorHealth.controllers', ['LocalStorageModule'])
       self.allAlarms = response.data.trackerAlarms;
     });
   };
-
-  // self.deleteAlarm = function() {
-  //   deleteAlarm.query(window.localStorage.pillAlarm);
-  // };
-
-  // self.updateAlarm = function() {
-  //   updateAlarm.query(window.localStorage.pillAlarm);
-  // };
-  //
-  // self.setAlarms = function() {
-  //   ApiFactoryPost.query(self.pillAlarm);
-  //   self.pillAlarm = window.localStorage.pillAlarm;
-  // };
-=======
-
-  // When button is clicked, the popup will be shown...
-   $scope.showPopup = function() {
-      $scope.data = {};
-
-      // Custom popup
-      var myPopup = $ionicPopup.show({
-         template: '<input type = "time" ng-model = "data.model">',
-         title: 'Pill reminder',
-         subTitle: '',
-         scope: $scope,
-
-         buttons: [
-            { text: 'Cancel' }, {
-               text: '<b>Save</b>',
-               type: 'button-positive',
-                  onTap: function(e) {
-
-                     if (!$scope.data.model) {
-                        //don't allow the user to close unless he enters model...
-                           e.preventDefault();
-                     } else {
-                       ApiFactoryPost.query($scope.data.model);
-                       self.alarmDisplay = window.localStorage.alarmDisplay;
-                       return $scope.data.model;
-                     }
-                  }
-            }
-         ]
-      });
-
-      myPopup.then(function(res) {
-         console.log('Tapped!', res);
-      });
-   };
->>>>>>> 6dc61a75f6ec625c295391ebe4150eaf08de0aa1
 })
 
 .controller('AuthenticationController', function ($scope) {
-  // Check our local storage for the proper credentials to ensure we are logged in, this means users can't get past app unless they select a username
   if (window.localStorage.seniorId) {
     // ===== UNCOMMENT TWO LINES BELOW & comment 1 LINE ABOVE FOR STYLING =====
     // if (true) {

@@ -1,28 +1,60 @@
 var remoteUrl = 'https://senior-health.herokuapp.com';
 var localUrl = 'http://localhost:3000';
 var address = localUrl;
+var seniorIdTest = 2;
+var seniorIdProduction = window.localStorage.seniorId;
+var seniorId = seniorIdProduction;
 
 angular.module('seniorHealth.services', ['ionic'])
 
 .factory('ApiFactory', ['$http', function($http) {
-  var id;
-  id = window.localStorage.seniorId;
+  var id = seniorId;
   return {
     query: function(period) {
       return $http({
-        url: address+'/fitbit/' + period + '?id=' + id ,
+        url: address+'/users/'+id+'/fitbit/' + period,
         method: 'GET'
       });
     }
   };
 }])
 
+.factory('AlarmFactory', ['$http', function($http) {
+  var id = seniorId;
+  return {
+    getAll: function() {
+      return $http({
+        url: address+'/users/'+id+'/fitbit/alarms',
+        method: 'GET'
+      });
+    },
+    createAlarm: function(time) {
+      parseTime = new Date(time);
+      formatTime = parseTime.getHours()+":"+parseTime.getMinutes();
+      return $http({
+        url: address+'/users/'+id+'/fitbit/alarms/?time='+formatTime,
+        method: 'POST'
+      });
+    },
+    deleteAlarm: function(alarm_id) {
+      return $http({
+        url: address+'/users/'+id+'/fitbit/alarms/'+alarm_id,
+        method: 'DELETE'
+      });
+    },
+    updateAlarm: function(alarm_id, new_time) {
+      return $http({
+        url: address+'/users/'+id+'/fitbit/alarms/'+alarm_id+'?time='+new_time,
+        method: 'PUT'
+      });
+    }
+  };
+}])
 
 
 .factory('ApiFactoryPost', ['$http', function($http) {
   var pillTime;
-  var id;
-  id = window.localStorage.seniorId;
+  var id = seniorId;
   return {
     query: function(pillAlarm) {
       pillTime = pillAlarm;
@@ -52,6 +84,38 @@ angular.module('seniorHealth.services', ['ionic'])
   };
 }])
 
+<<<<<<< HEAD
+.factory('popupFactory', ['$ionicPopup', function($ionicPopup) {
+  function getPopup($scope,  AlarmFactory) {
+    return $ionicPopup.show({
+      template: '<input type = "time" ng-model="data.tempPillAlarm">',
+      title: 'Pill reminder',
+      subTitle: '',
+      scope: $scope,
+
+      buttons: [
+        { text: 'Cancel' }, {
+          text: '<b>Save</b>',
+          type: 'button-positive',
+          onTap: function(e) {
+
+            if (!$scope.data.tempPillAlarm) {
+              //don't allow the user to close unless he enters model...
+              e.preventDefault();
+            } else {
+              console.log($scope.data.tempPillAlarm);
+              AlarmFactory.createAlarm($scope.data.tempPillAlarm);
+              return $scope.data.tempPillAlarm;
+            }
+          }
+        }
+      ]
+    });
+  }
+
+  return {
+    getPopup: getPopup
+=======
 .factory('updateAlarm', ['$http', function($http) {
   var id;
   id = window.localStorage.seniorId;
@@ -63,6 +127,7 @@ angular.module('seniorHealth.services', ['ionic'])
         method: 'GET'
       });
     }
+>>>>>>> 6dc61a75f6ec625c295391ebe4150eaf08de0aa1
   };
 }])
 

@@ -1,13 +1,13 @@
 <ion-view view-title="Today" >
   <ion-content class="padding" ng-controller="ApiController as ApiCtrl" ng-init="ApiCtrl.callApi('today')">
-    <ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh()">
+    <ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh('today')">
     </ion-refresher>
     <!-- <button type="button" name="button" ng-click="ApiCtrl.callApi()">TRY</button> -->
     <div class="smiley-icon" ng-show="ApiCtrl.result.status == 'doing great'">
       <i class="icon ion-happy-outline"></i>
     </div>
     <div class="smiley-icon" ng-show="ApiCtrl.result.status == 'doing ok'">
-      <i class="icon ion-sad-outline"></i>
+      <img src="img/med-outline.png" width="100px">
     </div>
     <div class="smiley-icon" ng-show="ApiCtrl.result.status == 'not doing great'">
       <i class="icon ion-sad-outline"></i>
@@ -25,8 +25,7 @@
         <i class="icon ion-android-walk"></i>
         Physical activity
         <span class="item-note">
-          <!-- {{ApiCtrl.result.steps}} -->
-          1000 steps
+          {{ApiCtrl.result.steps}}
         </span>
       </div>
       <div class="item item-icon-left" id="sleep">
@@ -35,27 +34,6 @@
         <span class="item-note">
           {{ApiCtrl.result.totalMinutesAsleep}}
         </span>
-      </div>
-      <div class="item item-icon-left" id="sleep">
-<<<<<<< HEAD
-        <i class="icon ion-ios-alarm"></i>
-        Reminders
-        <span class="item-note">
-          17:00
-        </span>
-=======
-        <div class="row">
-          <div class="col-5">
-            <i class="icon ion-ios-alarm"></i>
-          </div>
-          <div class="col col-75">
-            Pill reminder
-          </div>
-          <div class="col col-20" style="text-align:right">
-            {{ApiCtrl.pillAlarm}}
-          </div>
-        </div>
->>>>>>> f834ea785b80ff11a183932c370c77056999a9f2
       </div>
     </div>
     <div class="summary-block">

@@ -3,42 +3,36 @@
     <ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh('today')">
     </ion-refresher>
     <!-- <button type="button" name="button" ng-click="ApiCtrl.callApi()">TRY</button> -->
-    <div class="smiley-icon" ng-show="ApiCtrl.result.status == 'doing great'">
-      <i class="icon ion-happy-outline"></i>
-    </div>
-    <div class="smiley-icon" ng-show="ApiCtrl.result.status == 'doing ok'">
-      <img src="img/med-outline.png" width="100px">
-    </div>
-    <div class="smiley-icon" ng-show="ApiCtrl.result.status == 'not doing great'">
+
+    <div class="smiley-icon">
       <i class="icon ion-sad-outline"></i>
     </div>
-    <h4>{{ApiCtrl.result.name}}</br> is {{ApiCtrl.result.status}}</h4>
+    <h4>Alan</br> is not doing great</h4>
     <div class="list card">
       <div class="item item-icon-left heart-rate">
         <i class="icon ion-heart"></i>
         Heart Rate
         <span class="item-note">
-          {{ApiCtrl.result.restingHeartRate}} bpm
+          110 bpm
         </span>
       </div>
       <div class="item item-icon-left" id="step-count">
         <i class="icon ion-android-walk"></i>
         Physical activity
         <span class="item-note">
-          {{ApiCtrl.result.steps}}
+          1589 steps
         </span>
       </div>
       <div class="item item-icon-left" id="sleep">
         <i class="icon ion-ios-moon"></i>
         Sleep last night
         <span class="item-note">
-          {{ApiCtrl.result.totalMinutesAsleep}}
+          4h, 40m
         </span>
       </div>
     </div>
     <div class="summary-block">
-      last synced: {{ApiCtrl.result.lastSyncTime | date :'MMM dd, HH:mm'}} -
-      battery level: {{ApiCtrl.result.battery}}
+      last synced: Feb 19, 17:30 | battery level: High
     </div>
   </ion-content>
 </ion-view>

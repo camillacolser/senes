@@ -43,62 +43,99 @@ angular.module('seniorHealth.services', ['ionic'])
       });
     },
     updateAlarm: function(alarm_id, new_time) {
+      parseTime = new Date(new_time);
+      formatTime = parseTime.getHours()+":"+parseTime.getMinutes();
       return $http({
-        url: address+'/users/'+id+'/fitbit/alarms/'+alarm_id+'?time='+new_time,
+        url: address+'/users/'+id+'/fitbit/alarms/'+alarm_id+'?time='+formatTime,
         method: 'PUT'
       });
     }
   };
 }])
 
-
-.factory('ApiFactoryPost', ['$http', function($http) {
-  var pillTime;
-  var id = seniorId;
+.factory('deleteAlarm', ['$http', function($http) {
+  var id;
+  id = window.localStorage.seniorId;
   return {
     query: function(pillAlarm) {
-      pillTime = pillAlarm;
-      pillTimeDate = new Date(pillTime);
-      dateText = pillTimeDate.getHours()+":"+pillTimeDate.getMinutes();
-      window.localStorage.pillAlarm = dateText;
-      console.log(window.localStorage.pillAlarm);
+      console.log(pillAlarm);
       return $http({
-        url: address+'/fitbit/set_alarm/?id=' + id + '&time=' + dateText ,
+        url: address+'/fitbit/delete_alarm/?id=' + id + '&time=' + pillAlarm ,
         method: 'GET'
       });
     }
   };
 }])
 
-
-.factory('popupFactory', ['$ionicPopup', function($ionicPopup) {
+.factory('popupFactory', ['$ionicPopup', function($ionicPopup, $rootScope) {
   function getPopup($scope,  AlarmFactory) {
     return $ionicPopup.show({
-      template: '<input type = "time" ng-model="data.tempPillAlarm">',
+      template: '<input type = "time" ng-model="data.inputTime">',
       title: 'Pill reminder',
       subTitle: '',
       scope: $scope,
-
       buttons: [
         { text: 'Cancel' }, {
           text: '<b>Save</b>',
-          type: 'button-positive',
+          type: 'button-calm',
           onTap: function(e) {
-
-            if (!$scope.data.tempPillAlarm) {
-              //don't allow the user to close unless he enters model...
+            if (!$scope.data.inputTime) {
               e.preventDefault();
             } else {
-              console.log($scope.data.tempPillAlarm);
-              AlarmFactory.createAlarm($scope.data.tempPillAlarm);
-              return $scope.data.tempPillAlarm;
+              AlarmFactory.createAlarm($scope.data.inputTime)
+              .success(function() {
+                $rootScope.$apply();
+                return $scope.data.inputTime;
+              });
             }
           }
         }
       ]
     });
   }
+  return {
+    getPopup: getPopup
+  };
+}])
 
+.factory('popupFactoryUpdate', ['$ionicPopup', function($ionicPopup, $rootScope) {
+  function getPopup($scope,  AlarmFactory, alarm_id) {
+    return $ionicPopup.show({
+      template: '<input type = "time" ng-model="data.inputTime">',
+      title: 'Pill reminder',
+      subTitle: '',
+      cssClass: 'update-popup',
+      scope: $scope,
+      buttons: [
+        { text: 'Cancel' }, {
+          text: '<b>Save</b>',
+          type: 'button-calm',
+          onTap: function(e) {
+            if (!$scope.data.inputTime) {
+              e.preventDefault();
+            } else {
+              AlarmFactory.updateAlarm(alarm_id, $scope.data.inputTime)
+              .success(function() {
+                $rootScope.$apply();
+                return $scope.data.inputTime;
+              });
+            }
+          }
+        }, { text: 'X Remove alarm',
+        onTap: function(e) {
+          if (!$scope.data.inputTime) {
+            e.preventDefault();
+          } else {
+            AlarmFactory.deleteAlarm(alarm_id)
+            .success(function() {
+              $rootScope.$apply();
+              return $scope.data.inputTime;
+            });
+          }
+        }
+      }]
+    });
+  }
   return {
     getPopup: getPopup
   };

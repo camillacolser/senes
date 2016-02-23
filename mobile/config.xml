@@ -12,11 +12,11 @@
     <preference name="webviewbounce" value="false" />
     <preference name="UIWebViewBounce" value="false" />
     <preference name="DisallowOverscroll" value="true" />
-    
-    <!-- Ionic supports Android Jellybean and up --> 
+
+    <!-- Ionic supports Android Jellybean and up -->
     <preference name="android-minSdkVersion" value="16" />
 
-    <!-- Don't store local data in an iCloud backup. Turn this to "cloud" to enable storage 
+    <!-- Don't store local data in an iCloud backup. Turn this to "cloud" to enable storage
          to be sent to iCloud. Note: enabling this could result in Apple rejecting your app.
     -->
     <preference name="BackupWebStorage" value="none" />
@@ -24,4 +24,21 @@
     <feature name="StatusBar">
       <param name="ios-package" value="CDVStatusBar" onload="true" />
     </feature>
+
+    <platform name="ios">
+      <!-- iOS 7.0+ -->
+      <!-- iPhone / iPod Touch -->
+      <icon src="icons/ios/launch_icon.jpg" width="60" height="60" />
+      <icon src="icons/ios/launch_icon.jpg" width="120" height="120" />
+
+      <!-- iOS 6.1 -->
+      <!-- iPhone / iPod Touch -->
+      <icon src="icons/ios/launch_icon.jpg" width="57" height="57" />
+      <icon src="icons/ios/launch_icon.jpg" width="114" height="114" />
+
+      <!-- iPhone Spotlight and Settings Icon -->
+      <icon src="icons/ios/launch_icon.jpg" width="29" height="29" />
+      <icon src="icons/ios/launch_icon.jpg" width="58" height="58" />
+    </platform>
+
 </widget>

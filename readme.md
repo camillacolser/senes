@@ -4,13 +4,13 @@
 
 ================================
 
-![Senes logo](https://github.com/allimac/senior-health/blob/development/mobile/www/img/logo.png)
-
-# Senes
+![Senes logo](https://github.com/allimac/senior-health/blob/development/mobile/www/img/logo.png =211x167)
 
 This is the final project for our Makers Academy coding bootcamp! The projects consists of a mobile App and an API, to allow people to provide better care for their elderly relatives.
 
-# Table of Contents
+================================
+
+## Table of Contents
 
 * [Authors](#Authors)
 * [The problem statement](#the-problem-statement)
@@ -20,7 +20,7 @@ This is the final project for our Makers Academy coding bootcamp! The projects c
 * [Future improvements](#future-improvements)
 
 
-## Authors
+# Authors
 
 [Emma Beynon](https://github.com/emmabeynon)
 [Jamie Brown](https://github.com/jamiebrown201)
@@ -29,9 +29,9 @@ This is the final project for our Makers Academy coding bootcamp! The projects c
 [Katie Smith](https://github.com/klssmith)
 
 
-## The problem statement
+# The problem statement
 
-## Our solution
+# Our solution
 
 ## How to use it
 
@@ -82,7 +82,7 @@ I would like to unlink my phone to the connected account (logout)
 
 ```
 
-## Future improvements
+# Future improvements
 
 This project wants to be an exploration into a field, that of wearable technology for the elderly, that could have
 ```

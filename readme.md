@@ -40,15 +40,13 @@ This is the final project for our Makers Academy coding bootcamp! The projects c
 ## Our solution
 
 ## Technologies
-| Technologies | Testing |
-|---|---|
-| Rails | RSpec |
-| Ruby | Karma |
-| Ionic | Protractor |
-| AngularJS | Jasmine |
-| HTML5 | Shoulda |
-| CSS |  |
-| Sass |  |
+| API/Server | Client | Testing |
+|---|---|---|
+| Rails | Ionic | RSpec |
+| Ruby | AngularJS | Karma |
+|  | CSS | Protractor |
+|  | HTML5 | Jasmine |
+|  | Sass | Shoulda |
 
 ## Instructions
 This repository includes a folder `web` which contains the codebase for the API, and a folder `mobile` with the code for the Ionic mobile app.  You will need a valid Fitbit account to connect the app to your Fitbit device.  To get started, fork this repo and run:

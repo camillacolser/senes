@@ -16,7 +16,7 @@ This is the final project for our Makers Academy coding bootcamp! The projects c
 * [The problem statement](#the-problem-statement)
 * [Our solution](#our-solution)
   * [Technologies](#technologies)
-  * [How to use it](#How-to-use-it)
+  * [Instructions](#instructions)
   * [User stories implemented](#user-stories-implemented)
 * [Future improvements](#future-improvements)
 
@@ -49,16 +49,37 @@ This is the final project for our Makers Academy coding bootcamp! The projects c
 | HTML5 | Shoulda |
 | CSS |  |
 | Sass |  |
-## How to use it
 
-This repository includes a folder `web` with all the codebase for the API, and a folder `mobile` with the code for the Ionic mobile app.
-The API has also been deployed at [senior-health.herokuapp.com](https://senior-health.herokuapp.com).
-To run the API and the mobile app locally you can download the repository, start the app in a simulator and run locally the server API that feeds data to it. You will also need a valid Fitbit account to connect the app to your device.
-Follow these steps if you'd like to try it out:
+## Instructions
+This repository includes a folder `web` which contains the codebase for the API, and a folder `mobile` with the code for the Ionic mobile app.  You will need a valid Fitbit account to connect the app to your Fitbit device.  To get started, fork this repo and run:
+
 ```
-$ git clone < this repo >
-$ cd < this repo >
-$ npm install -g cordova
+$ git clone < your forked repo URL >
+$ cd < your forked repo name >
+$ npm install -g cordova ionic
+$ npm install -g ios-sim
+$ cd mobile
+$ npm install
+$ cd ../web
+$ bundle install
+$ bin/rake db:create
+$ bin/rake db:migrate
+```
+
+The API has been deployed to [senior-health.herokuapp.com](https://senior-health.herokuapp.com).  To run the app with the deployed API, open `/mobile/www/services.js` and ensure that `var address = remoteUrl`.
+
+To run the API locally, open `/mobile/www/services.js` and ensure that `var address = localUrl`. Next, run the following commands:
+```
+$ cd web
+$ rails s
+```
+
+To load the app, run:
+```
+$ cd mobile
+$ ionic platform add ios
+$ ionic build ios
+$ ionic emulate ios
 ```
 
 ## User stories implemented

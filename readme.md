@@ -38,7 +38,14 @@ This is the final project for our Makers Academy coding bootcamp! The projects c
 “Because I lead a busy life and I am time-poor, I don’t know the health and wellbeing status of my elderly relative”
 
 ## Our solution
-We decided
+To solve this problem, we decided to create an app that would allow a user to check in on their elderly relative's health.  In order to monitor the elderly relative's health, we decided to use a Fitbit device to track vital stats including heart rate, steps and sleep.  To retrieve the data, we used the Fitbit API.  This requires OAuth 2.0 for user authentication and API authentication.  The user needs to sign in with their Fitbit account credentials in order to authorise the app to access their data using a provided Access Token.  We decided to use Rails to handle the authentication and created an API in Rails to feed the data back to Ionic in the required format.  We found a gem called fitgem which handles the authentication, however it was only designed to work with OAuth 1.0a so we adapted it to work with OAuth 2.0.  With our Rails API in place, we created views in our Ionic app to display the data.  
+
+We created a 'Today' tab to provide a snapshot of the elderly relative's stats on that day, as well as their battery level and last sync time so that the user knows if the data is fresh.  We also made a calculation of the various data points to estimate an overall health status.  The result of this calculation manifests as a face icon and status of 'not doing great', 'doing ok' and 'doing great'.
+
+We also created a 'Week' tab to provide a summary for the past 7 days.  For this we created a calculation for each data point so that they display 'below average', 'normal' or 'above average' for each stat.  This enables the user to get an idea of how their elderly relative is generally doing over a longer period of time so they can act accordingly.
+
+Finally we created a 'Settings' tab to allow the user to set a medication reminder for their relative.  This will alert the relative via their Fitbit device to take their medication. 
+
 ## Technologies
 #### API/Server
 * Rails
@@ -59,6 +66,7 @@ We decided
 * Shoulda
 
 ## Instructions
+Note: OS X is required to run the app.
 This repository includes a folder `web` which contains the codebase for the API, and a folder `mobile` with the code for the Ionic mobile app.  You will need a valid Fitbit account to connect the app to your Fitbit device.  To get started, fork this repo and run:
 
 ```
@@ -82,7 +90,7 @@ $ cd web
 $ rails s
 ```
 
-To load the app, run:
+To load a simulated version of the app, run:
 ```
 $ cd mobile
 $ ionic platform add ios
@@ -91,7 +99,6 @@ $ ionic emulate ios
 ```
 
 ## User stories implemented
-
 ```
 As a relative of an elderly person
 So that I can track their health

@@ -8,7 +8,7 @@
 
 # Senes
 
-This is the final project for our Makers Academy coding bootcamp! The projects consists of a mobile App and an API, to allow people to provide better care for their elderly relatives.
+This is the final project for our Makers Academy coding bootcamp! The projects consists of a mobile app and an API, to allow people to provide better care for their elderly relatives.
 
 # Table of Contents
 
@@ -38,15 +38,25 @@ This is the final project for our Makers Academy coding bootcamp! The projects c
 “Because I lead a busy life and I am time-poor, I don’t know the health and wellbeing status of my elderly relative”
 
 ## Our solution
-
+We decided
 ## Technologies
-| API/Server | Client | Testing |
-|---|---|---|
-| Rails | Ionic | RSpec |
-| Ruby | AngularJS | Karma |
-|  | CSS | Protractor |
-|  | HTML5 | Jasmine |
-|  | Sass | Shoulda |
+#### API/Server
+* Rails
+* Ruby
+
+#### Client
+* Ionic
+* AngularJS
+* HTML5
+* CSS
+* Sass
+
+#### Testing
+* RSpec
+* Karma
+* Protractor
+* Jasmine
+* Shoulda
 
 ## Instructions
 This repository includes a folder `web` which contains the codebase for the API, and a folder `mobile` with the code for the Ionic mobile app.  You will need a valid Fitbit account to connect the app to your Fitbit device.  To get started, fork this repo and run:

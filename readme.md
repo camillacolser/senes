@@ -4,13 +4,13 @@
 
 ================================
 
-![Senes logo](https://github.com/allimac/senior-health/blob/development/mobile/www/img/logo.png)
-
-# Senes
+![Senes logo](https://github.com/allimac/senior-health/blob/development/mobile/www/img/logo.png =211x167)
 
 This is the final project for our Makers Academy coding bootcamp! The projects consists of a mobile app and an API, to allow people to provide better care for their elderly relatives.
 
-# Table of Contents
+================================
+
+## Table of Contents
 
 * [Authors](#Authors)
 * [The problem statement](#the-problem-statement)
@@ -21,7 +21,7 @@ This is the final project for our Makers Academy coding bootcamp! The projects c
 * [Future improvements](#future-improvements)
 
 
-## Authors
+# Authors
 
 [Emma Beynon](https://github.com/emmabeynon)
 
@@ -34,6 +34,7 @@ This is the final project for our Makers Academy coding bootcamp! The projects c
 [Katie Smith](https://github.com/klssmith)
 
 
+<<<<<<< HEAD
 ## The problem statement
 “Because I lead a busy life and I am time-poor, I don’t know the health and wellbeing status of my elderly relative”
 
@@ -44,7 +45,7 @@ We created a 'Today' tab to provide a snapshot of the elderly relative's stats o
 
 We also created a 'Week' tab to provide a summary for the past 7 days.  For this we created a calculation for each data point so that they display 'below average', 'normal' or 'above average' for each stat.  This enables the user to get an idea of how their elderly relative is generally doing over a longer period of time so they can act accordingly.
 
-Finally we created a 'Settings' tab to allow the user to set a medication reminder for their relative.  This will alert the relative via their Fitbit device to take their medication. 
+Finally we created a 'Settings' tab to allow the user to set a medication reminder for their relative.  This will alert the relative via their Fitbit device to take their medication.
 
 ## Technologies
 #### API/Server
@@ -134,7 +135,7 @@ I would like to unlink my phone to the connected account (logout)
 
 ```
 
-## Future improvements
+# Future improvements
 
 This project wants to be an exploration into a field, that of wearable technology for the elderly, that could have
 ```

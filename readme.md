@@ -34,7 +34,6 @@ This is the final project for our Makers Academy coding bootcamp! The projects c
 [Katie Smith](https://github.com/klssmith)
 
 
-<<<<<<< HEAD
 ## The problem statement
 “Because I lead a busy life and I am time-poor, I don’t know the health and wellbeing status of my elderly relative”
 

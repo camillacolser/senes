@@ -15,6 +15,7 @@ This is the final project for our Makers Academy coding bootcamp! The projects c
 * [Authors](#Authors)
 * [The problem statement](#the-problem-statement)
 * [Our solution](#our-solution)
+  * [Technologies](#technologies)
   * [How to use it](#How-to-use-it)
   * [User stories implemented](#user-stories-implemented)
 * [Future improvements](#future-improvements)
@@ -23,9 +24,13 @@ This is the final project for our Makers Academy coding bootcamp! The projects c
 ## Authors
 
 [Emma Beynon](https://github.com/emmabeynon)
+
 [Jamie Brown](https://github.com/jamiebrown201)
+
 [Alan Gabbianelli](https://github.com/alangabbianelli)
+
 [Camilla Colombo Serri](https://github.com/allimac)
+
 [Katie Smith](https://github.com/klssmith)
 
 
@@ -33,6 +38,16 @@ This is the final project for our Makers Academy coding bootcamp! The projects c
 
 ## Our solution
 
+## Technologies
+| Technologies | Testing |
+|---|---|
+| Rails | RSpec |
+| Ruby | Karma |
+| Ionic | Protractor |
+| AngularJS | Jasmine |
+| HTML5 | Shoulda |
+| CSS |  |
+| Sass |  |
 ## How to use it
 
 This repository includes a folder `web` with all the codebase for the API, and a folder `mobile` with the code for the Ionic mobile app.

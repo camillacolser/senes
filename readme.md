@@ -4,7 +4,7 @@
 
 ================================
 
-![Senes logo](https://github.com/allimac/senior-health/blob/development/mobile/www/img/logo.png =211x167)
+![Senes logo](https://github.com/allimac/senior-health/mobile/www/img/logo.png =211x167)
 
 This is the final project for our Makers Academy coding bootcamp! The projects consists of a mobile app and an API, to allow people to provide better care for their elderly relatives.
 

@@ -45,7 +45,7 @@ We created a 'Today' tab to provide a snapshot of the elderly relative's stats o
 
 ![Today great](http://i.imgur.com/BRTFaDV.png)
 ![Today ok](http://i.imgur.com/PPVPxYc.png)
-![Today not so great](http://i.imgur.com/7FFADZl.png)
+![Today not so great](http://i.imgur.com/c7Jgjmi.png)
 
 We also created a 'Week' tab to provide a summary for the past 7 days.  For this we created a calculation for each data point so that they display 'below average', 'normal' or 'above average' for each stat.  This enables the user to get an idea of how their elderly relative is generally doing over a longer period of time so they can act accordingly.
 

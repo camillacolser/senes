@@ -43,18 +43,18 @@ To solve this problem, we decided to create an app that would allow a user to ch
 
 We created a 'Today' tab to provide a snapshot of the elderly relative's stats on that day, as well as their battery level and last sync time so that the user knows if the data is fresh.  We also made a calculation of the various data points to estimate an overall health status.  The result of this calculation manifests as a face icon and status of 'not doing great', 'doing ok' and 'doing great'.
 
-![Today great](http://i.imgur.com/JPrui3h.png =160x284)
-![Today ok](http://i.imgur.com/ByKLdNB.png =160x284)
-![Today not so great](http://i.imgur.com/66Lc2Ag.png =160x284)
+![Today great](http://i.imgur.com/JPrui3h.png =80x142)
+![Today ok](http://i.imgur.com/ByKLdNB.png =80x142)
+![Today not so great](http://i.imgur.com/66Lc2Ag.png =80x142)
 
 We also created a 'Week' tab to provide a summary for the past 7 days.  For this we created a calculation for each data point so that they display 'below average', 'normal' or 'above average' for each stat.  This enables the user to get an idea of how their elderly relative is generally doing over a longer period of time so they can act accordingly.
 
-![Week](http://i.imgur.com/75iH1L9.png =160x284)
+![Week](http://i.imgur.com/75iH1L9.png =80x142)
 
 Finally we created a 'Settings' tab to allow the user to set a medication reminder for their relative.  This will alert the relative via their Fitbit device to take their medication.
 
-![Settings](http://i.imgur.com/6kq5R4w.png =160x284)
-![Alarm](http://i.imgur.com/tZam41F.png =160x284)
+![Settings](http://i.imgur.com/6kq5R4w.png =80x142)
+![Alarm](http://i.imgur.com/tZam41F.png =80x142)
 
 ## Technologies
 #### API/Server

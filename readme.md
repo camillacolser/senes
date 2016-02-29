@@ -4,24 +4,24 @@
 
 ================================
 
-![Senes logo](https://github.com/allimac/senior-health/blob/development/mobile/www/img/logo.png)
+![Senes logo](https://github.com/allimac/senior-health/blob/development/mobile/www/img/logo.png =211x167)
 
-# Senes
+This is the final project for our Makers Academy coding bootcamp! The projects consists of a mobile app and an API, to allow people to provide better care for their elderly relatives.
 
-This is the final project for our Makers Academy coding bootcamp! The projects consists of a mobile App and an API, to allow people to provide better care for their elderly relatives.
+================================
 
-# Table of Contents
+## Table of Contents
 
 * [Authors](#Authors)
 * [The problem statement](#the-problem-statement)
 * [Our solution](#our-solution)
   * [Technologies](#technologies)
-  * [How to use it](#How-to-use-it)
+  * [Instructions](#instructions)
   * [User stories implemented](#user-stories-implemented)
 * [Future improvements](#future-improvements)
 
 
-## Authors
+# Authors
 
 [Emma Beynon](https://github.com/emmabeynon)
 
@@ -35,33 +35,80 @@ This is the final project for our Makers Academy coding bootcamp! The projects c
 
 
 ## The problem statement
+“Because I lead a busy life and I am time-poor, I don’t know the health and wellbeing status of my elderly relative”
 
 ## Our solution
+To solve this problem, we decided to create an app that would allow a user to check in on their elderly relative's health.  In order to monitor the elderly relative's health, we decided to use a Fitbit device to track vital stats including heart rate, steps and sleep.  To retrieve the data, we used the Fitbit API.  This requires OAuth 2.0 for user authentication and API authentication.  The user needs to sign in with their Fitbit account credentials in order to authorise the app to access their data using a provided Access Token.  We decided to use Rails to handle the authentication and created an API in Rails to feed the data back to Ionic in the required format.  We found a gem called fitgem which handles the authentication, however it was only designed to work with OAuth 1.0a so we adapted it to work with OAuth 2.0.  With our Rails API in place, we created views in our Ionic app to display the data.  
+![Login screen](http://i.imgur.com/SD7DUNh.png)
+
+We created a 'Today' tab to provide a snapshot of the elderly relative's stats on that day, as well as their battery level and last sync time so that the user knows if the data is fresh.  We also made a calculation of the various data points to estimate an overall health status.  The result of this calculation manifests as a face icon and status of 'not doing great', 'doing ok' and 'doing great'.
+
+![Today great](http://i.imgur.com/BRTFaDV.png)
+![Today ok](http://i.imgur.com/PPVPxYc.png)
+![Today not so great](http://i.imgur.com/c7Jgjmi.png)
+
+We also created a 'Week' tab to provide a summary for the past 7 days.  For this we created a calculation for each data point so that they display 'below average', 'normal' or 'above average' for each stat.  This enables the user to get an idea of how their elderly relative is generally doing over a longer period of time so they can act accordingly.
+
+![Week](http://i.imgur.com/uoByUlX.png)
+
+Finally we created a 'Settings' tab to allow the user to set a medication reminder for their relative.  This will alert the relative via their Fitbit device to take their medication.
+
+![Settings](http://i.imgur.com/qLTcfwc.png)
+![Alarm](http://i.imgur.com/Kx9i8Pi.png)
 
 ## Technologies
-| Technologies | Testing |
-|---|---|
-| Rails | RSpec |
-| Ruby | Karma |
-| Ionic | Protractor |
-| AngularJS | Jasmine |
-| HTML5 | Shoulda |
-| CSS |  |
-| Sass |  |
-## How to use it
+#### API/Server
+* Rails
+* Ruby
 
-This repository includes a folder `web` with all the codebase for the API, and a folder `mobile` with the code for the Ionic mobile app.
-The API has also been deployed at [senior-health.herokuapp.com](https://senior-health.herokuapp.com).
-To run the API and the mobile app locally you can download the repository, start the app in a simulator and run locally the server API that feeds data to it. You will also need a valid Fitbit account to connect the app to your device.
-Follow these steps if you'd like to try it out:
+#### Client
+* Ionic
+* AngularJS
+* HTML5
+* CSS
+* Sass
+
+#### Testing
+* RSpec
+* Karma
+* Protractor
+* Jasmine
+* Shoulda
+
+## Instructions
+Note: OS X is required to run the app.
+This repository includes a folder `web` which contains the codebase for the API, and a folder `mobile` with the code for the Ionic mobile app.  You will need a valid Fitbit account to connect the app to your Fitbit device.  To get started, fork this repo and run:
+
 ```
-$ git clone < this repo >
-$ cd < this repo >
-$ npm install -g cordova
+$ git clone < your forked repo URL >
+$ cd < your forked repo name >
+$ npm install -g cordova ionic
+$ npm install -g ios-sim
+$ cd mobile
+$ npm install
+$ cd ../web
+$ bundle install
+$ bin/rake db:create
+$ bin/rake db:migrate
+```
+
+The API has been deployed to [senior-health.herokuapp.com](https://senior-health.herokuapp.com).  To run the app with the deployed API, open `/mobile/www/services.js` and ensure that `var address = remoteUrl`.
+
+To run the API locally, open `/mobile/www/services.js` and ensure that `var address = localUrl`. Next, run the following commands:
+```
+$ cd web
+$ rails s
+```
+
+To load a simulated version of the app, run:
+```
+$ cd mobile
+$ ionic platform add ios
+$ ionic build ios
+$ ionic emulate ios
 ```
 
 ## User stories implemented
-
 ```
 As a relative of an elderly person
 So that I can track their health
@@ -97,9 +144,7 @@ I would like to unlink my phone to the connected account (logout)
 
 ```
 
-## Future improvements
-
-This project wants to be an exploration into a field, that of wearable technology for the elderly, that could have
+# Future improvements
 ```
 As an elderly user
 So that I don't have to worry about syncing my device
